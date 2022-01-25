@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>基于github与hexo博客创建全流程</title>
+    <url>/2022/01/25/%E5%9F%BA%E4%BA%8Egithub%E4%B8%8Ehexo%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E5%85%A8%E6%B5%81%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="创建github帐号并安装hexo"><a href="#创建github帐号并安装hexo" class="headerlink" title="创建github帐号并安装hexo"></a>创建github帐号并安装hexo</h1><p><a href="https://zhuanlan.zhihu.com/p/26625249">https://zhuanlan.zhihu.com/p/26625249</a></p>
+<h1 id="无法部署的问题"><a href="#无法部署的问题" class="headerlink" title="无法部署的问题"></a>无法部署的问题</h1><p>spawn failed 解决方法是修改配置文件<br><a href="https://blog.zhheo.com/p/128998ac.html">https://blog.zhheo.com/p/128998ac.html</a></p>
+<h1 id="最新版next下载"><a href="#最新版next下载" class="headerlink" title="最新版next下载"></a>最新版next下载</h1><p>原文的next主题连接已不再更新<br><a href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a></p>
+<h1 id="Next主题配置"><a href="#Next主题配置" class="headerlink" title="Next主题配置"></a>Next主题配置</h1><p><a href="https://www.jianshu.com/p/3a05351a37dc">https://www.jianshu.com/p/3a05351a37dc</a></p>
+<h1 id="分类与标签无法显示的问题"><a href="#分类与标签无法显示的问题" class="headerlink" title="分类与标签无法显示的问题"></a>分类与标签无法显示的问题</h1><p><a href="https://www.jianshu.com/p/f138032e7539">https://www.jianshu.com/p/f138032e7539</a></p>
+<h1 id="markdown学习"><a href="#markdown学习" class="headerlink" title="markdown学习"></a>markdown学习</h1><p><a href="https://www.runoob.com/markdown/md-tutorial.html">https://www.runoob.com/markdown/md-tutorial.html</a><br><a href="https://www.appinn.com/markdown/">https://www.appinn.com/markdown/</a></p>
+]]></content>
+      <categories>
+        <category>博客创建</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+        <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+</search>
