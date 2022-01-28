@@ -19,17 +19,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="银鞍照白马，飒沓如流星。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="桃园三结义">
-<meta property="og:url" content="http://example.com/tags/hexo/index.html">
+  <meta name="description" content="2.1 最长回文子串lintcode200https:&#x2F;&#x2F;www.lintcode.com&#x2F;problem&#x2F;200&#x2F;descriptionabcd 子串 ab,bc… 子序列 ac,bd…  暴力解法-相向型双指针-时间复杂度on3-不合格 马拉车算法on,并不是面试官需要的算法，面试并不考记忆。  2.2 on3代码实现差异 注意写题目要异常检测。 不要用单个字母变量。 加空格。逻辑块用空行分开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="九章算法-2.案例分析（最长回文子串）">
+<meta property="og:url" content="http://example.com/2022/01/27/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-2.1.%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/index.html">
 <meta property="og:site_name" content="桃园三结义">
-<meta property="og:description" content="银鞍照白马，飒沓如流星。">
+<meta property="og:description" content="2.1 最长回文子串lintcode200https:&#x2F;&#x2F;www.lintcode.com&#x2F;problem&#x2F;200&#x2F;descriptionabcd 子串 ab,bc… 子序列 ac,bd…  暴力解法-相向型双指针-时间复杂度on3-不合格 马拉车算法on,并不是面试官需要的算法，面试并不考记忆。  2.2 on3代码实现差异 注意写题目要异常检测。 不要用单个字母变量。 加空格。逻辑块用空行分开">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-27T15:04:19.000Z">
+<meta property="article:modified_time" content="2022-01-28T07:15:13.537Z">
 <meta property="article:author" content="春春">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/tags/hexo/">
+<link rel="canonical" href="http://example.com/2022/01/27/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-2.1.%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/">
 
 
 <script id="page-configurations">
@@ -37,12 +39,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: hexo | 桃园三结义</title>
+  <title>九章算法-2.案例分析（最长回文子串） | 桃园三结义</title>
   
 
 
@@ -184,51 +186,105 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">hexo
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/27/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-2.1.%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liuguanzhang.jpg">
+      <meta itemprop="name" content="春春">
+      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃园三结义">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          九章算法-2.案例分析（最长回文子串）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-27 23:04:19" itemprop="dateCreated datePublished" datetime="2022-01-27T23:04:19+08:00">2022-01-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-28 15:15:13" itemprop="dateModified" datetime="2022-01-28T15:15:13+08:00">2022-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">九章算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <h1 id="2-1-最长回文子串"><a href="#2-1-最长回文子串" class="headerlink" title="2.1 最长回文子串"></a>2.1 最长回文子串</h1><p>lintcode200<br><a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/200/description">https://www.lintcode.com/problem/200/description</a><br>abcd 子串 ab,bc… 子序列 ac,bd…</p>
+<ol>
+<li>暴力解法-相向型双指针-时间复杂度on3-不合格</li>
+<li>马拉车算法on,并不是面试官需要的算法，面试并不考记忆。</li>
+</ol>
+<h1 id="2-2-on3代码实现差异"><a href="#2-2-on3代码实现差异" class="headerlink" title="2.2 on3代码实现差异"></a>2.2 on3代码实现差异</h1><ol>
+<li>注意写题目要异常检测。</li>
+<li>不要用单个字母变量。</li>
+<li>加空格。逻辑块用空行分开。</li>
+<li>缩进不要超过3层。</li>
+</ol>
+<h1 id="2-3-基于中心线枚举的算法"><a href="#2-3-基于中心线枚举的算法" class="headerlink" title="2.3 基于中心线枚举的算法"></a>2.3 基于中心线枚举的算法</h1>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-01-25T10:49:48+08:00"
-              content="2022-01-25">
-          01-25
-        </time>
-      </div>
+      <footer class="post-footer">
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/25/%E5%9F%BA%E4%BA%8Egithub%E4%B8%8Ehexo%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E5%85%A8%E6%B5%81%E7%A8%8B/" itemprop="url">
-            <span itemprop="name">基于github与hexo博客创建全流程</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/25/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-1.%E9%AB%98%E6%95%88%E5%88%B7%E9%A2%98/" rel="prev" title="九章算法-1.高效刷题">
+      <i class="fa fa-chevron-left"></i> 九章算法-1.高效刷题
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/28/lintcode-200-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2-%E6%9A%B4%E5%8A%9B%E8%A7%A3/" rel="next" title="lintcode-200-最长回文子串-暴力解">
+      lintcode-200-最长回文子串-暴力解 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -281,6 +337,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2-1-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2"><span class="nav-text">2.1 最长回文子串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-2-on3%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%B7%AE%E5%BC%82"><span class="nav-text">2.2 on3代码实现差异</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-3-%E5%9F%BA%E4%BA%8E%E4%B8%AD%E5%BF%83%E7%BA%BF%E6%9E%9A%E4%B8%BE%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-text">2.3 基于中心线枚举的算法</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

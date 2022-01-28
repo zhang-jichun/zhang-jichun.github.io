@@ -158,4 +158,69 @@
         <tag>博客</tag>
       </tags>
   </entry>
+  <entry>
+    <title>lintcode-200-最长回文子串-暴力解</title>
+    <url>/2022/01/28/lintcode-200-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2-%E6%9A%B4%E5%8A%9B%E8%A7%A3/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    @param s: input string</span><br><span class="line">    @return: a string as the longest palindromic substring</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def longestPalindrome(self, s):</span><br><span class="line">        # write your code here</span><br><span class="line">        res = &quot;&quot;</span><br><span class="line">        if not s:</span><br><span class="line">            return res</span><br><span class="line"></span><br><span class="line">        for start in range(0, len(s), 1):</span><br><span class="line">            for end in range(start, len(s), 1):</span><br><span class="line">                temp = s[start : end + 1]</span><br><span class="line">                if self.isPalindrome(temp) is True and len(temp) &gt; len(res):</span><br><span class="line">                    res = temp </span><br><span class="line">        return res</span><br><span class="line"></span><br><span class="line">    def isPalindrome(self, temp):</span><br><span class="line">        left = 0</span><br><span class="line">        right = len(temp) - 1</span><br><span class="line">        while(left &lt;= right and temp[left] == temp[right]):</span><br><span class="line">            left += 1</span><br><span class="line">            right -= 1</span><br><span class="line">        if left &gt; right:</span><br><span class="line">            return True</span><br><span class="line">        else:</span><br><span class="line">            return False</span><br></pre></td></tr></table></figure>
+<p>三层循环暴力解法<br>start,end两层循环取出待检查字符串<br>isPalindrome判断字符串是否为回文串<br>判断temp与res长短，留存最长temp</p>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+      <tags>
+        <tag>最长回文子串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>九章算法-2.案例分析（最长回文子串）</title>
+    <url>/2022/01/27/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-2.1.%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/</url>
+    <content><![CDATA[<h1 id="2-1-最长回文子串"><a href="#2-1-最长回文子串" class="headerlink" title="2.1 最长回文子串"></a>2.1 最长回文子串</h1><p>lintcode200<br><a href="https://www.lintcode.com/problem/200/description">https://www.lintcode.com/problem/200/description</a><br>abcd 子串 ab,bc… 子序列 ac,bd…</p>
+<ol>
+<li>暴力解法-相向型双指针-时间复杂度on3-不合格</li>
+<li>马拉车算法on,并不是面试官需要的算法，面试并不考记忆。</li>
+</ol>
+<h1 id="2-2-on3代码实现差异"><a href="#2-2-on3代码实现差异" class="headerlink" title="2.2 on3代码实现差异"></a>2.2 on3代码实现差异</h1><ol>
+<li>注意写题目要异常检测。</li>
+<li>不要用单个字母变量。</li>
+<li>加空格。逻辑块用空行分开。</li>
+<li>缩进不要超过3层。</li>
+</ol>
+<h1 id="2-3-基于中心线枚举的算法"><a href="#2-3-基于中心线枚举的算法" class="headerlink" title="2.3 基于中心线枚举的算法"></a>2.3 基于中心线枚举的算法</h1>]]></content>
+      <categories>
+        <category>九章算法</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>九章算法-1.高效刷题</title>
+    <url>/2022/01/25/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-1.%E9%AB%98%E6%95%88%E5%88%B7%E9%A2%98/</url>
+    <content><![CDATA[<ul>
+<li>有的题不要刷，有的题目可以多刷。</li>
+<li>缩进与循环尽量不要超过三层，若多层可以采用子函数，代码缩进越多bug越多。</li>
+<li>进步最快的是代码被更高级的员工code review。</li>
+<li>magicNumber(定义wall=1,water=2)</li>
+<li>缺乏项目经验：耦合度高，重复代码，全局变量。</li>
+<li>解耦合：整体逻辑用子函数表达，子函数实现具体步骤。</li>
+<li>好的代码不需要注释。更清晰的变量名，更易懂的逻辑。</li>
+<li>子函数化，避免全局变量可以降低bug.</li>
+<li>逻辑思维能力，代码质量，代码风格，异常检测。</li>
+<li>面试是一个试用的过程，不是考试的过程。</li>
+<li>不要闷头写，先沟通清除再写，写完了再解释。</li>
+<li>不会刻意要提示，但先自己努力一下。</li>
+<li>会就会，不会就是不会，坦诚很重要。</li>
+<li>一个Django项目课，可以咨询。</li>
+<li>面试语言首推python,其次java,不要用C++。</li>
+<li>lintcode 算法能力，bugFree能力，题量。</li>
+<li>lintcodeCat帮助评估算法能力。</li>
+<li>判断算法考不考，带名字的算法都不考。</li>
+<li>参考考察表v4.1</li>
+<li>熟悉每一种常用的数据结构。</li>
+<li>互联网公司考systemDesign多，软件公司考OOD</li>
+<li>OOD有5章节10课时的课程。</li>
+<li>BehaviorQuestion也要有准备，主要准备与面试公司的联系。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>九章算法</category>
+      </categories>
+  </entry>
 </search>
