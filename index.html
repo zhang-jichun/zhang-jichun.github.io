@@ -291,8 +291,18 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-02-10 10:32:14" itemprop="dateCreated datePublished" datetime="2022-02-10T10:32:14+08:00">2022-02-10</time>
+              <time title="创建时间：2022-02-10 10:32:14 / 修改时间：17:04:09" itemprop="dateCreated datePublished" datetime="2022-02-10T10:32:14+08:00">2022-02-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">九章算法</span></a>
+                </span>
             </span>
 
           
@@ -306,7 +316,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><ul>
+<li>先整体有序，后局部有序partition</li>
+<li>等于标记点的情况要尽可能均分，就需要&gt;= &lt;=
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/10/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-05-%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -348,10 +368,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-02-09 21:48:42 / 修改时间：21:51:47" itemprop="dateCreated datePublished" datetime="2022-02-09T21:48:42+08:00">2022-02-09</time>
+              <time title="创建时间：2022-02-09 21:48:42" itemprop="dateCreated datePublished" datetime="2022-02-09T21:48:42+08:00">2022-02-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-10 17:00:40" itemprop="dateModified" datetime="2022-02-10T17:00:40+08:00">2022-02-10</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -378,9 +404,7 @@
 <li>列表生成式</li>
 <li>enumerate用法</li>
 <li>.sort() sorted()用法</li>
-<li>return最后也要排序<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param numbers: An array of Integer</span></span><br><span class="line"><span class="string">    @param target: target = numbers[index1] + numbers[index2]</span></span><br><span class="line"><span class="string">    @return: [index1, index2] (index1 &lt; index2)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span>(<span class="params">self, numbers, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> numbers:</span><br><span class="line">            <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br><span class="line">        nums = [(num, ind) <span class="keyword">for</span> ind, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(numbers)]</span><br><span class="line">        nums.sort()</span><br><span class="line"></span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            <span class="keyword">if</span> nums[left][<span class="number">0</span>] + nums[right][<span class="number">0</span>] &lt; target:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[left][<span class="number">0</span>] + nums[right][<span class="number">0</span>] &gt; target:</span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">sorted</span>([nums[left][<span class="number">1</span>],nums[right][<span class="number">1</span>]])</span><br><span class="line">        <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
-</ul>
-
+<li>return最后也要排序
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/02/09/lintcode-56-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-%E6%8E%92%E5%BA%8F%E5%8F%8C%E6%8C%87%E9%92%88/#more" rel="contents">
@@ -430,10 +454,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-02-09 21:12:15 / 修改时间：21:13:37" itemprop="dateCreated datePublished" datetime="2022-02-09T21:12:15+08:00">2022-02-09</time>
+              <time title="创建时间：2022-02-09 21:12:15" itemprop="dateCreated datePublished" datetime="2022-02-09T21:12:15+08:00">2022-02-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-10 16:59:53" itemprop="dateModified" datetime="2022-02-10T16:59:53+08:00">2022-02-10</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -458,9 +488,7 @@
           <p><a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/56/description">https://www.lintcode.com/problem/56/description</a></p>
 <ul>
 <li>python的哈希表就是字典</li>
-<li>enumerate(numbers)<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param numbers: An array of Integer</span></span><br><span class="line"><span class="string">    @param target: target = numbers[index1] + numbers[index2]</span></span><br><span class="line"><span class="string">    @return: [index1, index2] (index1 &lt; index2)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span>(<span class="params">self, numbers, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        hashset = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> ind, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(numbers):</span><br><span class="line">            <span class="keyword">if</span> target - num <span class="keyword">in</span> hashset:</span><br><span class="line">                <span class="keyword">return</span> [hashset[target - num], ind]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                hashset[num] = ind</span><br><span class="line">        <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
-</ul>
-
+<li>enumerate(numbers)
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/02/09/lintcode-56-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-%E5%93%88%E5%B8%8C%E8%A1%A8/#more" rel="contents">
@@ -510,10 +538,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-02-09 20:53:55 / 修改时间：20:55:57" itemprop="dateCreated datePublished" datetime="2022-02-09T20:53:55+08:00">2022-02-09</time>
+              <time title="创建时间：2022-02-09 20:53:55" itemprop="dateCreated datePublished" datetime="2022-02-09T20:53:55+08:00">2022-02-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-10 17:02:39" itemprop="dateModified" datetime="2022-02-10T17:02:39+08:00">2022-02-10</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -536,12 +570,10 @@
 
       
           <p><a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/891/solution">https://www.lintcode.com/problem/891/solution</a></p>
-<ul>
+<h1 id="有效回文2"><a href="#有效回文2" class="headerlink" title="有效回文2"></a>有效回文2</h1><ul>
 <li>向相双指针</li>
 <li>依靠isPalindrome()判断简单回文</li>
-<li>调用同类函数加self.<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param s: a string</span></span><br><span class="line"><span class="string">    @return: whether you can make s a palindrome by deleting at most one character</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(s) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            <span class="keyword">if</span> s[left] == s[right]:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validPalindrome</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="comment"># Write your code here</span></span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(s) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            <span class="keyword">if</span> s[left] == s[right]:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> self.isPalindrome(s[left : right]) <span class="keyword">or</span> self.isPalindrome(s[left + <span class="number">1</span> : right + <span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-
+<li>调用同类函数加self.
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/02/09/lintcode-891-%E6%9C%89%E6%95%88%E5%9B%9E%E6%96%872-%E5%8F%8C%E6%8C%87%E9%92%88/#more" rel="contents">
@@ -591,10 +623,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-02-09 20:40:55 / 修改时间：20:43:32" itemprop="dateCreated datePublished" datetime="2022-02-09T20:40:55+08:00">2022-02-09</time>
+              <time title="创建时间：2022-02-09 20:40:55" itemprop="dateCreated datePublished" datetime="2022-02-09T20:40:55+08:00">2022-02-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-10 17:02:06" itemprop="dateModified" datetime="2022-02-10T17:02:06+08:00">2022-02-10</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -617,12 +655,10 @@
 
       
           <p><a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/415/">https://www.lintcode.com/problem/415/</a></p>
-<ul>
+<h1 id="有效回文串"><a href="#有效回文串" class="headerlink" title="有效回文串"></a>有效回文串</h1><ul>
 <li>向相双指针</li>
 <li>.lower() .upper()</li>
-<li>.isdigit() .isalpha()<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param s: A string</span></span><br><span class="line"><span class="string">    @return: Whether the string is a valid palindrome</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(s) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> (s[left].isdigit() <span class="keyword">or</span> s[left].isalpha()):</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="keyword">not</span> (s[right].isdigit() <span class="keyword">or</span> s[right].isalpha()):</span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> s[left].lower() == s[right].lower():</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-
+<li>.isdigit() .isalpha()
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/02/09/lintcode-415-%E6%9C%89%E6%95%88%E5%9B%9E%E6%96%87%E4%B8%B2-%E5%90%91%E7%9B%B8%E5%8F%8C%E6%8C%87%E9%92%88/#more" rel="contents">
@@ -672,10 +708,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-02-09 11:07:09 / 修改时间：21:51:52" itemprop="dateCreated datePublished" datetime="2022-02-09T11:07:09+08:00">2022-02-09</time>
+              <time title="创建时间：2022-02-09 11:07:09" itemprop="dateCreated datePublished" datetime="2022-02-09T11:07:09+08:00">2022-02-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-10 17:03:58" itemprop="dateModified" datetime="2022-02-10T17:03:58+08:00">2022-02-10</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -701,41 +743,7 @@
 <li>时间复杂度-注重</li>
 <li>空间复杂度</li>
 <li>编程复杂度-能看得懂</li>
-<li>思维复杂度-能想得出</li>
-</ul>
-<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><ul>
-<li>On On2 On3 O(m+n) O(1) O(logn) O(nlogn) O(2n) O(nn) O(n!)</li>
-<li>快排最坏是On2，平均复杂度是Onlogn</li>
-</ul>
-<h1 id="双指针的分类"><a href="#双指针的分类" class="headerlink" title="双指针的分类"></a>双指针的分类</h1><ul>
-<li>O(n+m)&gt;Omax(n,m)&gt;O((m+n)/2)导出O(m+n)=O(max(m,n))</li>
-<li>On常用算法双指针、打擂台、单调栈、单调队列</li>
-<li>相向双指针-判断回文<ul>
-<li>reverse 翻转字符串 判断回文</li>
-<li>two sum 两数和 三数和</li>
-<li>partition 快排 颜色排序</li>
-</ul>
-</li>
-<li>背向双指针-最长回文</li>
-<li>同向双指针</li>
-</ul>
-<h1 id="有效回文串-validPalindrome-1-amp-2"><a href="#有效回文串-validPalindrome-1-amp-2" class="headerlink" title="有效回文串 validPalindrome 1&amp;2"></a>有效回文串 validPalindrome 1&amp;2</h1><ul>
-<li>常用函数<ul>
-<li>isdigit()</li>
-<li>isalpha()</li>
-<li>lower()</li>
-<li>upper()</li>
-</ul>
-</li>
-</ul>
-<h1 id="twoSum"><a href="#twoSum" class="headerlink" title="twoSum"></a>twoSum</h1><ul>
-<li>哈希表 时间On 空间On</li>
-<li>排序+双指针 时间Onlogn 空间O1<ul>
-<li>如果数据已排序，则双指针算法更好，因为不需要额外空间</li>
-<li>如果需要返回下标，则双指针算法不如哈希表，双指针算法需要与下标共同排序</li>
-</ul>
-</li>
-</ul>
+<li>思维复杂度-能想得出
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/02/09/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-04-%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E5%8F%8C%E6%8C%87%E9%92%88/#more" rel="contents">
@@ -785,10 +793,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-02-08 23:13:56 / 修改时间：23:19:38" itemprop="dateCreated datePublished" datetime="2022-02-08T23:13:56+08:00">2022-02-08</time>
+              <time title="创建时间：2022-02-08 23:13:56" itemprop="dateCreated datePublished" datetime="2022-02-08T23:13:56+08:00">2022-02-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-10 16:59:30" itemprop="dateModified" datetime="2022-02-10T16:59:30+08:00">2022-02-10</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -815,9 +829,7 @@
 <li>特殊情况判断</li>
 <li>哈希函数构造：31为自订值，BASE为模值，取asc值</li>
 <li>continue用法</li>
-<li>利用前值哈希计算后值哈希的方法</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param source: </span></span><br><span class="line"><span class="string">    @param target: </span></span><br><span class="line"><span class="string">    @return: return the index</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">strStr</span>(<span class="params">self, source, target</span>):</span></span><br><span class="line">        <span class="comment"># Write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> target:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(source) &lt; <span class="built_in">len</span>(target):</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">        BASE = <span class="number">10086</span></span><br><span class="line">        targetCode = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> target:</span><br><span class="line">            targetCode = (targetCode * <span class="number">31</span> + <span class="built_in">ord</span>(ch)) % BASE</span><br><span class="line"></span><br><span class="line">        power = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(target)):</span><br><span class="line">            power = (power * <span class="number">31</span>) % BASE</span><br><span class="line"></span><br><span class="line">        hashCode = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(source)):</span><br><span class="line">            hashCode = (hashCode * <span class="number">31</span> + <span class="built_in">ord</span>(source[i])) % BASE</span><br><span class="line">            <span class="keyword">if</span> i &lt; <span class="built_in">len</span>(target) - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> i &gt;= <span class="built_in">len</span>(target):</span><br><span class="line">                hashCode = (hashCode - <span class="built_in">ord</span>(source[i - <span class="built_in">len</span>(target)]) * power) % BASE</span><br><span class="line">                <span class="keyword">if</span> hashCode &lt; <span class="number">0</span> :</span><br><span class="line">                    hashCode = hashCode + BASE          </span><br><span class="line">            <span class="keyword">if</span> hashCode == targetCode:</span><br><span class="line">                <span class="keyword">if</span> target == source[i - <span class="built_in">len</span>(target) + <span class="number">1</span> : i + <span class="number">1</span>]:</span><br><span class="line">                    <span class="keyword">return</span> i - <span class="built_in">len</span>(target) + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<li>利用前值哈希计算后值哈希的方法
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/02/08/lintcode-13-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%A5%E6%89%BE-%E5%93%88%E5%B8%8C%E6%B3%95/#more" rel="contents">
@@ -875,7 +887,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-08 23:19:51" itemprop="dateModified" datetime="2022-02-08T23:19:51+08:00">2022-02-08</time>
+                <time title="修改时间：2022-02-10 17:03:48" itemprop="dateModified" datetime="2022-02-10T17:03:48+08:00">2022-02-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -898,8 +910,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="implement-strStr"><a href="#implement-strStr" class="headerlink" title="implement strStr()"></a>implement strStr()</h1><p>查询字符串中的子串<br>KMP算法-三个人名的缩写<br>首先暴力方法实现<br>java不可以用substring,python不可以用切片<br>保证不越界<br>+1 -1 的问题代入一个特殊值验证<br>rabin-karp算法利用hashcode<br>hash(abcd) = [a<em>31(3) + b</em>31(2) + c<em>31(1) + d</em>31(0)]%10(6)<br>31叫做matchNumber可以随意设置，31为经验值</p>
-
+          <h1 id="implement-strStr"><a href="#implement-strStr" class="headerlink" title="implement strStr()"></a>implement strStr()</h1><p>查询字符串中的子串<br>KMP算法-三个人名的缩写<br>首先暴力方法实现</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/01/31/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-03-%E7%9C%9F%E5%AE%9E%E6%A1%88%E4%BE%8B-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%A5%E6%89%BE/#more" rel="contents">
@@ -949,10 +960,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-01-29 16:44:39 / 修改时间：16:49:11" itemprop="dateCreated datePublished" datetime="2022-01-29T16:44:39+08:00">2022-01-29</time>
+              <time title="创建时间：2022-01-29 16:44:39" itemprop="dateCreated datePublished" datetime="2022-01-29T16:44:39+08:00">2022-01-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-10 17:01:03" itemprop="dateModified" datetime="2022-02-10T17:01:03+08:00">2022-02-10</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -979,9 +996,7 @@
 <li>创建表格。</li>
 <li>初始化两条对角线。</li>
 <li>遍历表格的每一列，行标代表起始坐标，列标代表终止坐标。</li>
-<li>创建表格的工程中res记录最大者。</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param s: input string</span></span><br><span class="line"><span class="string">    @return: a string as the longest palindromic substring</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        res = <span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s:</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">        isPalindrome = [[<span class="literal">False</span>] * <span class="built_in">len</span>(s) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(s))]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(s)):</span><br><span class="line">            isPalindrome[i][i] = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(res) &lt; <span class="number">1</span>:</span><br><span class="line">                res = s[i : i + <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(s) - <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> s[i] == s[i + <span class="number">1</span>]:</span><br><span class="line">                isPalindrome[i][i + <span class="number">1</span>] = <span class="literal">True</span></span><br><span class="line">                <span class="keyword">if</span> <span class="built_in">len</span>(res) &lt; <span class="number">2</span>:</span><br><span class="line">                    res = s[i: i+<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> right <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, <span class="built_in">len</span>(s), <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> left <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, right - <span class="number">1</span>, <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> isPalindrome[left + <span class="number">1</span>][right - <span class="number">1</span>] == <span class="literal">True</span> <span class="keyword">and</span> s[left] == s[right]:</span><br><span class="line">                    isPalindrome[left][right] = <span class="literal">True</span></span><br><span class="line">                    <span class="keyword">if</span> <span class="built_in">len</span>(res) &lt; right - left + <span class="number">1</span>:</span><br><span class="line">                        res = s[left : right + <span class="number">1</span>]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<li>创建表格的工程中res记录最大者。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/01/29/lintcode-200-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#more" rel="contents">
