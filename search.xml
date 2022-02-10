@@ -322,4 +322,107 @@
         <category>九章算法</category>
       </categories>
   </entry>
+  <entry>
+    <title>lintcode-56-两数之和-哈希表</title>
+    <url>/2022/02/09/lintcode-56-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-%E5%93%88%E5%B8%8C%E8%A1%A8/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/56/description">https://www.lintcode.com/problem/56/description</a></p>
+<ul>
+<li>python的哈希表就是字典</li>
+<li>enumerate(numbers)<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param numbers: An array of Integer</span></span><br><span class="line"><span class="string">    @param target: target = numbers[index1] + numbers[index2]</span></span><br><span class="line"><span class="string">    @return: [index1, index2] (index1 &lt; index2)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span>(<span class="params">self, numbers, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        hashset = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> ind, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(numbers):</span><br><span class="line">            <span class="keyword">if</span> target - num <span class="keyword">in</span> hashset:</span><br><span class="line">                <span class="keyword">return</span> [hashset[target - num], ind]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                hashset[num] = ind</span><br><span class="line">        <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>lintcode-56-两数之和-排序双指针</title>
+    <url>/2022/02/09/lintcode-56-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-%E6%8E%92%E5%BA%8F%E5%8F%8C%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/56/description">https://www.lintcode.com/problem/56/description</a></p>
+<ul>
+<li>列表生成式</li>
+<li>enumerate用法</li>
+<li>.sort() sorted()用法</li>
+<li>return最后也要排序<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param numbers: An array of Integer</span></span><br><span class="line"><span class="string">    @param target: target = numbers[index1] + numbers[index2]</span></span><br><span class="line"><span class="string">    @return: [index1, index2] (index1 &lt; index2)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span>(<span class="params">self, numbers, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> numbers:</span><br><span class="line">            <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br><span class="line">        nums = [(num, ind) <span class="keyword">for</span> ind, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(numbers)]</span><br><span class="line">        nums.sort()</span><br><span class="line"></span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            <span class="keyword">if</span> nums[left][<span class="number">0</span>] + nums[right][<span class="number">0</span>] &lt; target:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[left][<span class="number">0</span>] + nums[right][<span class="number">0</span>] &gt; target:</span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">sorted</span>([nums[left][<span class="number">1</span>],nums[right][<span class="number">1</span>]])</span><br><span class="line">        <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>lintcode-415-有效回文串-向相双指针</title>
+    <url>/2022/02/09/lintcode-415-%E6%9C%89%E6%95%88%E5%9B%9E%E6%96%87%E4%B8%B2-%E5%90%91%E7%9B%B8%E5%8F%8C%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/415/">https://www.lintcode.com/problem/415/</a></p>
+<ul>
+<li>向相双指针</li>
+<li>.lower() .upper()</li>
+<li>.isdigit() .isalpha()<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param s: A string</span></span><br><span class="line"><span class="string">    @return: Whether the string is a valid palindrome</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(s) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> (s[left].isdigit() <span class="keyword">or</span> s[left].isalpha()):</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="keyword">not</span> (s[right].isdigit() <span class="keyword">or</span> s[right].isalpha()):</span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> s[left].lower() == s[right].lower():</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>lintcode-891-有效回文2-双指针</title>
+    <url>/2022/02/09/lintcode-891-%E6%9C%89%E6%95%88%E5%9B%9E%E6%96%872-%E5%8F%8C%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/891/solution">https://www.lintcode.com/problem/891/solution</a></p>
+<ul>
+<li>向相双指针</li>
+<li>依靠isPalindrome()判断简单回文</li>
+<li>调用同类函数加self.<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param s: a string</span></span><br><span class="line"><span class="string">    @return: whether you can make s a palindrome by deleting at most one character</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(s) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            <span class="keyword">if</span> s[left] == s[right]:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validPalindrome</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="comment"># Write your code here</span></span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(s) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            <span class="keyword">if</span> s[left] == s[right]:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> self.isPalindrome(s[left : right]) <span class="keyword">or</span> self.isPalindrome(s[left + <span class="number">1</span> : right + <span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>九章算法-04-复杂度与双指针</title>
+    <url>/2022/02/09/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-04-%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E5%8F%8C%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<h1 id="算法的四个复杂度"><a href="#算法的四个复杂度" class="headerlink" title="算法的四个复杂度"></a>算法的四个复杂度</h1><ul>
+<li>时间复杂度-注重</li>
+<li>空间复杂度</li>
+<li>编程复杂度-能看得懂</li>
+<li>思维复杂度-能想得出</li>
+</ul>
+<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><ul>
+<li>On On2 On3 O(m+n) O(1) O(logn) O(nlogn) O(2n) O(nn) O(n!)</li>
+<li>快排最坏是On2，平均复杂度是Onlogn</li>
+</ul>
+<h1 id="双指针的分类"><a href="#双指针的分类" class="headerlink" title="双指针的分类"></a>双指针的分类</h1><ul>
+<li>O(n+m)&gt;Omax(n,m)&gt;O((m+n)/2)导出O(m+n)=O(max(m,n))</li>
+<li>On常用算法双指针、打擂台、单调栈、单调队列</li>
+<li>相向双指针-判断回文<ul>
+<li>reverse 翻转字符串 判断回文</li>
+<li>two sum 两数和 三数和</li>
+<li>partition 快排 颜色排序</li>
+</ul>
+</li>
+<li>背向双指针-最长回文</li>
+<li>同向双指针</li>
+</ul>
+<h1 id="有效回文串-validPalindrome-1-amp-2"><a href="#有效回文串-validPalindrome-1-amp-2" class="headerlink" title="有效回文串 validPalindrome 1&amp;2"></a>有效回文串 validPalindrome 1&amp;2</h1><ul>
+<li>常用函数<ul>
+<li>isdigit()</li>
+<li>isalpha()</li>
+<li>lower()</li>
+<li>upper()</li>
+</ul>
+</li>
+</ul>
+<h1 id="twoSum"><a href="#twoSum" class="headerlink" title="twoSum"></a>twoSum</h1><ul>
+<li>哈希表 时间On 空间On</li>
+<li>排序+双指针 时间Onlogn 空间O1<ul>
+<li>如果数据已排序，则双指针算法更好，因为不需要额外空间</li>
+<li>如果需要返回下标，则双指针算法不如哈希表，双指针算法需要与下标共同排序</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>九章算法</category>
+      </categories>
+  </entry>
 </search>
