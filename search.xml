@@ -298,7 +298,16 @@
 <li>先局部有序，后整体有序，分治</li>
 <li>实际快排更快一点，因为归并需要开辟额外空间，这部分也需要花费时间</li>
 </ul>
-<h1 id="两种排序比较"><a href="#两种排序比较" class="headerlink" title="两种排序比较"></a>两种排序比较</h1><h1 id="快速选择算法"><a href="#快速选择算法" class="headerlink" title="快速选择算法"></a>快速选择算法</h1>]]></content>
+<h1 id="两种排序比较"><a href="#两种排序比较" class="headerlink" title="两种排序比较"></a>两种排序比较</h1><ul>
+<li>快排平均时间复杂度nlogn，最坏时间复杂度On2。空间复杂度O1，不稳定排序。先整体有序，后微观有序。</li>
+<li>归并排序时间复杂度就是nlogn。空间复杂度On，稳定排序。先局部有序，后整体有序。</li>
+</ul>
+<h1 id="快速选择算法"><a href="#快速选择算法" class="headerlink" title="快速选择算法"></a>快速选择算法</h1><ul>
+<li>Kth Largest Element</li>
+<li>应用快排基本原理</li>
+<li>按照K所在的区间进行剪枝操作</li>
+</ul>
+]]></content>
       <categories>
         <category>九章算法</category>
       </categories>
@@ -462,5 +471,36 @@
         <tag>markdown</tag>
         <tag>格式</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>lintcode-463-整数排序-归并</title>
+    <url>/2022/02/11/lintcode-463-%E6%95%B4%E6%95%B0%E6%8E%92%E5%BA%8F-%E5%BD%92%E5%B9%B6/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/463/">https://www.lintcode.com/problem/463/</a></p>
+<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><ul>
+<li>先把数组一切二，两边递归调用归并排序</li>
+<li>两边归并后，将两数组合并</li>
+<li>合并数组中需要开辟额外空间，开辟空间也要时间，整体没有快排快速。<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param A: an integer array</span></span><br><span class="line"><span class="string">    @return: nothing</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortIntegers</span>(<span class="params">self, A</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        self.mergeSort(A, <span class="number">0</span>, <span class="built_in">len</span>(A) - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mergeSort</span>(<span class="params">self, A, start, end</span>):</span></span><br><span class="line">        <span class="keyword">if</span> start &gt;= end:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        self.mergeSort(A, start, (start + end) // <span class="number">2</span>)</span><br><span class="line">        self.mergeSort(A, (start + end)//<span class="number">2</span> + <span class="number">1</span>, end)</span><br><span class="line">        self.merge(A, start, (start + end) // <span class="number">2</span>, end)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span>(<span class="params">self, A, start, mid, end</span>):</span></span><br><span class="line">        temp1 = A[start : mid + <span class="number">1</span>]</span><br><span class="line">        temp2 = A[mid + <span class="number">1</span> : end + <span class="number">1</span>]</span><br><span class="line">        ind1 = <span class="number">0</span></span><br><span class="line">        ind2 = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(start, end + <span class="number">1</span>, <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> ind1 &lt; <span class="built_in">len</span>(temp1) <span class="keyword">and</span> ind2 &lt; <span class="built_in">len</span>(temp2):</span><br><span class="line">                <span class="keyword">if</span> temp1[ind1] &lt;= temp2[ind2]:</span><br><span class="line">                    A[i] = temp1[ind1]</span><br><span class="line">                    ind1 += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    A[i] = temp2[ind2]</span><br><span class="line">                    ind2 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> ind1 &gt;= <span class="built_in">len</span>(temp1):</span><br><span class="line">                A[i] = temp2[ind2]</span><br><span class="line">                ind2 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> ind2 &gt;= <span class="built_in">len</span>(temp2):</span><br><span class="line">                A[i] = temp1[ind1]</span><br><span class="line">                ind1 += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>lintcode-5-第K大元素-快排法</title>
+    <url>/2022/02/11/lintcode-5-%E7%AC%ACK%E5%A4%A7%E5%85%83%E7%B4%A0-%E5%BF%AB%E6%8E%92%E6%B3%95/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/5/">https://www.lintcode.com/problem/5/</a></p>
+<h1 id="第K大元素"><a href="#第K大元素" class="headerlink" title="第K大元素"></a>第K大元素</h1><ul>
+<li>应用快排的基本原理</li>
+<li>注意从大到小排列</li>
+<li>最后比较K与left,right的大小关系而划分区间</li>
+<li>注意left,right中间有可能会隔一个元素，元素位置要与K比较<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param k: An integer</span></span><br><span class="line"><span class="string">    @param nums: An array</span></span><br><span class="line"><span class="string">    @return: the Kth largest element</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kthLargestElement</span>(<span class="params">self, k, nums</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> self.quickSelect(nums, <span class="number">0</span>, <span class="built_in">len</span>(nums)-<span class="number">1</span>, k)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">quickSelect</span>(<span class="params">self, nums, start, end, k</span>):</span></span><br><span class="line">        <span class="keyword">if</span> start == end <span class="keyword">and</span> start == k - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[start]</span><br><span class="line"></span><br><span class="line">        left = start</span><br><span class="line">        right = end</span><br><span class="line">        pivot = nums[(start + end) // <span class="number">2</span>]</span><br><span class="line">        <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">            <span class="keyword">while</span> left &lt;= right <span class="keyword">and</span> nums[left] &gt; pivot:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> left &lt;= right <span class="keyword">and</span> nums[right] &lt; pivot:</span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> left &lt;= right:</span><br><span class="line">                temp = nums[left]</span><br><span class="line">                nums[left] = nums[right]</span><br><span class="line">                nums[right] = temp</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> k - <span class="number">1</span> &lt;= right:</span><br><span class="line">            <span class="keyword">return</span> self.quickSelect(nums, start, right, k)</span><br><span class="line">        <span class="keyword">elif</span> k - <span class="number">1</span> &gt;= left:</span><br><span class="line">            <span class="keyword">return</span> self.quickSelect(nums, left, end, k)</span><br><span class="line">        <span class="keyword">elif</span> left - right == <span class="number">2</span> <span class="keyword">and</span> k - <span class="number">1</span> == left - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[left - <span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
   </entry>
 </search>
