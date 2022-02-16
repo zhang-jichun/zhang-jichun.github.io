@@ -19,19 +19,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="https:&#x2F;&#x2F;www.lintcode.com&#x2F;problem&#x2F;200&#x2F;description 三层循环暴力解法 start,end两层循环取出待检查字符串 isPalindrome判断字符串是否为回文串 判断temp与res长短，留存最长temp">
+  <meta name="description" content="https:&#x2F;&#x2F;www.lintcode.com&#x2F;problem&#x2F;183&#x2F;description 木材加工 按照切割木头的长度进行二分 木头长度的范围在 1 到 max(L)，在这个范围内二分出一个长度 length，然后看看以这个mid长度能切割出多少木头，如果少于 k 根，说明要短一些才行，如果多余 k，说明可以继续边长一些。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="lintcode-200-最长回文子串-暴力解">
-<meta property="og:url" content="http://example.com/2022/01/28/lintcode-200-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2-%E6%9A%B4%E5%8A%9B%E8%A7%A3/index.html">
+<meta property="og:title" content="lintcode-183-木材加工-二分法">
+<meta property="og:url" content="http://example.com/2022/02/17/lintcode-183-%E6%9C%A8%E6%9D%90%E5%8A%A0%E5%B7%A5-%E4%BA%8C%E5%88%86%E6%B3%95/index.html">
 <meta property="og:site_name" content="桃园三结义">
-<meta property="og:description" content="https:&#x2F;&#x2F;www.lintcode.com&#x2F;problem&#x2F;200&#x2F;description 三层循环暴力解法 start,end两层循环取出待检查字符串 isPalindrome判断字符串是否为回文串 判断temp与res长短，留存最长temp">
+<meta property="og:description" content="https:&#x2F;&#x2F;www.lintcode.com&#x2F;problem&#x2F;183&#x2F;description 木材加工 按照切割木头的长度进行二分 木头长度的范围在 1 到 max(L)，在这个范围内二分出一个长度 length，然后看看以这个mid长度能切割出多少木头，如果少于 k 根，说明要短一些才行，如果多余 k，说明可以继续边长一些。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-01-28T07:13:24.000Z">
-<meta property="article:modified_time" content="2022-02-10T09:00:53.198Z">
+<meta property="article:published_time" content="2022-02-16T17:25:31.000Z">
+<meta property="article:modified_time" content="2022-02-16T17:28:21.957Z">
 <meta property="article:author" content="春春">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/01/28/lintcode-200-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2-%E6%9A%B4%E5%8A%9B%E8%A7%A3/">
+<link rel="canonical" href="http://example.com/2022/02/17/lintcode-183-%E6%9C%A8%E6%9D%90%E5%8A%A0%E5%B7%A5-%E4%BA%8C%E5%88%86%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -44,7 +44,7 @@
   };
 </script>
 
-  <title>lintcode-200-最长回文子串-暴力解 | 桃园三结义</title>
+  <title>lintcode-183-木材加工-二分法 | 桃园三结义</title>
   
 
 
@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/28/lintcode-200-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2-%E6%9A%B4%E5%8A%9B%E8%A7%A3/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/17/lintcode-183-%E6%9C%A8%E6%9D%90%E5%8A%A0%E5%B7%A5-%E4%BA%8C%E5%88%86%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/liuguanzhang.jpg">
@@ -206,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          lintcode-200-最长回文子串-暴力解
+          lintcode-183-木材加工-二分法
         </h1>
 
         <div class="post-meta">
@@ -215,16 +215,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-01-28 15:13:24" itemprop="dateCreated datePublished" datetime="2022-01-28T15:13:24+08:00">2022-01-28</time>
+              <time title="创建时间：2022-02-17 01:25:31 / 修改时间：01:28:21" itemprop="dateCreated datePublished" datetime="2022-02-17T01:25:31+08:00">2022-02-17</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-10 17:00:53" itemprop="dateModified" datetime="2022-02-10T17:00:53+08:00">2022-02-10</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -246,13 +240,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/200/description">https://www.lintcode.com/problem/200/description</a></p>
-<h1 id="三层循环暴力解法"><a href="#三层循环暴力解法" class="headerlink" title="三层循环暴力解法"></a>三层循环暴力解法</h1><ol>
-<li>start,end两层循环取出待检查字符串</li>
-<li>isPalindrome判断字符串是否为回文串</li>
-<li>判断temp与res长短，留存最长temp<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param s: input string</span></span><br><span class="line"><span class="string">    @return: a string as the longest palindromic substring</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        res = <span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s:</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> start <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(s), <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> end <span class="keyword">in</span> <span class="built_in">range</span>(start, <span class="built_in">len</span>(s), <span class="number">1</span>):</span><br><span class="line">                temp = s[start : end + <span class="number">1</span>]</span><br><span class="line">                <span class="keyword">if</span> self.isPalindrome(temp) <span class="keyword">is</span> <span class="literal">True</span> <span class="keyword">and</span> <span class="built_in">len</span>(temp) &gt; <span class="built_in">len</span>(res):</span><br><span class="line">                    res = temp </span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span>(<span class="params">self, temp</span>):</span></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = <span class="built_in">len</span>(temp) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right <span class="keyword">and</span> temp[left] == temp[right]):</span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line">            right -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> left &gt; right:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure></li>
-</ol>
+        <p><a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/183/description">https://www.lintcode.com/problem/183/description</a></p>
+<h1 id="木材加工"><a href="#木材加工" class="headerlink" title="木材加工"></a>木材加工</h1><ul>
+<li>按照切割木头的长度进行二分</li>
+<li>木头长度的范围在 1 到 max(L)，在这个范围内二分出一个长度 length，然后看看以这个mid长度能切割出多少木头，如果少于 k 根，说明要短一些才行，如果多余 k，说明可以继续边长一些。<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param L: Given n pieces of wood with length L[i]</span></span><br><span class="line"><span class="string">    @param k: An integer</span></span><br><span class="line"><span class="string">    @return: The maximum length of the small pieces</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">woodCut</span>(<span class="params">self, L, k</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> L:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        start, end = <span class="number">1</span>, <span class="built_in">max</span>(L)</span><br><span class="line">        <span class="keyword">while</span> start + <span class="number">1</span> &lt; end:</span><br><span class="line">            mid = (start + end) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> self.getPieces(L, mid) &gt;= k:</span><br><span class="line">                start = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end = mid</span><br><span class="line">        <span class="keyword">if</span> self.getPieces(L, end) &gt;= k:</span><br><span class="line">            <span class="keyword">return</span> end</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> start</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getPieces</span>(<span class="params">self, L, length</span>):</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> temp <span class="keyword">in</span> L:</span><br><span class="line">            res += temp // length</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></li>
+</ul>
 
     </div>
 
@@ -268,13 +261,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/01/27/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-02-%E7%9C%9F%E5%AE%9E%E6%A1%88%E4%BE%8B-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" rel="prev" title="九章算法-02-真实案例-最长回文子串">
-      <i class="fa fa-chevron-left"></i> 九章算法-02-真实案例-最长回文子串
+    <a href="/2022/02/17/lintcode-75-%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC-%E4%BA%8C%E5%88%86%E6%B3%95/" rel="prev" title="lintcode-75-寻找峰值-二分法">
+      <i class="fa fa-chevron-left"></i> lintcode-75-寻找峰值-二分法
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/01/29/lintcode-200-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2-%E4%B8%AD%E5%BF%83%E6%89%A9%E6%95%A3%E6%B3%95/" rel="next" title="lintcode-200-最长回文子串-中心扩散法">
-      lintcode-200-最长回文子串-中心扩散法 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -333,7 +323,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E5%B1%82%E5%BE%AA%E7%8E%AF%E6%9A%B4%E5%8A%9B%E8%A7%A3%E6%B3%95"><span class="nav-text">三层循环暴力解法</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%A8%E6%9D%90%E5%8A%A0%E5%B7%A5"><span class="nav-text">木材加工</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
