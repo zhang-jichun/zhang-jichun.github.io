@@ -17,6 +17,20 @@
       </categories>
   </entry>
   <entry>
+    <title>lintcode-14-二分查找-找下标最小的结果</title>
+    <url>/2022/02/14/lintcode-14-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-%E6%89%BE%E4%B8%8B%E6%A0%87%E6%9C%80%E5%B0%8F%E7%9A%84%E7%BB%93%E6%9E%9C/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/14/">https://www.lintcode.com/problem/14/</a></p>
+<h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h1><ul>
+<li>递推法</li>
+<li>left + 1 &lt; right<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param nums: The integer array.</span></span><br><span class="line"><span class="string">    @param target: Target to find.</span></span><br><span class="line"><span class="string">    @return: The first position of target. Position starts from 0.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">binarySearch</span>(<span class="params">self, nums, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">return</span> self.helper(nums, <span class="number">0</span>, <span class="built_in">len</span>(nums), target)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">helper</span>(<span class="params">self, nums, left, right, target</span>):</span></span><br><span class="line">        <span class="keyword">while</span> left + <span class="number">1</span> &lt; right:</span><br><span class="line">            mid = (left + right) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">                <span class="keyword">if</span> mid == <span class="number">0</span> <span class="keyword">or</span> nums[mid] != nums[mid - <span class="number">1</span>]:</span><br><span class="line">                    <span class="keyword">return</span> mid</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    right = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &gt; target:</span><br><span class="line">                right = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &lt; target:</span><br><span class="line">                left = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> nums[left] == target:</span><br><span class="line">            <span class="keyword">return</span> left</span><br><span class="line">        <span class="keyword">elif</span> nums[right] == target:</span><br><span class="line">            <span class="keyword">return</span> right</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>lintcode-200-最长回文子串-中心扩散法</title>
     <url>/2022/01/29/lintcode-200-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2-%E4%B8%AD%E5%BF%83%E6%89%A9%E6%95%A3%E6%B3%95/</url>
     <content><![CDATA[<p><a href="https://www.lintcode.com/problem/200/description">https://www.lintcode.com/problem/200/description</a></p>
@@ -69,6 +83,20 @@
       </categories>
   </entry>
   <entry>
+    <title>lintcode-366-斐波那契数列</title>
+    <url>/2022/02/14/lintcode-366-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/366/description">https://www.lintcode.com/problem/366/description</a></p>
+<h1 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h1><ul>
+<li>递归法会StackOverflow</li>
+<li>采用递推法<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param n: an integer</span></span><br><span class="line"><span class="string">    @return: an ineger f(n)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fibonacci</span>(<span class="params">self, n</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        temp = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> temp[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">elif</span> n == <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> temp[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>, n, <span class="number">1</span>):</span><br><span class="line">                temp[<span class="number">0</span>] = temp[<span class="number">1</span>]</span><br><span class="line">                temp[<span class="number">1</span>] = temp[<span class="number">2</span>]</span><br><span class="line">                temp[<span class="number">2</span>] = temp[<span class="number">0</span>] + temp[<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">return</span> temp[<span class="number">2</span>]</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>lintcode-415-有效回文串-向相双指针</title>
     <url>/2022/02/09/lintcode-415-%E6%9C%89%E6%95%88%E5%9B%9E%E6%96%87%E4%B8%B2-%E5%90%91%E7%9B%B8%E5%8F%8C%E6%8C%87%E9%92%88/</url>
     <content><![CDATA[<p><a href="https://www.lintcode.com/problem/415/">https://www.lintcode.com/problem/415/</a></p>
@@ -77,20 +105,6 @@
 <li>.lower() .upper()</li>
 <li>.isdigit() .isalpha()<span id="more"></span>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param s: A string</span></span><br><span class="line"><span class="string">    @return: Whether the string is a valid palindrome</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(s) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> (s[left].isdigit() <span class="keyword">or</span> s[left].isalpha()):</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="keyword">not</span> (s[right].isdigit() <span class="keyword">or</span> s[right].isalpha()):</span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> s[left].lower() == s[right].lower():</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>lintcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>lintcode-457-二分查找</title>
-    <url>/2022/02/14/lintcode-457-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/457/">https://www.lintcode.com/problem/457/</a></p>
-<h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h1><ul>
-<li>注意binarySearch函数的参数构成，方便递归</li>
-<li>函数参数加self,调用函数加self<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param nums: An integer array sorted in ascending order</span></span><br><span class="line"><span class="string">    @param target: An integer</span></span><br><span class="line"><span class="string">    @return: An integer</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findPosition</span>(<span class="params">self, nums, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">return</span> self.binarySearch(nums, <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span>, target)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">binarySearch</span>(<span class="params">self, nums, start, end, target</span>):</span></span><br><span class="line">        <span class="keyword">if</span> start &gt; end:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        mid = (start + end) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">            <span class="keyword">return</span> mid</span><br><span class="line">        <span class="keyword">elif</span> nums[mid] &gt; target:</span><br><span class="line">            <span class="keyword">return</span> self.binarySearch(nums, start, mid - <span class="number">1</span>, target)</span><br><span class="line">        <span class="keyword">elif</span> nums[mid] &lt; target:</span><br><span class="line">            <span class="keyword">return</span> self.binarySearch(nums, mid + <span class="number">1</span>, end, target)</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -113,13 +127,13 @@
       </categories>
   </entry>
   <entry>
-    <title>lintcode-366-斐波那契数列</title>
-    <url>/2022/02/14/lintcode-366-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/</url>
-    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/366/description">https://www.lintcode.com/problem/366/description</a></p>
-<h1 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h1><ul>
-<li>递归法会StackOverflow</li>
-<li>采用递推法<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param n: an integer</span></span><br><span class="line"><span class="string">    @return: an ineger f(n)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fibonacci</span>(<span class="params">self, n</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        temp = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> temp[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">elif</span> n == <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> temp[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>, n, <span class="number">1</span>):</span><br><span class="line">                temp[<span class="number">0</span>] = temp[<span class="number">1</span>]</span><br><span class="line">                temp[<span class="number">1</span>] = temp[<span class="number">2</span>]</span><br><span class="line">                temp[<span class="number">2</span>] = temp[<span class="number">0</span>] + temp[<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">return</span> temp[<span class="number">2</span>]</span><br></pre></td></tr></table></figure></li>
+    <title>lintcode-457-二分查找</title>
+    <url>/2022/02/14/lintcode-457-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/457/">https://www.lintcode.com/problem/457/</a></p>
+<h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h1><ul>
+<li>注意binarySearch函数的参数构成，方便递归</li>
+<li>函数参数加self,调用函数加self<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param nums: An integer array sorted in ascending order</span></span><br><span class="line"><span class="string">    @param target: An integer</span></span><br><span class="line"><span class="string">    @return: An integer</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findPosition</span>(<span class="params">self, nums, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">return</span> self.binarySearch(nums, <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span>, target)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">binarySearch</span>(<span class="params">self, nums, start, end, target</span>):</span></span><br><span class="line">        <span class="keyword">if</span> start &gt; end:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        mid = (start + end) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">            <span class="keyword">return</span> mid</span><br><span class="line">        <span class="keyword">elif</span> nums[mid] &gt; target:</span><br><span class="line">            <span class="keyword">return</span> self.binarySearch(nums, start, mid - <span class="number">1</span>, target)</span><br><span class="line">        <span class="keyword">elif</span> nums[mid] &lt; target:</span><br><span class="line">            <span class="keyword">return</span> self.binarySearch(nums, mid + <span class="number">1</span>, end, target)</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -127,13 +141,14 @@
       </categories>
   </entry>
   <entry>
-    <title>lintcode-56-两数之和-哈希表</title>
-    <url>/2022/02/09/lintcode-56-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-%E5%93%88%E5%B8%8C%E8%A1%A8/</url>
-    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/56/description">https://www.lintcode.com/problem/56/description</a></p>
-<ul>
-<li>python的哈希表就是字典</li>
-<li>enumerate(numbers)<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param numbers: An array of Integer</span></span><br><span class="line"><span class="string">    @param target: target = numbers[index1] + numbers[index2]</span></span><br><span class="line"><span class="string">    @return: [index1, index2] (index1 &lt; index2)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span>(<span class="params">self, numbers, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        hashset = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> ind, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(numbers):</span><br><span class="line">            <span class="keyword">if</span> target - num <span class="keyword">in</span> hashset:</span><br><span class="line">                <span class="keyword">return</span> [hashset[target - num], ind]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                hashset[num] = ind</span><br><span class="line">        <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
+    <title>lintcode-457-二分查找-找下标最大的结果</title>
+    <url>/2022/02/14/lintcode-457-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-%E6%89%BE%E4%B8%8B%E6%A0%87%E6%9C%80%E5%A4%A7%E7%9A%84%E7%BB%93%E6%9E%9C/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/458/">https://www.lintcode.com/problem/458/</a></p>
+<h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h1><ul>
+<li>left + 1 &lt; right</li>
+<li>异常检测 if not nums:</li>
+<li>没有查到要返回-1<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param nums: An integer array sorted in ascending order</span></span><br><span class="line"><span class="string">    @param target: An integer</span></span><br><span class="line"><span class="string">    @return: An integer</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lastPosition</span>(<span class="params">self, nums, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> self.helper(nums, <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span>, target)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">helper</span>(<span class="params">self, nums, left, right, target</span>):</span></span><br><span class="line">        <span class="keyword">while</span> left + <span class="number">1</span> &lt; right:</span><br><span class="line">            mid = left + (right - left) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">                left = mid</span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &gt; target:</span><br><span class="line">                right = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &lt; target:</span><br><span class="line">                left = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> nums[right] == target:</span><br><span class="line">            <span class="keyword">return</span> right</span><br><span class="line">        <span class="keyword">elif</span> nums[left] == target:</span><br><span class="line">            <span class="keyword">return</span> left</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -155,22 +170,6 @@
       </categories>
   </entry>
   <entry>
-    <title>lintcode-56-两数之和-排序双指针</title>
-    <url>/2022/02/09/lintcode-56-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-%E6%8E%92%E5%BA%8F%E5%8F%8C%E6%8C%87%E9%92%88/</url>
-    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/56/description">https://www.lintcode.com/problem/56/description</a></p>
-<ul>
-<li>列表生成式</li>
-<li>enumerate用法</li>
-<li>.sort() sorted()用法</li>
-<li>return最后也要排序<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param numbers: An array of Integer</span></span><br><span class="line"><span class="string">    @param target: target = numbers[index1] + numbers[index2]</span></span><br><span class="line"><span class="string">    @return: [index1, index2] (index1 &lt; index2)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span>(<span class="params">self, numbers, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> numbers:</span><br><span class="line">            <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br><span class="line">        nums = [(num, ind) <span class="keyword">for</span> ind, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(numbers)]</span><br><span class="line">        nums.sort()</span><br><span class="line"></span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            <span class="keyword">if</span> nums[left][<span class="number">0</span>] + nums[right][<span class="number">0</span>] &lt; target:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[left][<span class="number">0</span>] + nums[right][<span class="number">0</span>] &gt; target:</span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">sorted</span>([nums[left][<span class="number">1</span>],nums[right][<span class="number">1</span>]])</span><br><span class="line">        <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>lintcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>lintcode-5-第K大元素-快排法</title>
     <url>/2022/02/11/lintcode-5-%E7%AC%ACK%E5%A4%A7%E5%85%83%E7%B4%A0-%E5%BF%AB%E6%8E%92%E6%B3%95/</url>
     <content><![CDATA[<p><a href="https://www.lintcode.com/problem/5/">https://www.lintcode.com/problem/5/</a></p>
@@ -180,6 +179,20 @@
 <li>最后比较K与left,right的大小关系而划分区间</li>
 <li>注意left,right中间有可能会隔一个元素，元素位置要与K比较<span id="more"></span>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param k: An integer</span></span><br><span class="line"><span class="string">    @param nums: An array</span></span><br><span class="line"><span class="string">    @return: the Kth largest element</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kthLargestElement</span>(<span class="params">self, k, nums</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> self.quickSelect(nums, <span class="number">0</span>, <span class="built_in">len</span>(nums)-<span class="number">1</span>, k)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">quickSelect</span>(<span class="params">self, nums, start, end, k</span>):</span></span><br><span class="line">        <span class="keyword">if</span> start == end <span class="keyword">and</span> start == k - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[start]</span><br><span class="line"></span><br><span class="line">        left = start</span><br><span class="line">        right = end</span><br><span class="line">        pivot = nums[(start + end) // <span class="number">2</span>]</span><br><span class="line">        <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">            <span class="keyword">while</span> left &lt;= right <span class="keyword">and</span> nums[left] &gt; pivot:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> left &lt;= right <span class="keyword">and</span> nums[right] &lt; pivot:</span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> left &lt;= right:</span><br><span class="line">                temp = nums[left]</span><br><span class="line">                nums[left] = nums[right]</span><br><span class="line">                nums[right] = temp</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> k - <span class="number">1</span> &lt;= right:</span><br><span class="line">            <span class="keyword">return</span> self.quickSelect(nums, start, right, k)</span><br><span class="line">        <span class="keyword">elif</span> k - <span class="number">1</span> &gt;= left:</span><br><span class="line">            <span class="keyword">return</span> self.quickSelect(nums, left, end, k)</span><br><span class="line">        <span class="keyword">elif</span> left - right == <span class="number">2</span> <span class="keyword">and</span> k - <span class="number">1</span> == left - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[left - <span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>lintcode-56-两数之和-哈希表</title>
+    <url>/2022/02/09/lintcode-56-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-%E5%93%88%E5%B8%8C%E8%A1%A8/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/56/description">https://www.lintcode.com/problem/56/description</a></p>
+<ul>
+<li>python的哈希表就是字典</li>
+<li>enumerate(numbers)<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param numbers: An array of Integer</span></span><br><span class="line"><span class="string">    @param target: target = numbers[index1] + numbers[index2]</span></span><br><span class="line"><span class="string">    @return: [index1, index2] (index1 &lt; index2)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span>(<span class="params">self, numbers, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        hashset = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> ind, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(numbers):</span><br><span class="line">            <span class="keyword">if</span> target - num <span class="keyword">in</span> hashset:</span><br><span class="line">                <span class="keyword">return</span> [hashset[target - num], ind]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                hashset[num] = ind</span><br><span class="line">        <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -202,93 +215,19 @@
       </categories>
   </entry>
   <entry>
-    <title>九章算法-01-高效刷题</title>
-    <url>/2022/01/25/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-01-%E9%AB%98%E6%95%88%E5%88%B7%E9%A2%98/</url>
-    <content><![CDATA[<ul>
-<li>有的题不要刷，有的题目可以多刷。</li>
-<li>缩进与循环尽量不要超过三层，若多层可以采用子函数，代码缩进越多bug越多。<span id="more"></span></li>
-<li>进步最快的是代码被更高级的员工code review。</li>
-<li>magicNumber(定义wall=1,water=2)</li>
-<li>缺乏项目经验：耦合度高，重复代码，全局变量。</li>
-<li>解耦合：整体逻辑用子函数表达，子函数实现具体步骤。</li>
-<li>好的代码不需要注释。更清晰的变量名，更易懂的逻辑。</li>
-<li>子函数化，避免全局变量可以降低bug.</li>
-<li>逻辑思维能力，代码质量，代码风格，异常检测。</li>
-<li>面试是一个试用的过程，不是考试的过程。</li>
-<li>不要闷头写，先沟通清除再写，写完了再解释。</li>
-<li>不会刻意要提示，但先自己努力一下。</li>
-<li>会就会，不会就是不会，坦诚很重要。</li>
-<li>一个Django项目课，可以咨询。</li>
-<li>面试语言首推python,其次java,不要用C++。</li>
-<li>lintcode 算法能力，bugFree能力，题量。</li>
-<li>lintcodeCat帮助评估算法能力。</li>
-<li>判断算法考不考，带名字的算法都不考。</li>
-<li>参考考察表v4.1</li>
-<li>熟悉每一种常用的数据结构。</li>
-<li>互联网公司考systemDesign多，软件公司考OOD</li>
-<li>OOD有5章节10课时的课程。</li>
-<li>BehaviorQuestion也要有准备，主要准备与面试公司的联系。</li>
+    <title>lintcode-56-两数之和-排序双指针</title>
+    <url>/2022/02/09/lintcode-56-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-%E6%8E%92%E5%BA%8F%E5%8F%8C%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/56/description">https://www.lintcode.com/problem/56/description</a></p>
+<ul>
+<li>列表生成式</li>
+<li>enumerate用法</li>
+<li>.sort() sorted()用法</li>
+<li>return最后也要排序<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param numbers: An array of Integer</span></span><br><span class="line"><span class="string">    @param target: target = numbers[index1] + numbers[index2]</span></span><br><span class="line"><span class="string">    @return: [index1, index2] (index1 &lt; index2)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span>(<span class="params">self, numbers, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> numbers:</span><br><span class="line">            <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br><span class="line">        nums = [(num, ind) <span class="keyword">for</span> ind, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(numbers)]</span><br><span class="line">        nums.sort()</span><br><span class="line"></span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            <span class="keyword">if</span> nums[left][<span class="number">0</span>] + nums[right][<span class="number">0</span>] &lt; target:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[left][<span class="number">0</span>] + nums[right][<span class="number">0</span>] &gt; target:</span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">sorted</span>([nums[left][<span class="number">1</span>],nums[right][<span class="number">1</span>]])</span><br><span class="line">        <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
-        <category>九章算法</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>九章算法-03-真实案例-字符串查找</title>
-    <url>/2022/01/31/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-03-%E7%9C%9F%E5%AE%9E%E6%A1%88%E4%BE%8B-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<h1 id="implement-strStr"><a href="#implement-strStr" class="headerlink" title="implement strStr()"></a>implement strStr()</h1><p>查询字符串中的子串<br>KMP算法-三个人名的缩写<br>首先暴力方法实现</p>
-<span id="more"></span>
-<p>java不可以用substring,python不可以用切片<br>保证不越界<br>+1 -1 的问题代入一个特殊值验证<br>rabin-karp算法利用hashcode<br>hash(abcd) = [a<em>31(3) + b</em>31(2) + c<em>31(1) + d</em>31(0)]%10(6)<br>31叫做matchNumber可以随意设置，31为经验值</p>
-]]></content>
-      <categories>
-        <category>九章算法</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>九章算法-04-复杂度与双指针</title>
-    <url>/2022/02/09/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-04-%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E5%8F%8C%E6%8C%87%E9%92%88/</url>
-    <content><![CDATA[<h1 id="算法的四个复杂度"><a href="#算法的四个复杂度" class="headerlink" title="算法的四个复杂度"></a>算法的四个复杂度</h1><ul>
-<li>时间复杂度-注重</li>
-<li>空间复杂度</li>
-<li>编程复杂度-能看得懂</li>
-<li>思维复杂度-能想得出<span id="more"></span>
-<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1></li>
-<li>On On2 On3 O(m+n) O(1) O(logn) O(nlogn) O(2n) O(nn) O(n!)</li>
-<li>快排最坏是On2，平均复杂度是Onlogn</li>
-</ul>
-<h1 id="双指针的分类"><a href="#双指针的分类" class="headerlink" title="双指针的分类"></a>双指针的分类</h1><ul>
-<li>O(n+m)&gt;Omax(n,m)&gt;O((m+n)/2)导出O(m+n)=O(max(m,n))</li>
-<li>On常用算法双指针、打擂台、单调栈、单调队列</li>
-<li>相向双指针-判断回文<ul>
-<li>reverse 翻转字符串 判断回文</li>
-<li>two sum 两数和 三数和</li>
-<li>partition 快排 颜色排序</li>
-</ul>
-</li>
-<li>背向双指针-最长回文</li>
-<li>同向双指针</li>
-</ul>
-<h1 id="有效回文串-validPalindrome-1-amp-2"><a href="#有效回文串-validPalindrome-1-amp-2" class="headerlink" title="有效回文串 validPalindrome 1&amp;2"></a>有效回文串 validPalindrome 1&amp;2</h1><ul>
-<li>常用函数<ul>
-<li>isdigit()</li>
-<li>isalpha()</li>
-<li>lower()</li>
-<li>upper()</li>
-</ul>
-</li>
-</ul>
-<h1 id="twoSum"><a href="#twoSum" class="headerlink" title="twoSum"></a>twoSum</h1><ul>
-<li>哈希表 时间On 空间On</li>
-<li>排序+双指针 时间Onlogn 空间O1<ul>
-<li>如果数据已排序，则双指针算法更好，因为不需要额外空间</li>
-<li>如果需要返回下标，则双指针算法不如哈希表，双指针算法需要与下标共同排序</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>九章算法</category>
+        <category>lintcode</category>
       </categories>
   </entry>
   <entry>
@@ -348,6 +287,96 @@
       </categories>
   </entry>
   <entry>
+    <title>九章算法-01-高效刷题</title>
+    <url>/2022/01/25/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-01-%E9%AB%98%E6%95%88%E5%88%B7%E9%A2%98/</url>
+    <content><![CDATA[<ul>
+<li>有的题不要刷，有的题目可以多刷。</li>
+<li>缩进与循环尽量不要超过三层，若多层可以采用子函数，代码缩进越多bug越多。<span id="more"></span></li>
+<li>进步最快的是代码被更高级的员工code review。</li>
+<li>magicNumber(定义wall=1,water=2)</li>
+<li>缺乏项目经验：耦合度高，重复代码，全局变量。</li>
+<li>解耦合：整体逻辑用子函数表达，子函数实现具体步骤。</li>
+<li>好的代码不需要注释。更清晰的变量名，更易懂的逻辑。</li>
+<li>子函数化，避免全局变量可以降低bug.</li>
+<li>逻辑思维能力，代码质量，代码风格，异常检测。</li>
+<li>面试是一个试用的过程，不是考试的过程。</li>
+<li>不要闷头写，先沟通清除再写，写完了再解释。</li>
+<li>不会刻意要提示，但先自己努力一下。</li>
+<li>会就会，不会就是不会，坦诚很重要。</li>
+<li>一个Django项目课，可以咨询。</li>
+<li>面试语言首推python,其次java,不要用C++。</li>
+<li>lintcode 算法能力，bugFree能力，题量。</li>
+<li>lintcodeCat帮助评估算法能力。</li>
+<li>判断算法考不考，带名字的算法都不考。</li>
+<li>参考考察表v4.1</li>
+<li>熟悉每一种常用的数据结构。</li>
+<li>互联网公司考systemDesign多，软件公司考OOD</li>
+<li>OOD有5章节10课时的课程。</li>
+<li>BehaviorQuestion也要有准备，主要准备与面试公司的联系。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>九章算法</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>九章算法-04-复杂度与双指针</title>
+    <url>/2022/02/09/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-04-%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E5%8F%8C%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<h1 id="算法的四个复杂度"><a href="#算法的四个复杂度" class="headerlink" title="算法的四个复杂度"></a>算法的四个复杂度</h1><ul>
+<li>时间复杂度-注重</li>
+<li>空间复杂度</li>
+<li>编程复杂度-能看得懂</li>
+<li>思维复杂度-能想得出<span id="more"></span>
+<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1></li>
+<li>On On2 On3 O(m+n) O(1) O(logn) O(nlogn) O(2n) O(nn) O(n!)</li>
+<li>快排最坏是On2，平均复杂度是Onlogn</li>
+</ul>
+<h1 id="双指针的分类"><a href="#双指针的分类" class="headerlink" title="双指针的分类"></a>双指针的分类</h1><ul>
+<li>O(n+m)&gt;Omax(n,m)&gt;O((m+n)/2)导出O(m+n)=O(max(m,n))</li>
+<li>On常用算法双指针、打擂台、单调栈、单调队列</li>
+<li>相向双指针-判断回文<ul>
+<li>reverse 翻转字符串 判断回文</li>
+<li>two sum 两数和 三数和</li>
+<li>partition 快排 颜色排序</li>
+</ul>
+</li>
+<li>背向双指针-最长回文</li>
+<li>同向双指针</li>
+</ul>
+<h1 id="有效回文串-validPalindrome-1-amp-2"><a href="#有效回文串-validPalindrome-1-amp-2" class="headerlink" title="有效回文串 validPalindrome 1&amp;2"></a>有效回文串 validPalindrome 1&amp;2</h1><ul>
+<li>常用函数<ul>
+<li>isdigit()</li>
+<li>isalpha()</li>
+<li>lower()</li>
+<li>upper()</li>
+</ul>
+</li>
+</ul>
+<h1 id="twoSum"><a href="#twoSum" class="headerlink" title="twoSum"></a>twoSum</h1><ul>
+<li>哈希表 时间On 空间On</li>
+<li>排序+双指针 时间Onlogn 空间O1<ul>
+<li>如果数据已排序，则双指针算法更好，因为不需要额外空间</li>
+<li>如果需要返回下标，则双指针算法不如哈希表，双指针算法需要与下标共同排序</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>九章算法</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>九章算法-03-真实案例-字符串查找</title>
+    <url>/2022/01/31/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-03-%E7%9C%9F%E5%AE%9E%E6%A1%88%E4%BE%8B-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h1 id="implement-strStr"><a href="#implement-strStr" class="headerlink" title="implement strStr()"></a>implement strStr()</h1><p>查询字符串中的子串<br>KMP算法-三个人名的缩写<br>首先暴力方法实现</p>
+<span id="more"></span>
+<p>java不可以用substring,python不可以用切片<br>保证不越界<br>+1 -1 的问题代入一个特殊值验证<br>rabin-karp算法利用hashcode<br>hash(abcd) = [a<em>31(3) + b</em>31(2) + c<em>31(1) + d</em>31(0)]%10(6)<br>31叫做matchNumber可以随意设置，31为经验值</p>
+]]></content>
+      <categories>
+        <category>九章算法</category>
+      </categories>
+  </entry>
+  <entry>
     <title>九章算法-05-两个排序算法</title>
     <url>/2022/02/10/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-05-%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><ul>
@@ -391,6 +420,23 @@
       </categories>
   </entry>
   <entry>
+    <title>九章算法-07-二分法模板</title>
+    <url>/2022/02/14/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-07-%E4%BA%8C%E5%88%86%E6%B3%95%E6%A8%A1%E6%9D%BF/</url>
+    <content><![CDATA[<h1 id="二分法原理"><a href="#二分法原理" class="headerlink" title="二分法原理"></a>二分法原理</h1><ul>
+<li>基于有序数组</li>
+<li>确定start,end,mid<span id="more"></span>
+<h1 id="二分法模板"><a href="#二分法模板" class="headerlink" title="二分法模板"></a>二分法模板</h1></li>
+<li>目标的最后一个索引</li>
+<li>两道题firstPositionOfTarget LastPositionOfTarget</li>
+<li>start + 1 &lt; end 避免死循环</li>
+<li>单独判断start 与 end</li>
+</ul>
+]]></content>
+      <categories>
+        <category>九章算法</category>
+      </categories>
+  </entry>
+  <entry>
     <title>基于github与hexo博客创建全流程</title>
     <url>/2022/01/25/%E5%9F%BA%E4%BA%8Egithub%E4%B8%8Ehexo%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E5%85%A8%E6%B5%81%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="创建github帐号并安装hexo"><a href="#创建github帐号并安装hexo" class="headerlink" title="创建github帐号并安装hexo"></a>创建github帐号并安装hexo</h1><p><a href="https://zhuanlan.zhihu.com/p/26625249">https://zhuanlan.zhihu.com/p/26625249</a></p>
@@ -409,6 +455,42 @@
         <tag>hexo</tag>
         <tag>博客</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>九章算法-09-二分法的四重境界</title>
+    <url>/2022/02/15/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-09-%E4%BA%8C%E5%88%86%E6%B3%95%E7%9A%84%E5%9B%9B%E9%87%8D%E5%A2%83%E7%95%8C/</url>
+    <content><![CDATA[<h1 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h1><ul>
+<li>折半查找，时间Ologn,空间O1</li>
+<li>有序数组查找，减治思想，不属于分治</li>
+<li>Ologn贴近于O1 Onlogn贴近于On<span id="more"></span>
+<h1 id="第一境界"><a href="#第一境界" class="headerlink" title="第一境界"></a>第一境界</h1></li>
+<li>不会死循环的二分法，start + 1 &lt; end</li>
+<li>start + (end - start)/2</li>
+<li>A[start] A[end] 判断</li>
+</ul>
+<h1 id="第二境界"><a href="#第二境界" class="headerlink" title="第二境界"></a>第二境界</h1><ul>
+<li>排序数组中找到第一个或者最后一个满足条件的位置</li>
+<li>447题（与14题重复）</li>
+<li>460题，在排序数组中找最接近的K个数，先插入target,再左右找最近的K个数字。eg：找&lt;=3的最右数字，二分法找到分界线，后使用背向双指针，类似归并排序</li>
+<li>585题，找到山脉序列中的最大值</li>
+<li>159题，旋转排序数组中的最小值</li>
+<li>二分法敏感词：排序数组，有序数组</li>
+</ul>
+<h1 id="第三境界"><a href="#第三境界" class="headerlink" title="第三境界"></a>第三境界</h1><ul>
+<li>在未排序的数据集上进行二分</li>
+<li>75题，寻找峰值，任意一个峰值都可以</li>
+<li>面试时候可以画画图</li>
+</ul>
+<h1 id="第四境界"><a href="#第四境界" class="headerlink" title="第四境界"></a>第四境界</h1><ul>
+<li>在答案集上进行二分</li>
+<li>确定答案范围</li>
+<li>验证答案大小</li>
+<li>183题，木材加工</li>
+</ul>
+]]></content>
+      <categories>
+        <category>九章算法</category>
+      </categories>
   </entry>
   <entry>
     <title>markdown格式测试</title>
@@ -551,54 +633,16 @@
       </tags>
   </entry>
   <entry>
-    <title>lintcode-14-二分查找-找下标最小的结果</title>
-    <url>/2022/02/14/lintcode-14-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-%E6%89%BE%E4%B8%8B%E6%A0%87%E6%9C%80%E5%B0%8F%E7%9A%84%E7%BB%93%E6%9E%9C/</url>
-    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/14/">https://www.lintcode.com/problem/14/</a></p>
-<h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h1><ul>
-<li>递推法</li>
-<li>left + 1 &lt; right<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param nums: The integer array.</span></span><br><span class="line"><span class="string">    @param target: Target to find.</span></span><br><span class="line"><span class="string">    @return: The first position of target. Position starts from 0.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">binarySearch</span>(<span class="params">self, nums, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">return</span> self.helper(nums, <span class="number">0</span>, <span class="built_in">len</span>(nums), target)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">helper</span>(<span class="params">self, nums, left, right, target</span>):</span></span><br><span class="line">        <span class="keyword">while</span> left + <span class="number">1</span> &lt; right:</span><br><span class="line">            mid = (left + right) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">                <span class="keyword">if</span> mid == <span class="number">0</span> <span class="keyword">or</span> nums[mid] != nums[mid - <span class="number">1</span>]:</span><br><span class="line">                    <span class="keyword">return</span> mid</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    right = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &gt; target:</span><br><span class="line">                right = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &lt; target:</span><br><span class="line">                left = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> nums[left] == target:</span><br><span class="line">            <span class="keyword">return</span> left</span><br><span class="line">        <span class="keyword">elif</span> nums[right] == target:</span><br><span class="line">            <span class="keyword">return</span> right</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure></li>
+    <title>lintcode-460-在排序数组中找最接近的K个数-二分法</title>
+    <url>/2022/02/16/lintcode-460-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%89%BE%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84K%E4%B8%AA%E6%95%B0-%E4%BA%8C%E5%88%86%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="在排序数组中找最接近的K个数"><a href="#在排序数组中找最接近的K个数" class="headerlink" title="在排序数组中找最接近的K个数"></a>在排序数组中找最接近的K个数</h1><ul>
+<li>首先用二分法找到小于等于target中的最大数下标</li>
+<li>而后采用背向双指针从该下标开始找最接近的K个数<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param A: an integer array</span></span><br><span class="line"><span class="string">    @param target: An integer</span></span><br><span class="line"><span class="string">    @param k: An integer</span></span><br><span class="line"><span class="string">    @return: an integer array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kClosestNumbers</span>(<span class="params">self, A, target, k</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> A:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        flag = self.findFlag(A, target, k)</span><br><span class="line">        <span class="keyword">return</span> self.getRes(A, target, k, flag)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findFlag</span>(<span class="params">self, A, target, k</span>):</span></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = <span class="built_in">len</span>(A) - <span class="number">1</span></span><br><span class="line">        flag = -<span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left + <span class="number">1</span> &lt; right:</span><br><span class="line">            mid = (left + right) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> A[mid] == target:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">elif</span> A[mid] &lt; target:</span><br><span class="line">                left = mid</span><br><span class="line">            <span class="keyword">elif</span> A[mid] &gt; target:</span><br><span class="line">                right = mid</span><br><span class="line">        <span class="keyword">if</span> A[left] == target:</span><br><span class="line">            <span class="keyword">return</span> left</span><br><span class="line">        <span class="keyword">elif</span> A[right] == target:</span><br><span class="line">            <span class="keyword">return</span> right</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> left <span class="comment">#小于等于target的最大值为定位点</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getRes</span>(<span class="params">self, A, target, k, flag</span>):</span></span><br><span class="line">        res = []</span><br><span class="line">        left = flag</span><br><span class="line">        right = flag + <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">            <span class="keyword">if</span> left &gt;= <span class="number">0</span> <span class="keyword">and</span> right &lt;= <span class="built_in">len</span>(A) - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> target - A[left] &lt;= A[right] - target:</span><br><span class="line">                    res.append(A[left])</span><br><span class="line">                    left -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> target - A[left] &gt; A[right] - target:</span><br><span class="line">                    res.append(A[right])</span><br><span class="line">                    right += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> left &gt;= <span class="number">0</span> <span class="keyword">and</span> right &gt; <span class="built_in">len</span>(A) - <span class="number">1</span>:</span><br><span class="line">                res.append(A[left])</span><br><span class="line">                left -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> left &lt; <span class="number">0</span> <span class="keyword">and</span> right &lt;= <span class="built_in">len</span>(A) - <span class="number">1</span>:</span><br><span class="line">                res.append(A[right])</span><br><span class="line">                right += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> left &lt; <span class="number">0</span> <span class="keyword">and</span> right &gt; <span class="built_in">len</span>(A) - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> res</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
         <category>lintcode</category>
       </categories>
-  </entry>
-  <entry>
-    <title>lintcode-457-二分查找-找下标最大的结果</title>
-    <url>/2022/02/14/lintcode-457-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-%E6%89%BE%E4%B8%8B%E6%A0%87%E6%9C%80%E5%A4%A7%E7%9A%84%E7%BB%93%E6%9E%9C/</url>
-    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/458/">https://www.lintcode.com/problem/458/</a></p>
-<h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h1><ul>
-<li>left + 1 &lt; right</li>
-<li>异常检测 if not nums:</li>
-<li>没有查到要返回-1<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param nums: An integer array sorted in ascending order</span></span><br><span class="line"><span class="string">    @param target: An integer</span></span><br><span class="line"><span class="string">    @return: An integer</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lastPosition</span>(<span class="params">self, nums, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> self.helper(nums, <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span>, target)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">helper</span>(<span class="params">self, nums, left, right, target</span>):</span></span><br><span class="line">        <span class="keyword">while</span> left + <span class="number">1</span> &lt; right:</span><br><span class="line">            mid = left + (right - left) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">                left = mid</span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &gt; target:</span><br><span class="line">                right = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &lt; target:</span><br><span class="line">                left = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> nums[right] == target:</span><br><span class="line">            <span class="keyword">return</span> right</span><br><span class="line">        <span class="keyword">elif</span> nums[left] == target:</span><br><span class="line">            <span class="keyword">return</span> left</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>lintcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>九章算法-07-二分法模板</title>
-    <url>/2022/02/14/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-07-%E4%BA%8C%E5%88%86%E6%B3%95%E6%A8%A1%E6%9D%BF/</url>
-    <content><![CDATA[<h1 id="二分法原理"><a href="#二分法原理" class="headerlink" title="二分法原理"></a>二分法原理</h1><ul>
-<li>基于有序数组</li>
-<li>确定start,end,mid<span id="more"></span>
-<h1 id="二分法模板"><a href="#二分法模板" class="headerlink" title="二分法模板"></a>二分法模板</h1></li>
-<li>目标的最后一个索引</li>
-<li>两道题firstPositionOfTarget LastPositionOfTarget</li>
-<li>start + 1 &lt; end 避免死循环</li>
-<li>单独判断start 与 end</li>
-</ul>
-]]></content>
-      <categories>
-        <category>九章算法</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>九章算法-09-二分法的四重境界</title>
-    <url>/2022/02/15/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-09-%E4%BA%8C%E5%88%86%E6%B3%95%E7%9A%84%E5%9B%9B%E9%87%8D%E5%A2%83%E7%95%8C/</url>
-    <content><![CDATA[]]></content>
   </entry>
 </search>
