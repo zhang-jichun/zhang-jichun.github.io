@@ -667,7 +667,7 @@
 <h1 id="木材加工"><a href="#木材加工" class="headerlink" title="木材加工"></a>木材加工</h1><ul>
 <li>按照切割木头的长度进行二分</li>
 <li>木头长度的范围在 1 到 max(L)，在这个范围内二分出一个长度 length，然后看看以这个mid长度能切割出多少木头，如果少于 k 根，说明要短一些才行，如果多余 k，说明可以继续边长一些。<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param L: Given n pieces of wood with length L[i]</span></span><br><span class="line"><span class="string">    @param k: An integer</span></span><br><span class="line"><span class="string">    @return: The maximum length of the small pieces</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">woodCut</span>(<span class="params">self, L, k</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> L:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        start, end = <span class="number">1</span>, <span class="built_in">max</span>(L)</span><br><span class="line">        <span class="keyword">while</span> start + <span class="number">1</span> &lt; end:</span><br><span class="line">            mid = (start + end) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> self.getPieces(L, mid) &gt;= k:</span><br><span class="line">                start = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end = mid</span><br><span class="line">        <span class="keyword">if</span> self.getPieces(L, end) &gt;= k:</span><br><span class="line">            <span class="keyword">return</span> end</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> start</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getPieces</span>(<span class="params">self, L, length</span>):</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> temp <span class="keyword">in</span> L:</span><br><span class="line">            res += temp // length</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param L: Given n pieces of wood with length L[i]</span></span><br><span class="line"><span class="string">    @param k: An integer</span></span><br><span class="line"><span class="string">    @return: The maximum length of the small pieces</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">woodCut</span>(<span class="params">self, L, k</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> L:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        start, end = <span class="number">1</span>, <span class="built_in">max</span>(L)</span><br><span class="line">        <span class="keyword">while</span> start + <span class="number">1</span> &lt; end:</span><br><span class="line">            mid = (start + end) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> self.get_pieces(L, mid) &gt;= k:</span><br><span class="line">                start = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end = mid</span><br><span class="line">                </span><br><span class="line">        <span class="keyword">if</span> self.get_pieces(L, end) &gt;= k:</span><br><span class="line">            <span class="keyword">return</span> end</span><br><span class="line">        <span class="keyword">if</span> self.get_pieces(L, start) &gt;= k:</span><br><span class="line">            <span class="keyword">return</span> start    </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_pieces</span>(<span class="params">self, L, length</span>):</span></span><br><span class="line">        pieces = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> l <span class="keyword">in</span> L:</span><br><span class="line">            pieces += l // length</span><br><span class="line">        <span class="keyword">return</span> pieces</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -698,5 +698,134 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param A: An integers array.</span></span><br><span class="line"><span class="string">    @return: return any of peek positions.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findPeak</span>(<span class="params">self, A</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> A:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(A) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left + <span class="number">1</span> &lt; right:</span><br><span class="line">            mid = (left + right) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> A[mid] &gt; A[mid + <span class="number">1</span>] <span class="keyword">and</span> A[mid] &gt; A[mid - <span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">elif</span> A[mid] &gt; A[mid - <span class="number">1</span>] <span class="keyword">and</span> A[mid] &lt; A[mid + <span class="number">1</span>]:</span><br><span class="line">                left = mid</span><br><span class="line">            <span class="keyword">elif</span> A[mid] &lt; A[mid - <span class="number">1</span>] <span class="keyword">and</span> A[mid] &gt; A[mid + <span class="number">1</span>]:</span><br><span class="line">                right = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                right = mid</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>lintcode-69-二叉树的层次遍历-双队列</title>
+    <url>/2022/02/18/lintcode-69-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86-%E5%8F%8C%E9%98%9F%E5%88%97/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/69/description">https://www.lintcode.com/problem/69/description</a></p>
+<h1 id="二叉树的层次遍历"><a href="#二叉树的层次遍历" class="headerlink" title="二叉树的层次遍历"></a>二叉树的层次遍历</h1><ul>
+<li>直接遍历队列的节点，节点值存为临时列表，节点的子节点存为临时队列</li>
+<li>遍历结束当前队列，令queue = tempQueue继续循环<span id="more"></span></li>
+</ul>
+<p>```python<br>“””<br>Definition of TreeNode:<br>class TreeNode:<br>    def <strong>init</strong>(self, val):<br>        self.val = val<br>        self.left, self.right = None, None<br>“””</p>
+<p>class Solution:<br>    “””<br>    @param root: A Tree<br>    @return: Level order a list of lists of integer<br>    “””<br>    def levelOrder(self, root):<br>        # write your code here<br>        if not root:<br>            return []</p>
+<pre><code>    queue = [root]
+    res = []
+    while queue:
+        tempQueue = []
+        tempVal = []
+        for node in queue:
+            tempVal.append(node.val)
+            if node.left:
+                tempQueue.append(node.left)
+            if node.right:
+                tempQueue.append(node.right)
+        res.append(tempVal)
+        queue = tempQueue
+    return res
+</code></pre>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>lintcode-69-二叉树的层次遍历-dummyNode法</title>
+    <url>/2022/02/18/lintcode-69-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86-dummyNode%E6%B3%95/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/69/solution">https://www.lintcode.com/problem/69/solution</a></p>
+<h1 id="二叉树的层次遍历"><a href="#二叉树的层次遍历" class="headerlink" title="二叉树的层次遍历"></a>二叉树的层次遍历</h1><ul>
+<li>起始queue = [root, None]</li>
+<li>while循环不断取队列中的节点</li>
+<li>如果为正常节点，则取值加入临时值队列，取节点子节点入队</li>
+<li>如果为None节点，则说明此层遍历结束，临时队列入结果队列，临时队列清空。并且，若queue为空则说明遍历结束，若queue不为空则None入队，继续下一层遍历。<span id="more"></span>
+```python<br>“””<br>Definition of TreeNode:<br>class TreeNode:<br>  def <strong>init</strong>(self, val):<pre><code>  self.val = val
+  self.left, self.right = None, None
+</code></pre>
+“””</li>
+</ul>
+<p>class Solution:<br>    “””<br>    @param root: A Tree<br>    @return: Level order a list of lists of integer<br>    “””<br>    def levelOrder(self, root):<br>        # write your code here<br>        if not root:<br>            return []</p>
+<pre><code>    queue = [root, None]
+    res = []
+    tempVal = []
+    while queue:           
+        node = queue.pop(0)
+        if node:
+            tempVal.append(node.val)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        elif node == None:
+            res.append(tempVal)
+            tempVal = []
+            if queue:
+                queue.append(None)
+    return res
+</code></pre>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>lintcode-69-二叉树的层次遍历-单队列</title>
+    <url>/2022/02/18/lintcode-69-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86-%E5%8D%95%E9%98%9F%E5%88%97/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/69/description">https://www.lintcode.com/problem/69/description</a></p>
+<h1 id="二叉树的层次遍历"><a href="#二叉树的层次遍历" class="headerlink" title="二叉树的层次遍历"></a>二叉树的层次遍历</h1><ul>
+<li>把表头放入队列</li>
+<li>用for来循环当前队列长度并出队，出队元素的值构成新列表加入结果列表，出队元素的左右节点加入队列尾部</li>
+<li>直到队列为空，遍历结束<span id="more"></span>
+```python<br>“””<br>Definition of TreeNode:<br>class TreeNode:<br>  def <strong>init</strong>(self, val):<pre><code>  self.val = val
+  self.left, self.right = None, None
+</code></pre>
+“””</li>
+</ul>
+<p>class Solution:<br>    “””<br>    @param root: A Tree<br>    @return: Level order a list of lists of integer<br>    “””<br>    def levelOrder(self, root):<br>        # write your code here<br>        if not root:<br>            return []</p>
+<pre><code>    queue = [root]
+    res = []
+    while queue:
+        level = []
+        for i in range(len(queue)):
+            node = queue.pop(0)
+            level.append(node.val)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        res.append(level)
+    return res
+</code></pre>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>九章算法-11-宽度优先搜索</title>
+    <url>/2022/02/17/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-10-%E9%98%9F%E5%88%97/</url>
+    <content><![CDATA[<h1 id="宽度优先搜索BFS"><a href="#宽度优先搜索BFS" class="headerlink" title="宽度优先搜索BFS"></a>宽度优先搜索BFS</h1><ul>
+<li>场景<ul>
+<li>按层遍历图、树、矩阵</li>
+<li>简单图的最短路径</li>
+<li>连通块问题</li>
+<li>找到所有方案</li>
+<li>拓扑排序，实现容易程度远超DFS<span id="more"></span></li>
+</ul>
+</li>
+</ul>
+<h1 id="单队列"><a href="#单队列" class="headerlink" title="单队列"></a>单队列</h1><ul>
+<li>单队列+for循环</li>
+</ul>
+<h1 id="双队列"><a href="#双队列" class="headerlink" title="双队列"></a>双队列</h1><ul>
+<li>将头结点放Q1，遍历Q1子节点 放Q2，遍历Q2子节点放Q1</li>
+</ul>
+<h1 id="dummyNode"><a href="#dummyNode" class="headerlink" title="dummyNode"></a>dummyNode</h1><ul>
+<li>永远指向链表的头结点</li>
+<li>宽度优先搜索，1#23#45。加入头结点最后加入空指针，出队头结点加入子节点，出队空指针再入队空指针，每一层都被空指针隔开。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>九章算法</category>
+      </categories>
   </entry>
 </search>
