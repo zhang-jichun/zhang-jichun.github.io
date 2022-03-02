@@ -958,4 +958,113 @@
         <category>九章算法</category>
       </categories>
   </entry>
+  <entry>
+    <title>HCIP-01-防火墙上</title>
+    <url>/2022/02/28/HCIP-01-%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8A/</url>
+    <content><![CDATA[<h1 id="四大部分"><a href="#四大部分" class="headerlink" title="四大部分"></a>四大部分</h1><ul>
+<li>路由交换、防火墙、无线、自动化</li>
+</ul>
+<h1 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h1><ul>
+<li>保障网络安全性：阻挡非法用户与流量、许可合法用户与流量</li>
+<li>交换机最便宜、路由器贵一点、防火墙最贵</li>
+<li>交换机：接入、汇聚、提供大量接口</li>
+<li>路由器：三层转发、打通一个又一个局域网</li>
+<li>防火墙：控制报文转发、防攻击、7层设备（应用层过滤、3-4层也能过滤）</li>
+<li>NGFW：下一代防火墙、访问控制、应用过滤、状态监测</li>
+<li>ensp模拟器：usg6000v-导入配置文件-.udi导入-用户名密码admin/Admin@123-修改密码包涵数字大写特殊字符</li>
+<li>硬件防火墙放在出口路由器之外；或者双层防火墙出口和内网；旁挂放于路由与交换旁边</li>
+<li>WAF：web应用防火墙</li>
+<li>防火墙-安全区域-信任度-接口分区：trust85、dmz50、untrust5</li>
+<li>防火墙本身区域100：local100</li>
+<li>untrust区域用在出口</li>
+<li>网络通就设置any/any</li>
+</ul>
+]]></content>
+      <categories>
+        <category>HCIP</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>HCIP-02-防火墙下</title>
+    <url>/2022/02/28/HCIP-02-%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8B/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>九章算法-14-宽度优先搜索2</title>
+    <url>/2022/02/24/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-14-%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A22/</url>
+    <content><![CDATA[<h1 id="连通块问题"><a href="#连通块问题" class="headerlink" title="连通块问题"></a>连通块问题</h1><ul>
+<li>通过一个点找到图中联通的所有点</li>
+<li>非递归的方式找到所有方案</li>
+<li>简单图没有方向没有权重两点间只有一条线，复杂图有方向有权重</li>
+<li>n个点m个边，时间复杂度O(m+n) m最大是n(n-1)/2</li>
+<li>lintcode-137-克隆图 寻找点 复制点 复制边 分开<ol>
+<li>找到所有点:bfs</li>
+<li>复制所有点</li>
+<li>复制所有边</li>
+<li>不要写高耦合代码，写成三个函数</li>
+</ol>
+</li>
+</ul>
+<h1 id="分层遍历"><a href="#分层遍历" class="headerlink" title="分层遍历"></a>分层遍历</h1><ul>
+<li>图的层次遍历：使用dict/set来记录点是否被遍历过</li>
+<li>简单图最短路径<ul>
+<li>简单图没有方向，没有权重</li>
+<li>简单图的两点之间只有一条边，自己不连自己</li>
+<li>使用queue = collections.deque([node])</li>
+<li>用visited标记已入队的点,一旦入队就要马上标记访问，否则会有重复元素入队</li>
+<li>n点m边，时间复杂度O(m+n)</li>
+</ul>
+</li>
+<li>lintcode-120-单词接龙</li>
+</ul>
+<h1 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h1><ul>
+<li>求任意拓扑排序</li>
+<li>求是否有拓扑排序</li>
+<li>求是否唯一拓扑排序</li>
+</ul>
+]]></content>
+      <categories>
+        <category>九章算法</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>lintcode-86-二叉查找树迭代器-栈bfs</title>
+    <url>/2022/02/24/lintcode-86-%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8-%E6%A0%88bfs/</url>
+    <content><![CDATA[<h1 id="二叉查找树迭代器"><a href="#二叉查找树迭代器" class="headerlink" title="二叉查找树迭代器"></a>二叉查找树迭代器</h1><ul>
+<li>思路类似67-二叉树的中序遍历-栈迭代</li>
+<li>初始化的时候要对根节点进行左节点迭代进栈<span id="more"></span>
+```python<br>“””<br>Definition of TreeNode:<br>class TreeNode:<br>  def <strong>init</strong>(self, val):<pre><code>  self.val = val
+  self.left, self.right = None, None
+</code></pre>
+</li>
+</ul>
+<p>Example of iterate a tree:<br>iterator = BSTIterator(root)<br>while iterator.hasNext():<br>    node = iterator.next()<br>    do something for node<br>“””</p>
+<p>class BSTIterator:<br>    “””<br>    @param: root: The root of binary tree.<br>    “””<br>    def <strong>init</strong>(self, root):<br>        # do intialization if necessary<br>        self.stack = []<br>        while root:<br>            self.stack.append(root)<br>            root = root.left</p>
+<pre><code>&quot;&quot;&quot;
+@return: True if there has next node, or false
+&quot;&quot;&quot;
+def hasNext(self):
+    # write your code here
+    return len(self.stack) &gt; 0
+
+&quot;&quot;&quot;
+@return: return next node
+&quot;&quot;&quot;
+def _next(self):
+    # write your code here
+    if len(self.stack) == 0:
+        return
+    curNode = self.stack.pop()
+    if curNode.right:
+        temp = curNode.right
+        while temp:
+            self.stack.append(temp)
+            temp = temp.left
+    return curNode
+</code></pre>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
 </search>
