@@ -19,17 +19,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="银鞍照白马，飒沓如流星。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="桃园三结义">
-<meta property="og:url" content="http://example.com/categories/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95/index.html">
+  <meta name="description" content="单词接龙 因为对于每一次变化，都只往下走一步。for i in range(len(queue)):保证了每次都只在上一次改变的基础上改变一个字母。   比如第一次 hot 变成 ot, ht, ho*,  如果这些结果里没有的话，再对于每一个queue里的单词，都再改变一个字母。 这样每一批点（即distance相同的点）都是同时迈入下一步的，所以最先等于end的点，就代表了最近的distanc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lintcode-120-单词接龙-bfs">
+<meta property="og:url" content="http://example.com/2022/03/03/lintcode-120-%E5%8D%95%E8%AF%8D%E6%8E%A5%E9%BE%99-bfs/index.html">
 <meta property="og:site_name" content="桃园三结义">
-<meta property="og:description" content="银鞍照白马，飒沓如流星。">
+<meta property="og:description" content="单词接龙 因为对于每一次变化，都只往下走一步。for i in range(len(queue)):保证了每次都只在上一次改变的基础上改变一个字母。   比如第一次 hot 变成 ot, ht, ho*,  如果这些结果里没有的话，再对于每一个queue里的单词，都再改变一个字母。 这样每一批点（即distance相同的点）都是同时迈入下一步的，所以最先等于end的点，就代表了最近的distanc">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-03T07:41:39.000Z">
+<meta property="article:modified_time" content="2022-03-03T09:00:27.429Z">
 <meta property="article:author" content="春春">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/categories/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95/">
+<link rel="canonical" href="http://example.com/2022/03/03/lintcode-120-%E5%8D%95%E8%AF%8D%E6%8E%A5%E9%BE%99-bfs/">
 
 
 <script id="page-configurations">
@@ -37,12 +39,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>分类: 九章算法 | 桃园三结义</title>
+  <title>lintcode-120-单词接龙-bfs | 桃园三结义</title>
   
 
 
@@ -184,235 +186,126 @@
         <div class="content-wrap">
           
 
-          <div class="content category">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">九章算法
-          <small>分类</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/03/lintcode-120-%E5%8D%95%E8%AF%8D%E6%8E%A5%E9%BE%99-bfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liuguanzhang.jpg">
+      <meta itemprop="name" content="春春">
+      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃园三结义">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          lintcode-120-单词接龙-bfs
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-03 15:41:39 / 修改时间：17:00:27" itemprop="dateCreated datePublished" datetime="2022-03-03T15:41:39+08:00">2022-03-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lintcode/" itemprop="url" rel="index"><span itemprop="name">lintcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <h1 id="单词接龙"><a href="#单词接龙" class="headerlink" title="单词接龙"></a>单词接龙</h1><ul>
+<li><p>因为对于每一次变化，都只往下走一步。for i in range(len(queue)):保证了每次都只在上一次改变的基础上改变一个字母。 </p>
+</li>
+<li><p>比如第一次 hot 变成 <em>ot, h</em>t, ho*,  如果这些结果里没有的话，再对于每一个queue里的单词，都再改变一个字母。 这样每一批点（即distance相同的点）都是同时迈入下一步的，所以最先等于end的点，就代表了最近的distance。</p>
+</li>
+<li><p>相当于n叉树的层次遍历，n为单词长度<br>``` python<br>class Solution:<br>  “””<br>  @param: start: a string<br>  @param: end: a string<br>  @param: dict: a set of string<br>  @return: An integer<br>  “””<br>  def ladderLength(self, start, end, dictionary):</p>
+<pre><code>  # write your code here
+  dictionary.add(end)
+  queue = [start]
+  visited = []
+  distance = 0
+
+  while queue:
+      distance += 1
+      length = len(queue)
+      for i in range(length):
+          curWord = queue.pop(0)               
+          if curWord == end:
+              return distance
+          if curWord in visited:
+              continue
+          if curWord not in visited:
+              visited.append(curWord)
+              nextWords = self.getNextWords(curWord, visited, dictionary)
+              queue.extend(nextWords)
+  
+  return 0
+</code></pre>
+<p>  def getNextWords(self, word, visited, dictionary):</p>
+<pre><code>  res = []
+  for i in range(len(word)):
+      left, right = word[0:i], word[i+1:]
+      for j in range(26):
+          temp = left + chr(ord(&#39;a&#39;) + j) + right
+          if temp not in visited and temp in dictionary:
+              res.append(temp)
+  return res
+</code></pre>
+</li>
+</ul>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-24T10:27:24+08:00"
-              content="2022-02-24">
-          02-24
-        </time>
-      </div>
+      <footer class="post-footer">
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/24/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-14-%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A22/" itemprop="url">
-            <span itemprop="name">九章算法-14-宽度优先搜索2</span>
-          </a>
-      </div>
+        
 
-    </header>
-  </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-23T22:19:21+08:00"
-              content="2022-02-23">
-          02-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/23/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-13-%E4%BA%8C%E5%8F%89%E6%A0%91%E9%9D%9E%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86/" itemprop="url">
-            <span itemprop="name">九章算法-13-二叉树非递归遍历</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-21T09:04:37+08:00"
-              content="2022-02-21">
-          02-21
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/21/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-12-%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" itemprop="url">
-            <span itemprop="name">九章算法-12-深度优先搜索</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-17T08:46:12+08:00"
-              content="2022-02-17">
-          02-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/17/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-10-%E9%98%9F%E5%88%97/" itemprop="url">
-            <span itemprop="name">九章算法-11-宽度优先搜索</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-15T16:21:36+08:00"
-              content="2022-02-15">
-          02-15
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/15/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-09-%E4%BA%8C%E5%88%86%E6%B3%95%E7%9A%84%E5%9B%9B%E9%87%8D%E5%A2%83%E7%95%8C/" itemprop="url">
-            <span itemprop="name">九章算法-09-二分法的四重境界</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-14T16:07:49+08:00"
-              content="2022-02-14">
-          02-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/14/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-07-%E4%BA%8C%E5%88%86%E6%B3%95%E6%A8%A1%E6%9D%BF/" itemprop="url">
-            <span itemprop="name">九章算法-07-二分法模板</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-14T10:36:52+08:00"
-              content="2022-02-14">
-          02-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/14/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-06-%E4%BA%8C%E5%88%86%E6%B3%95/" itemprop="url">
-            <span itemprop="name">九章算法-06-二分法</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-10T10:32:14+08:00"
-              content="2022-02-10">
-          02-10
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/10/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-05-%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" itemprop="url">
-            <span itemprop="name">九章算法-05-两个排序算法</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-09T11:07:09+08:00"
-              content="2022-02-09">
-          02-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/09/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-04-%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E5%8F%8C%E6%8C%87%E9%92%88/" itemprop="url">
-            <span itemprop="name">九章算法-04-复杂度与双指针</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-01-31T11:29:37+08:00"
-              content="2022-01-31">
-          01-31
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/31/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-03-%E7%9C%9F%E5%AE%9E%E6%A1%88%E4%BE%8B-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%A5%E6%89%BE/" itemprop="url">
-            <span itemprop="name">九章算法-03-真实案例-字符串查找</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/03/lintcode-137-%E5%85%8B%E9%9A%86%E5%9B%BE-bfs/" rel="prev" title="lintcode-137-克隆图-bfs">
+      <i class="fa fa-chevron-left"></i> lintcode-137-克隆图-bfs
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-  </div>
+      </footer>
+    
+  </article>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/categories/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95/page/2/">2</a><a class="extend next" rel="next" href="/categories/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
@@ -464,6 +357,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E8%AF%8D%E6%8E%A5%E9%BE%99"><span class="nav-text">单词接龙</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

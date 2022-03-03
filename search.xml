@@ -1161,4 +1161,52 @@ def cloneLines(self, nodeSet, nodeDic):
         <category>lintcode</category>
       </categories>
   </entry>
+  <entry>
+    <title>lintcode-120-单词接龙-bfs</title>
+    <url>/2022/03/03/lintcode-120-%E5%8D%95%E8%AF%8D%E6%8E%A5%E9%BE%99-bfs/</url>
+    <content><![CDATA[<h1 id="单词接龙"><a href="#单词接龙" class="headerlink" title="单词接龙"></a>单词接龙</h1><ul>
+<li><p>因为对于每一次变化，都只往下走一步。for i in range(len(queue)):保证了每次都只在上一次改变的基础上改变一个字母。 </p>
+</li>
+<li><p>比如第一次 hot 变成 <em>ot, h</em>t, ho*,  如果这些结果里没有的话，再对于每一个queue里的单词，都再改变一个字母。 这样每一批点（即distance相同的点）都是同时迈入下一步的，所以最先等于end的点，就代表了最近的distance。</p>
+</li>
+<li><p>相当于n叉树的层次遍历，n为单词长度<br>``` python<br>class Solution:<br>  “””<br>  @param: start: a string<br>  @param: end: a string<br>  @param: dict: a set of string<br>  @return: An integer<br>  “””<br>  def ladderLength(self, start, end, dictionary):</p>
+<pre><code>  # write your code here
+  dictionary.add(end)
+  queue = [start]
+  visited = []
+  distance = 0
+
+  while queue:
+      distance += 1
+      length = len(queue)
+      for i in range(length):
+          curWord = queue.pop(0)               
+          if curWord == end:
+              return distance
+          if curWord in visited:
+              continue
+          if curWord not in visited:
+              visited.append(curWord)
+              nextWords = self.getNextWords(curWord, visited, dictionary)
+              queue.extend(nextWords)
+  
+  return 0
+</code></pre>
+<p>  def getNextWords(self, word, visited, dictionary):</p>
+<pre><code>  res = []
+  for i in range(len(word)):
+      left, right = word[0:i], word[i+1:]
+      for j in range(26):
+          temp = left + chr(ord(&#39;a&#39;) + j) + right
+          if temp not in visited and temp in dictionary:
+              res.append(temp)
+  return res
+</code></pre>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
 </search>
