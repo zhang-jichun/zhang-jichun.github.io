@@ -1113,4 +1113,52 @@ def _next(self):
         <category>lintcode</category>
       </categories>
   </entry>
+  <entry>
+    <title>lintcode-137-克隆图-bfs</title>
+    <url>/2022/03/03/lintcode-137-%E5%85%8B%E9%9A%86%E5%9B%BE-bfs/</url>
+    <content><![CDATA[<h1 id="克隆图"><a href="#克隆图" class="headerlink" title="克隆图"></a>克隆图</h1><ol>
+<li>找到所有的点，应用bfs和set()</li>
+<li>复制所有的点，将映射关系存起来,应用dic()</li>
+<li>找到所有的边，复制每一条边</li>
+<li>分子涵书写，去耦合更容易阅读<span id="more"></span>
+```python<br>from lintcode import (<br> UndirectedGraphNode,<br>)</li>
+</ol>
+<p>“””<br>Definition for a UndirectedGraphNode:<br>class UndirectedGraphNode:<br>    def <strong>init</strong>(self, label):<br>        self.label = label<br>        self.neighbors = []<br>“””</p>
+<p>class Solution:<br>    “””<br>    @param node: A undirected graph node<br>    @return: A undirected graph node<br>    “””<br>    def clone_graph(self, node: UndirectedGraphNode) -&gt; UndirectedGraphNode:<br>        # write your code here<br>        if not node:<br>            return node</p>
+<pre><code>    nodeSet = self.getNodes(node)
+    nodeDic = self.cloneNodes(nodeSet)
+    self.cloneLines(nodeSet, nodeDic)
+    return nodeDic[node]
+
+def getNodes(self, node):
+    res = set([node])
+    queue = [node]
+    while queue:
+        popNode = queue.pop(0)
+        for temp in popNode.neighbors:
+            if temp in res:
+                continue
+            res.add(temp)
+            queue.append(temp)
+    return res
+
+def cloneNodes(self, nodeSet):
+    res = &#123;&#125;
+    for node in nodeSet:
+        res[node] = UndirectedGraphNode(node.label)
+    return res
+
+def cloneLines(self, nodeSet, nodeDic):
+    for node in nodeSet:
+        tempNeighbors = []
+        for neighbor in node.neighbors:
+            tempNeighbors.append(nodeDic[neighbor])
+        nodeDic[node].neighbors = tempNeighbors
+    return
+</code></pre>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
 </search>
