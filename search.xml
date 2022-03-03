@@ -861,10 +861,8 @@
     <url>/2022/02/23/lintcode-67-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86-%E9%80%92%E5%BD%92%E6%B3%95/</url>
     <content><![CDATA[<h1 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h1><ul>
 <li>根节点左侧中序遍历 + 根节点值 + 根节点右侧中序遍历<span id="more"></span>
-```python<br>from typing import (<br>  List,<br>)<br>from lintcode import (<br>  TreeNode,<br>)</li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> (</span><br><span class="line">    <span class="type">List</span>,</span><br><span class="line">)</span><br><span class="line"><span class="keyword">from</span> lintcode <span class="keyword">import</span> (</span><br><span class="line">    TreeNode,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Definition of TreeNode:</span></span><br><span class="line"><span class="string">class TreeNode:</span></span><br><span class="line"><span class="string">    def __init__(self, val):</span></span><br><span class="line"><span class="string">        self.val = val</span></span><br><span class="line"><span class="string">        self.left, self.right = None, None</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param root: A Tree</span></span><br><span class="line"><span class="string">    @return: Inorder in ArrayList which contains node values.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorder_traversal</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        leftList = self.inorder_traversal(root.left)</span><br><span class="line">        rightList = self.inorder_traversal(root.right)</span><br><span class="line">        <span class="keyword">return</span> leftList + [root.val] + rightList</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>“””<br>Definition of TreeNode:<br>class TreeNode:<br>    def <strong>init</strong>(self, val):<br>        self.val = val<br>        self.left, self.right = None, None<br>“””</p>
-<p>class Solution:<br>    “””<br>    @param root: A Tree<br>    @return: Inorder in ArrayList which contains node values.<br>    “””<br>    def inorder_traversal(self, root: TreeNode) -&gt; List[int]:<br>        # write your code here<br>        if not root:<br>            return []<br>        leftList = self.inorder_traversal(root.left)<br>        rightList = self.inorder_traversal(root.right)<br>        return leftList + [root.val] + rightList</p>
 ]]></content>
       <categories>
         <category>lintcode</category>
@@ -878,29 +876,8 @@
 <li>首先栈顶的左节点一次入栈，相当于第一次dfs</li>
 <li>而后从栈中开始pop,如果当前节点无右节点则说明当前节点为以该节点为根节点的中序遍历的最后节点，因为其左子树均pop，结果记录并弹出该节点即可</li>
 <li>如果当前节点存在右节点，则需要再结果记录该节点后遍历它的右子树，需要将右子树的第一个dfs入栈，再重复弹出操作<span id="more"></span>
-```python<br>from typing import (<br>  List,<br>)<br>from lintcode import (<br>  TreeNode,<br>)</li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> (</span><br><span class="line">    <span class="type">List</span>,</span><br><span class="line">)</span><br><span class="line"><span class="keyword">from</span> lintcode <span class="keyword">import</span> (</span><br><span class="line">    TreeNode,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Definition of TreeNode:</span></span><br><span class="line"><span class="string">class TreeNode:</span></span><br><span class="line"><span class="string">    def __init__(self, val):</span></span><br><span class="line"><span class="string">        self.val = val</span></span><br><span class="line"><span class="string">        self.left, self.right = None, None</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param root: A Tree</span></span><br><span class="line"><span class="string">    @return: Inorder in ArrayList which contains node values.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorder_traversal</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        </span><br><span class="line">        stack = []</span><br><span class="line">        res = []</span><br><span class="line"></span><br><span class="line">        temp = root</span><br><span class="line">        <span class="keyword">while</span> temp:</span><br><span class="line">            stack.append(temp)</span><br><span class="line">            temp = temp.left</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            curNode = stack.pop()</span><br><span class="line">            res.append(curNode.val)</span><br><span class="line">            <span class="keyword">if</span> curNode.right:</span><br><span class="line">                temp = curNode.right</span><br><span class="line">                <span class="keyword">while</span> temp:</span><br><span class="line">                    stack.append(temp)</span><br><span class="line">                    temp = temp.left</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>“””<br>Definition of TreeNode:<br>class TreeNode:<br>    def <strong>init</strong>(self, val):<br>        self.val = val<br>        self.left, self.right = None, None<br>“””</p>
-<p>class Solution:<br>    “””<br>    @param root: A Tree<br>    @return: Inorder in ArrayList which contains node values.<br>    “””<br>    def inorder_traversal(self, root: TreeNode) -&gt; List[int]:<br>        # write your code here<br>        if not root:<br>            return []</p>
-<pre><code>    stack = []
-    res = []
-
-    temp = root
-    while temp:
-        stack.append(temp)
-        temp = temp.left
-
-    while stack:
-        curNode = stack.pop()
-        res.append(curNode.val)
-        if curNode.right:
-            temp = curNode.right
-            while temp:
-                stack.append(temp)
-                temp = temp.left
-    
-    return res
-</code></pre>
 ]]></content>
       <categories>
         <category>lintcode</category>
@@ -1079,35 +1056,8 @@
     <content><![CDATA[<h1 id="二叉查找树迭代器"><a href="#二叉查找树迭代器" class="headerlink" title="二叉查找树迭代器"></a>二叉查找树迭代器</h1><ul>
 <li>思路类似67-二叉树的中序遍历-栈迭代</li>
 <li>初始化的时候要对根节点进行左节点迭代进栈<span id="more"></span>
-```python<br>“””<br>Definition of TreeNode:<br>class TreeNode:<br>  def <strong>init</strong>(self, val):<pre><code>  self.val = val
-  self.left, self.right = None, None
-</code></pre>
-</li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Definition of TreeNode:</span></span><br><span class="line"><span class="string">class TreeNode:</span></span><br><span class="line"><span class="string">    def __init__(self, val):</span></span><br><span class="line"><span class="string">        self.val = val</span></span><br><span class="line"><span class="string">        self.left, self.right = None, None</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Example of iterate a tree:</span></span><br><span class="line"><span class="string">iterator = BSTIterator(root)</span></span><br><span class="line"><span class="string">while iterator.hasNext():</span></span><br><span class="line"><span class="string">    node = iterator.next()</span></span><br><span class="line"><span class="string">    do something for node </span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BSTIterator</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param: root: The root of binary tree.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, root</span>):</span></span><br><span class="line">        <span class="comment"># do intialization if necessary</span></span><br><span class="line">        self.stack = []</span><br><span class="line">        <span class="keyword">while</span> root:</span><br><span class="line">            self.stack.append(root)</span><br><span class="line">            root = root.left</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @return: True if there has next node, or false</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasNext</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.stack) &gt; <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @return: return next node</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_next</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(self.stack) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        curNode = self.stack.pop()</span><br><span class="line">        <span class="keyword">if</span> curNode.right:</span><br><span class="line">            temp = curNode.right</span><br><span class="line">            <span class="keyword">while</span> temp:</span><br><span class="line">                self.stack.append(temp)</span><br><span class="line">                temp = temp.left</span><br><span class="line">        <span class="keyword">return</span> curNode</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>Example of iterate a tree:<br>iterator = BSTIterator(root)<br>while iterator.hasNext():<br>    node = iterator.next()<br>    do something for node<br>“””</p>
-<p>class BSTIterator:<br>    “””<br>    @param: root: The root of binary tree.<br>    “””<br>    def <strong>init</strong>(self, root):<br>        # do intialization if necessary<br>        self.stack = []<br>        while root:<br>            self.stack.append(root)<br>            root = root.left</p>
-<pre><code>&quot;&quot;&quot;
-@return: True if there has next node, or false
-&quot;&quot;&quot;
-def hasNext(self):
-    # write your code here
-    return len(self.stack) &gt; 0
-
-&quot;&quot;&quot;
-@return: return next node
-&quot;&quot;&quot;
-def _next(self):
-    # write your code here
-    if len(self.stack) == 0:
-        return
-    curNode = self.stack.pop()
-    if curNode.right:
-        temp = curNode.right
-        while temp:
-            self.stack.append(temp)
-            temp = temp.left
-    return curNode
-</code></pre>
 ]]></content>
       <categories>
         <category>lintcode</category>
@@ -1121,41 +1071,8 @@ def _next(self):
 <li>复制所有的点，将映射关系存起来,应用dic()</li>
 <li>找到所有的边，复制每一条边</li>
 <li>分子涵书写，去耦合更容易阅读<span id="more"></span>
-```python<br>from lintcode import (<br> UndirectedGraphNode,<br>)</li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lintcode <span class="keyword">import</span> (</span><br><span class="line">    UndirectedGraphNode,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Definition for a UndirectedGraphNode:</span></span><br><span class="line"><span class="string">class UndirectedGraphNode:</span></span><br><span class="line"><span class="string">    def __init__(self, label):</span></span><br><span class="line"><span class="string">        self.label = label</span></span><br><span class="line"><span class="string">        self.neighbors = []</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param node: A undirected graph node</span></span><br><span class="line"><span class="string">    @return: A undirected graph node</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clone_graph</span>(<span class="params">self, node: UndirectedGraphNode</span>) -&gt; UndirectedGraphNode:</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span> node</span><br><span class="line"></span><br><span class="line">        nodeSet = self.getNodes(node)</span><br><span class="line">        nodeDic = self.cloneNodes(nodeSet)</span><br><span class="line">        self.cloneLines(nodeSet, nodeDic)</span><br><span class="line">        <span class="keyword">return</span> nodeDic[node]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getNodes</span>(<span class="params">self, node</span>):</span></span><br><span class="line">        res = <span class="built_in">set</span>([node])</span><br><span class="line">        queue = [node]</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            popNode = queue.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">for</span> temp <span class="keyword">in</span> popNode.neighbors:</span><br><span class="line">                <span class="keyword">if</span> temp <span class="keyword">in</span> res:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                res.add(temp)</span><br><span class="line">                queue.append(temp)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cloneNodes</span>(<span class="params">self, nodeSet</span>):</span></span><br><span class="line">        res = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> node <span class="keyword">in</span> nodeSet:</span><br><span class="line">            res[node] = UndirectedGraphNode(node.label)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cloneLines</span>(<span class="params">self, nodeSet, nodeDic</span>):</span></span><br><span class="line">        <span class="keyword">for</span> node <span class="keyword">in</span> nodeSet:</span><br><span class="line">            tempNeighbors = []</span><br><span class="line">            <span class="keyword">for</span> neighbor <span class="keyword">in</span> node.neighbors:</span><br><span class="line">                tempNeighbors.append(nodeDic[neighbor])</span><br><span class="line">            nodeDic[node].neighbors = tempNeighbors</span><br><span class="line">        <span class="keyword">return</span></span><br></pre></td></tr></table></figure></li>
 </ol>
-<p>“””<br>Definition for a UndirectedGraphNode:<br>class UndirectedGraphNode:<br>    def <strong>init</strong>(self, label):<br>        self.label = label<br>        self.neighbors = []<br>“””</p>
-<p>class Solution:<br>    “””<br>    @param node: A undirected graph node<br>    @return: A undirected graph node<br>    “””<br>    def clone_graph(self, node: UndirectedGraphNode) -&gt; UndirectedGraphNode:<br>        # write your code here<br>        if not node:<br>            return node</p>
-<pre><code>    nodeSet = self.getNodes(node)
-    nodeDic = self.cloneNodes(nodeSet)
-    self.cloneLines(nodeSet, nodeDic)
-    return nodeDic[node]
-
-def getNodes(self, node):
-    res = set([node])
-    queue = [node]
-    while queue:
-        popNode = queue.pop(0)
-        for temp in popNode.neighbors:
-            if temp in res:
-                continue
-            res.add(temp)
-            queue.append(temp)
-    return res
-
-def cloneNodes(self, nodeSet):
-    res = &#123;&#125;
-    for node in nodeSet:
-        res[node] = UndirectedGraphNode(node.label)
-    return res
-
-def cloneLines(self, nodeSet, nodeDic):
-    for node in nodeSet:
-        tempNeighbors = []
-        for neighbor in node.neighbors:
-            tempNeighbors.append(nodeDic[neighbor])
-        nodeDic[node].neighbors = tempNeighbors
-    return
-</code></pre>
 ]]></content>
       <categories>
         <category>lintcode</category>
@@ -1165,46 +1082,10 @@ def cloneLines(self, nodeSet, nodeDic):
     <title>lintcode-120-单词接龙-bfs</title>
     <url>/2022/03/03/lintcode-120-%E5%8D%95%E8%AF%8D%E6%8E%A5%E9%BE%99-bfs/</url>
     <content><![CDATA[<h1 id="单词接龙"><a href="#单词接龙" class="headerlink" title="单词接龙"></a>单词接龙</h1><ul>
-<li><p>因为对于每一次变化，都只往下走一步。for i in range(len(queue)):保证了每次都只在上一次改变的基础上改变一个字母。 </p>
-</li>
-<li><p>比如第一次 hot 变成 <em>ot, h</em>t, ho*,  如果这些结果里没有的话，再对于每一个queue里的单词，都再改变一个字母。 这样每一批点（即distance相同的点）都是同时迈入下一步的，所以最先等于end的点，就代表了最近的distance。</p>
-</li>
-<li><p>相当于n叉树的层次遍历，n为单词长度</p>
-<!--mroe-->
-<p>``` python<br>class Solution:<br>  “””<br>  @param: start: a string<br>  @param: end: a string<br>  @param: dict: a set of string<br>  @return: An integer<br>  “””<br>  def ladderLength(self, start, end, dictionary):</p>
-<pre><code>  # write your code here
-  dictionary.add(end)
-  queue = [start]
-  visited = []
-  distance = 0
-
-  while queue:
-      distance += 1
-      length = len(queue)
-      for i in range(length):
-          curWord = queue.pop(0)               
-          if curWord == end:
-              return distance
-          if curWord in visited:
-              continue
-          if curWord not in visited:
-              visited.append(curWord)
-              nextWords = self.getNextWords(curWord, visited, dictionary)
-              queue.extend(nextWords)
-  
-  return 0
-</code></pre>
-<p>  def getNextWords(self, word, visited, dictionary):</p>
-<pre><code>  res = []
-  for i in range(len(word)):
-      left, right = word[0:i], word[i+1:]
-      for j in range(26):
-          temp = left + chr(ord(&#39;a&#39;) + j) + right
-          if temp not in visited and temp in dictionary:
-              res.append(temp)
-  return res
-</code></pre>
-</li>
+<li>因为对于每一次变化，都只往下走一步。for i in range(len(queue)):保证了每次都只在上一次改变的基础上改变一个字母。 </li>
+<li>比如第一次 hot 变成 <em>ot, h</em>t, ho*,  如果这些结果里没有的话，再对于每一个queue里的单词，都再改变一个字母。 这样每一批点（即distance相同的点）都是同时迈入下一步的，所以最先等于end的点，就代表了最近的distance。</li>
+<li>相当于n叉树的层次遍历，n为单词长度<!--mroe-->
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param: start: a string</span></span><br><span class="line"><span class="string">    @param: end: a string</span></span><br><span class="line"><span class="string">    @param: dict: a set of string</span></span><br><span class="line"><span class="string">    @return: An integer</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ladderLength</span>(<span class="params">self, start, end, dictionary</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        dictionary.add(end)</span><br><span class="line">        queue = [start]</span><br><span class="line">        visited = []</span><br><span class="line">        distance = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            distance += <span class="number">1</span></span><br><span class="line">            length = <span class="built_in">len</span>(queue)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(length):</span><br><span class="line">                curWord = queue.pop(<span class="number">0</span>)               </span><br><span class="line">                <span class="keyword">if</span> curWord == end:</span><br><span class="line">                    <span class="keyword">return</span> distance</span><br><span class="line">                <span class="keyword">if</span> curWord <span class="keyword">in</span> visited:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> curWord <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                    visited.append(curWord)</span><br><span class="line">                    nextWords = self.getNextWords(curWord, visited, dictionary)</span><br><span class="line">                    queue.extend(nextWords)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getNextWords</span>(<span class="params">self, word, visited, dictionary</span>):</span></span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(word)):</span><br><span class="line">            left, right = word[<span class="number">0</span>:i], word[i+<span class="number">1</span>:]</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">26</span>):</span><br><span class="line">                temp = left + <span class="built_in">chr</span>(<span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>) + j) + right</span><br><span class="line">                <span class="keyword">if</span> temp <span class="keyword">not</span> <span class="keyword">in</span> visited <span class="keyword">and</span> temp <span class="keyword">in</span> dictionary:</span><br><span class="line">                    res.append(temp)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -1216,33 +1097,8 @@ def cloneLines(self, nodeSet, nodeDic):
     <url>/2022/03/03/lintcode-433-%E5%B2%9B%E5%B1%BF%E7%9A%84%E4%B8%AA%E6%95%B0-bfs/</url>
     <content><![CDATA[<h1 id="岛屿的个数"><a href="#岛屿的个数" class="headerlink" title="岛屿的个数"></a>岛屿的个数</h1><ul>
 <li>遍历每一个点，如果发现为1的点就进行宽度优先搜索，建立一个集合保存搜索到为1的点的坐标，再次遇到搜索过的点时就跳过该点<span id="more"></span>
-```python<br>from typing import (<br>  List,<br>)</li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> (</span><br><span class="line">    <span class="type">List</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param grid: a boolean 2D matrix</span></span><br><span class="line"><span class="string">    @return: an integer</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">num_islands</span>(<span class="params">self, grid: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">bool</span>]]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> grid <span class="keyword">or</span> <span class="keyword">not</span> grid[<span class="number">0</span>]:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        islands = <span class="number">0</span></span><br><span class="line">        visited = <span class="built_in">set</span>()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(grid)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(grid[<span class="number">0</span>])):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="number">1</span> <span class="keyword">and</span> (i, j) <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                    islands += <span class="number">1</span></span><br><span class="line">                    visited.add((i, j))</span><br><span class="line">                    self.bfs(i, j, grid, visited)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> islands</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bfs</span>(<span class="params">self, i, j, grid, visited</span>):</span></span><br><span class="line">        queue = [(i, j)]</span><br><span class="line">        direction = [(<span class="number">1</span>,<span class="number">0</span>),(-<span class="number">1</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">1</span>),(<span class="number">0</span>,-<span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            x, y = queue.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">for</span> dx, dy <span class="keyword">in</span> direction:</span><br><span class="line">                <span class="keyword">if</span> x + dx &lt; <span class="number">0</span> <span class="keyword">or</span> x + dx &gt;= <span class="built_in">len</span>(grid) <span class="keyword">or</span> y + dy &lt; <span class="number">0</span> <span class="keyword">or</span> y + dy &gt;= <span class="built_in">len</span>(grid[<span class="number">0</span>]):</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> (x + dx, y + dy) <span class="keyword">not</span> <span class="keyword">in</span> visited <span class="keyword">and</span> grid[x + dx][y + dy] == <span class="number">1</span>:</span><br><span class="line">                    visited.add((x + dx, y + dy))</span><br><span class="line">                    queue.append((x + dx, y + dy))</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>class Solution:<br>    “””<br>    @param grid: a boolean 2D matrix<br>    @return: an integer<br>    “””<br>    def num_islands(self, grid: List[List[bool]]) -&gt; int:<br>        # write your code here<br>        if not grid or not grid[0]:<br>            return 0</p>
-<pre><code>    islands = 0
-    visited = set()
-
-    for i in range(len(grid)):
-        for j in range(len(grid[0])):
-            if grid[i][j] == 1 and (i, j) not in visited:
-                islands += 1
-                visited.add((i, j))
-                self.bfs(i, j, grid, visited)
-
-    return islands
-
-def bfs(self, i, j, grid, visited):
-    queue = [(i, j)]
-    direction = [(1,0),(-1,0),(0,1),(0,-1)]
-    while queue:
-        x, y = queue.pop(0)
-        for dx, dy in direction:
-            if x + dx &lt; 0 or x + dx &gt;= len(grid) or y + dy &lt; 0 or y + dy &gt;= len(grid[0]):
-                continue
-            if (x + dx, y + dy) not in visited and grid[x + dx][y + dy] == 1:
-                visited.add((x + dx, y + dy))
-                queue.append((x + dx, y + dy))
-</code></pre>
 ]]></content>
       <categories>
         <category>lintcode</category>
