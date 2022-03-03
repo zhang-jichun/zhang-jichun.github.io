@@ -1169,7 +1169,9 @@ def cloneLines(self, nodeSet, nodeDic):
 </li>
 <li><p>比如第一次 hot 变成 <em>ot, h</em>t, ho*,  如果这些结果里没有的话，再对于每一个queue里的单词，都再改变一个字母。 这样每一批点（即distance相同的点）都是同时迈入下一步的，所以最先等于end的点，就代表了最近的distance。</p>
 </li>
-<li><p>相当于n叉树的层次遍历，n为单词长度<br>``` python<br>class Solution:<br>  “””<br>  @param: start: a string<br>  @param: end: a string<br>  @param: dict: a set of string<br>  @return: An integer<br>  “””<br>  def ladderLength(self, start, end, dictionary):</p>
+<li><p>相当于n叉树的层次遍历，n为单词长度</p>
+<!--mroe-->
+<p>``` python<br>class Solution:<br>  “””<br>  @param: start: a string<br>  @param: end: a string<br>  @param: dict: a set of string<br>  @return: An integer<br>  “””<br>  def ladderLength(self, start, end, dictionary):</p>
 <pre><code>  # write your code here
   dictionary.add(end)
   queue = [start]
@@ -1204,6 +1206,43 @@ def cloneLines(self, nodeSet, nodeDic):
 </code></pre>
 </li>
 </ul>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>lintcode-433-岛屿的个数-bfs</title>
+    <url>/2022/03/03/lintcode-433-%E5%B2%9B%E5%B1%BF%E7%9A%84%E4%B8%AA%E6%95%B0-bfs/</url>
+    <content><![CDATA[<h1 id="岛屿的个数"><a href="#岛屿的个数" class="headerlink" title="岛屿的个数"></a>岛屿的个数</h1><ul>
+<li>遍历每一个点，如果发现为1的点就进行宽度优先搜索，建立一个集合保存搜索到为1的点的坐标，再次遇到搜索过的点时就跳过该点<span id="more"></span>
+```python<br>from typing import (<br>  List,<br>)</li>
+</ul>
+<p>class Solution:<br>    “””<br>    @param grid: a boolean 2D matrix<br>    @return: an integer<br>    “””<br>    def num_islands(self, grid: List[List[bool]]) -&gt; int:<br>        # write your code here<br>        if not grid or not grid[0]:<br>            return 0</p>
+<pre><code>    islands = 0
+    visited = set()
+
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j] == 1 and (i, j) not in visited:
+                islands += 1
+                visited.add((i, j))
+                self.bfs(i, j, grid, visited)
+
+    return islands
+
+def bfs(self, i, j, grid, visited):
+    queue = [(i, j)]
+    direction = [(1,0),(-1,0),(0,1),(0,-1)]
+    while queue:
+        x, y = queue.pop(0)
+        for dx, dy in direction:
+            if x + dx &lt; 0 or x + dx &gt;= len(grid) or y + dy &lt; 0 or y + dy &gt;= len(grid[0]):
+                continue
+            if (x + dx, y + dy) not in visited and grid[x + dx][y + dy] == 1:
+                visited.add((x + dx, y + dy))
+                queue.append((x + dx, y + dy))
+</code></pre>
 ]]></content>
       <categories>
         <category>lintcode</category>
