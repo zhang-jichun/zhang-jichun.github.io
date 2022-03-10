@@ -190,6 +190,87 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/10/lintcode-892-%E5%A4%96%E6%98%9F%E4%BA%BA%E5%AD%97%E5%85%B8-%E6%8B%93%E6%89%91bfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liuguanzhang.jpg">
+      <meta itemprop="name" content="春春">
+      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃园三结义">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/10/lintcode-892-%E5%A4%96%E6%98%9F%E4%BA%BA%E5%AD%97%E5%85%B8-%E6%8B%93%E6%89%91bfs/" class="post-title-link" itemprop="url">lintcode-892-外星人字典-拓扑bfs</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-10 15:49:33 / 修改时间：16:58:01" itemprop="dateCreated datePublished" datetime="2022-03-10T15:49:33+08:00">2022-03-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lintcode/" itemprop="url" rel="index"><span itemprop="name">lintcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="外星人字典"><a href="#外星人字典" class="headerlink" title="外星人字典"></a>外星人字典</h1><ul>
+<li>题意中从 “wrt”和”wrf” ,我们可以得到 ‘t’&lt;’f’，得不到wrt三字母的关系</li>
+<li>建立每个字母的入度</li>
+<li>根据排序关系建立向量关系</li>
+<li>abc,ab为错误排序,空字符字典排序最高</li>
+<li>题意这里可能有多个有效的字母顺序，返回以正常字典顺序看来最小的。就是说queue的内部的排序规则按照正常字典排序，应用堆结构。</li>
+<li>堆用法from heapq import * heapify/heappop()/heappush()
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/10/lintcode-892-%E5%A4%96%E6%98%9F%E4%BA%BA%E5%AD%97%E5%85%B8-%E6%8B%93%E6%89%91bfs/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/09/lintcode-605-%E5%BA%8F%E5%88%97%E9%87%8D%E6%9E%84-bfs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -221,7 +302,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-10 09:21:22" itemprop="dateModified" datetime="2022-03-10T09:21:22+08:00">2022-03-10</time>
+                <time title="修改时间：2022-03-10 09:23:46" itemprop="dateModified" datetime="2022-03-10T09:23:46+08:00">2022-03-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -248,9 +329,7 @@
 <li>首先用字典与seqs构建边字典</li>
 <li>再用边字典构建入度字典</li>
 <li>最后用入度字典与边字典重构序列，如果发现queue中元素大于1个则重构序列不唯一</li>
-<li>返回重构序列与原始序列的对比<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> (</span><br><span class="line">    <span class="type">List</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param org: a permutation of the integers from 1 to n</span></span><br><span class="line"><span class="string">    @param seqs: a list of sequences</span></span><br><span class="line"><span class="string">    @return: true if it can be reconstructed only one or false</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sequence_reconstruction</span>(<span class="params">self, org: <span class="type">List</span>[<span class="built_in">int</span>], seqs: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="built_in">bool</span>:</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        vector = self.getVector(seqs)</span><br><span class="line">        indegree = self.getIndegree(seqs, vector)</span><br><span class="line">        newList = self.getSortedList(indegree, vector)</span><br><span class="line">        <span class="keyword">return</span> newList == org</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getVector</span>(<span class="params">self, seqs</span>):</span></span><br><span class="line">        vector = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> seq <span class="keyword">in</span> seqs:</span><br><span class="line">            <span class="keyword">for</span> temp <span class="keyword">in</span> seq:</span><br><span class="line">                <span class="keyword">if</span> temp <span class="keyword">not</span> <span class="keyword">in</span> vector:</span><br><span class="line">                    vector[temp] = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> seq <span class="keyword">in</span> seqs:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(seq)):</span><br><span class="line">                vector[seq[i - <span class="number">1</span>]].append(seq[i])</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">return</span> vector</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getIndegree</span>(<span class="params">self, seqs, vector</span>):</span></span><br><span class="line">        indegree = &#123;x: <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> vector.keys()&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> vector:</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> vector[i]:</span><br><span class="line">                indegree[j] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> indegree</span><br><span class="line">            </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getSortedList</span>(<span class="params">self, indegree, vector</span>):</span></span><br><span class="line">        queue = []</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> indegree.keys():</span><br><span class="line">            <span class="keyword">if</span> indegree[i] == <span class="number">0</span>:</span><br><span class="line">                queue.append(i)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(queue) &gt; <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            cur = queue.pop(<span class="number">0</span>)</span><br><span class="line">            res.append(cur)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> vector[cur]:</span><br><span class="line">                indegree[i] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> indegree[i] == <span class="number">0</span>:</span><br><span class="line">                    queue.append(i)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></li>
-</ul>
-
+<li>返回重构序列与原始序列的对比
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/03/09/lintcode-605-%E5%BA%8F%E5%88%97%E9%87%8D%E6%9E%84-bfs/#more" rel="contents">
@@ -300,10 +379,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-03-09 00:10:17 / 修改时间：14:24:02" itemprop="dateCreated datePublished" datetime="2022-03-09T00:10:17+08:00">2022-03-09</time>
+              <time title="创建时间：2022-03-09 00:10:17" itemprop="dateCreated datePublished" datetime="2022-03-09T00:10:17+08:00">2022-03-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-10 09:24:07" itemprop="dateModified" datetime="2022-03-10T09:24:07+08:00">2022-03-10</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -328,9 +413,7 @@
           <h1 id="课程表2"><a href="#课程表2" class="headerlink" title="课程表2"></a>课程表2</h1><ul>
 <li>计算入度和每个点出发的边，用字典保存</li>
 <li>queue放入度为0的点，这些课程直接可修</li>
-<li>queue出队，出队的点减少对应指向点的度，使得其他点度为0时可以入队<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param: numCourses: a total of n courses</span></span><br><span class="line"><span class="string">    @param: prerequisites: a list of prerequisite pairs</span></span><br><span class="line"><span class="string">    @return: the course order</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findOrder</span>(<span class="params">self, numCourses, prerequisites</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        </span><br><span class="line">        indegree = &#123;x: <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(numCourses)&#125;</span><br><span class="line">        edge = &#123;x: [] <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(numCourses)&#125;</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> prerequisites:</span><br><span class="line">            indegree[i] += <span class="number">1</span></span><br><span class="line">            edge[j].append(i)</span><br><span class="line"></span><br><span class="line">        queue = []</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> temp <span class="keyword">in</span> indegree:</span><br><span class="line">            <span class="keyword">if</span> indegree[temp] == <span class="number">0</span>:</span><br><span class="line">                queue.append(temp)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            curClass = queue.pop(<span class="number">0</span>)</span><br><span class="line">            res.append(curClass)</span><br><span class="line">            <span class="keyword">if</span> edge[curClass] == []:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">for</span> nextClass <span class="keyword">in</span> edge[curClass]:</span><br><span class="line">                indegree[nextClass] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> indegree[nextClass] == <span class="number">0</span>:</span><br><span class="line">                    queue.append(nextClass)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(res) == numCourses:</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br></pre></td></tr></table></figure></li>
-</ul>
-
+<li>queue出队，出队的点减少对应指向点的度，使得其他点度为0时可以入队
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/03/09/lintcode-616-%E8%AF%BE%E7%A8%8B%E8%A1%A82-%E6%9C%89%E5%90%91%E5%9B%BEbfs/#more" rel="contents">
@@ -912,95 +995,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/HCIP-02-%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liuguanzhang.jpg">
-      <meta itemprop="name" content="春春">
-      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="桃园三结义">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/28/HCIP-02-%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8B/" class="post-title-link" itemprop="url">HCIP-02-防火墙下</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-28 14:06:44" itemprop="dateCreated datePublished" datetime="2022-02-28T14:06:44+08:00">2022-02-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-03 09:52:29" itemprop="dateModified" datetime="2022-03-03T09:52:29+08:00">2022-03-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HCIP/" itemprop="url" rel="index"><span itemprop="name">HCIP</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="防火墙下"><a href="#防火墙下" class="headerlink" title="防火墙下"></a>防火墙下</h1><ul>
-<li>主要工作是控制，默认的策略都是拒绝，区域是基于接口划分的，一个区域可以拥有多个接口<ul>
-<li>local 100</li>
-<li>trust 85</li>
-<li>dmz 50</li>
-<li>untrust 5</li>
-</ul>
-</li>
-<li>跨区域访问：高到低优先级为out;低到高优先级为in
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/02/28/HCIP-02-%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1072,7 +1066,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
