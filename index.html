@@ -190,6 +190,397 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/10/lintcode-573-%E9%82%AE%E5%B1%80%E7%9A%84%E5%BB%BA%E7%AB%8B2-bfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liuguanzhang.jpg">
+      <meta itemprop="name" content="春春">
+      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃园三结义">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/10/lintcode-573-%E9%82%AE%E5%B1%80%E7%9A%84%E5%BB%BA%E7%AB%8B2-bfs/" class="post-title-link" itemprop="url">lintcode-573-邮局的建立2-bfs</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-10 22:07:38 / 修改时间：22:44:54" itemprop="dateCreated datePublished" datetime="2022-03-10T22:07:38+08:00">2022-03-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lintcode/" itemprop="url" rel="index"><span itemprop="name">lintcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="邮局的建立2"><a href="#邮局的建立2" class="headerlink" title="邮局的建立2"></a>邮局的建立2</h1><ul>
+<li>对每个 house 做 BFS</li>
+<li>记录每个 empty：能被多少个 house 触及，这些能触及的 house 到达这个 empty 的总步数之和</li>
+<li>如果最后每个 empty 都无法被所有 house 触及 (即不等于 house 个数)，则返回 -1</li>
+<li>如果有能被所有 house 触及的 empty，取其最小的返回</li>
+<li>用字典保存每个空格，空格坐标为键，能够到达该空格的房间数与达到该空格的总步数为值</li>
+<li>最后通过空格字典第一个值是否等于房子数来判断是否存在邮局坐标，然后返回这些坐标中最小步数
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/10/lintcode-573-%E9%82%AE%E5%B1%80%E7%9A%84%E5%BB%BA%E7%AB%8B2-bfs/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/10/lintcode-598-%E5%83%B5%E5%B0%B8%E7%9F%A9%E9%98%B5-bfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liuguanzhang.jpg">
+      <meta itemprop="name" content="春春">
+      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃园三结义">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/10/lintcode-598-%E5%83%B5%E5%B0%B8%E7%9F%A9%E9%98%B5-bfs/" class="post-title-link" itemprop="url">lintcode-598-僵尸矩阵-bfs</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-10 21:20:35 / 修改时间：21:40:28" itemprop="dateCreated datePublished" datetime="2022-03-10T21:20:35+08:00">2022-03-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lintcode/" itemprop="url" rel="index"><span itemprop="name">lintcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="僵尸矩阵"><a href="#僵尸矩阵" class="headerlink" title="僵尸矩阵"></a>僵尸矩阵</h1><ul>
+<li>将僵尸坐标入队，然后进行bfs,记录层数也就是days</li>
+<li>遇到0便将其变为1并入队，遇到1遇到2均不操作</li>
+<li>最后遍历矩阵，存在0返回-1，否则返回days
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/10/lintcode-598-%E5%83%B5%E5%B0%B8%E7%9F%A9%E9%98%B5-bfs/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/10/lintcode-431-%E6%89%BE%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E5%9D%97-bfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liuguanzhang.jpg">
+      <meta itemprop="name" content="春春">
+      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃园三结义">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/10/lintcode-431-%E6%89%BE%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E5%9D%97-bfs/" class="post-title-link" itemprop="url">lintcode-431-找无向图的连通块-bfs</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-10 20:51:35 / 修改时间：21:14:36" itemprop="dateCreated datePublished" datetime="2022-03-10T20:51:35+08:00">2022-03-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lintcode/" itemprop="url" rel="index"><span itemprop="name">lintcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="找无向图的连通块"><a href="#找无向图的连通块" class="headerlink" title="找无向图的连通块"></a>找无向图的连通块</h1><ul>
+<li>遍历点针对每个点进行bfs,并在点入队之后就标记为visited,如果出队时标记则可能导致环中的节点被入队两次</li>
+<li>题目要求每个连通块有序 sorted()
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/10/lintcode-431-%E6%89%BE%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E5%9D%97-bfs/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/10/lintcode-618-%E6%90%9C%E7%B4%A2%E5%9B%BE%E4%B8%AD%E8%8A%82%E7%82%B9-bfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liuguanzhang.jpg">
+      <meta itemprop="name" content="春春">
+      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃园三结义">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/10/lintcode-618-%E6%90%9C%E7%B4%A2%E5%9B%BE%E4%B8%AD%E8%8A%82%E7%82%B9-bfs/" class="post-title-link" itemprop="url">lintcode-618-搜索图中节点-bfs</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-10 20:33:50 / 修改时间：20:49:15" itemprop="dateCreated datePublished" datetime="2022-03-10T20:33:50+08:00">2022-03-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lintcode/" itemprop="url" rel="index"><span itemprop="name">lintcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="搜索图中的点"><a href="#搜索图中的点" class="headerlink" title="搜索图中的点"></a>搜索图中的点</h1><ul>
+<li>从给出的头结点bfs即可，注意要保存visited
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/10/lintcode-618-%E6%90%9C%E7%B4%A2%E5%9B%BE%E4%B8%AD%E8%8A%82%E7%82%B9-bfs/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/10/lintcode-178-%E5%9B%BE%E6%98%AF%E5%90%A6%E6%98%AF%E6%A0%91-bfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liuguanzhang.jpg">
+      <meta itemprop="name" content="春春">
+      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃园三结义">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/10/lintcode-178-%E5%9B%BE%E6%98%AF%E5%90%A6%E6%98%AF%E6%A0%91-bfs/" class="post-title-link" itemprop="url">lintcode-178-图是否是树-bfs</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-10 20:10:05 / 修改时间：20:32:35" itemprop="dateCreated datePublished" datetime="2022-03-10T20:10:05+08:00">2022-03-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lintcode/" itemprop="url" rel="index"><span itemprop="name">lintcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="图是否是树"><a href="#图是否是树" class="headerlink" title="图是否是树"></a>图是否是树</h1><ul>
+<li>如果是树的话边数=点数-1，不满足这一条不是树</li>
+<li>如果满足第一条但是有环的话，则一定有孤立点，成环比树多一条边</li>
+<li>随便找个点开始bfs,并保存visited</li>
+<li>最后判断visited的长度是不是n,如果是则说明是树
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/10/lintcode-178-%E5%9B%BE%E6%98%AF%E5%90%A6%E6%98%AF%E6%A0%91-bfs/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/10/lintcode-892-%E5%A4%96%E6%98%9F%E4%BA%BA%E5%AD%97%E5%85%B8-%E6%8B%93%E6%89%91bfs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -591,410 +982,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/07/lintcode-611-%E9%AA%91%E5%A3%AB%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%BA%BF-%E5%88%86%E5%B1%82bfs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liuguanzhang.jpg">
-      <meta itemprop="name" content="春春">
-      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="桃园三结义">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/07/lintcode-611-%E9%AA%91%E5%A3%AB%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%BA%BF-%E5%88%86%E5%B1%82bfs/" class="post-title-link" itemprop="url">lintcode-611-骑士的最短路线-分层bfs</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-03-07 00:16:38 / 修改时间：01:12:23" itemprop="dateCreated datePublished" datetime="2022-03-07T00:16:38+08:00">2022-03-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/lintcode/" itemprop="url" rel="index"><span itemprop="name">lintcode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="骑士的最短路线"><a href="#骑士的最短路线" class="headerlink" title="骑士的最短路线"></a>骑士的最短路线</h1><ul>
-<li>初始栈中仅有初试点</li>
-<li>设置set保存已访问了的点</li>
-<li>分层bfs,用一个变量保存距离，进入下一层距离就加一
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/03/07/lintcode-611-%E9%AA%91%E5%A3%AB%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%BA%BF-%E5%88%86%E5%B1%82bfs/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/05/C4D-01-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liuguanzhang.jpg">
-      <meta itemprop="name" content="春春">
-      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="桃园三结义">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/05/C4D-01-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">C4D-01-学习笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-05 11:03:12" itemprop="dateCreated datePublished" datetime="2022-03-05T11:03:12+08:00">2022-03-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-07 01:12:40" itemprop="dateModified" datetime="2022-03-07T01:12:40+08:00">2022-03-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C4D/" itemprop="url" rel="index"><span itemprop="name">C4D</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="01-C4D基本介绍"><a href="#01-C4D基本介绍" class="headerlink" title="01.C4D基本介绍"></a>01.C4D基本介绍</h1><ul>
-<li>B站up：辉辉讲设计</li>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1zx411976G?p=2">https://www.bilibili.com/video/BV1zx411976G?p=2</a>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/03/05/C4D-01-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/03/lintcode-433-%E5%B2%9B%E5%B1%BF%E7%9A%84%E4%B8%AA%E6%95%B0-bfs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liuguanzhang.jpg">
-      <meta itemprop="name" content="春春">
-      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="桃园三结义">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/03/lintcode-433-%E5%B2%9B%E5%B1%BF%E7%9A%84%E4%B8%AA%E6%95%B0-bfs/" class="post-title-link" itemprop="url">lintcode-433-岛屿的个数-bfs</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-03-03 22:05:04 / 修改时间：22:11:56" itemprop="dateCreated datePublished" datetime="2022-03-03T22:05:04+08:00">2022-03-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/lintcode/" itemprop="url" rel="index"><span itemprop="name">lintcode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="岛屿的个数"><a href="#岛屿的个数" class="headerlink" title="岛屿的个数"></a>岛屿的个数</h1><ul>
-<li>遍历每一个点，如果发现为1的点就进行宽度优先搜索，建立一个集合保存搜索到为1的点的坐标，再次遇到搜索过的点时就跳过该点
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/03/03/lintcode-433-%E5%B2%9B%E5%B1%BF%E7%9A%84%E4%B8%AA%E6%95%B0-bfs/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/03/lintcode-120-%E5%8D%95%E8%AF%8D%E6%8E%A5%E9%BE%99-bfs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liuguanzhang.jpg">
-      <meta itemprop="name" content="春春">
-      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="桃园三结义">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/03/lintcode-120-%E5%8D%95%E8%AF%8D%E6%8E%A5%E9%BE%99-bfs/" class="post-title-link" itemprop="url">lintcode-120-单词接龙-bfs</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-03 15:41:39" itemprop="dateCreated datePublished" datetime="2022-03-03T15:41:39+08:00">2022-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-05 08:26:52" itemprop="dateModified" datetime="2022-03-05T08:26:52+08:00">2022-03-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/lintcode/" itemprop="url" rel="index"><span itemprop="name">lintcode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="单词接龙"><a href="#单词接龙" class="headerlink" title="单词接龙"></a>单词接龙</h1><ul>
-<li>因为对于每一次变化，都只往下走一步。for i in range(len(queue)):保证了每次都只在上一次改变的基础上改变一个字母。 </li>
-<li>比如第一次 hot 变成 <em>ot, h</em>t, ho*,  如果这些结果里没有的话，再对于每一个queue里的单词，都再改变一个字母。 这样每一批点（即distance相同的点）都是同时迈入下一步的，所以最先等于end的点，就代表了最近的distance。</li>
-<li>相当于n叉树的层次遍历，n为单词长度</li>
-</ul>
-<!--mroe-->
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param: start: a string</span></span><br><span class="line"><span class="string">    @param: end: a string</span></span><br><span class="line"><span class="string">    @param: dict: a set of string</span></span><br><span class="line"><span class="string">    @return: An integer</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ladderLength</span>(<span class="params">self, start, end, dictionary</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        dictionary.add(end)</span><br><span class="line">        queue = [start]</span><br><span class="line">        visited = []</span><br><span class="line">        distance = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            distance += <span class="number">1</span></span><br><span class="line">            length = <span class="built_in">len</span>(queue)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(length):</span><br><span class="line">                curWord = queue.pop(<span class="number">0</span>)               </span><br><span class="line">                <span class="keyword">if</span> curWord == end:</span><br><span class="line">                    <span class="keyword">return</span> distance</span><br><span class="line">                <span class="keyword">if</span> curWord <span class="keyword">in</span> visited:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> curWord <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                    visited.append(curWord)</span><br><span class="line">                    nextWords = self.getNextWords(curWord, visited, dictionary)</span><br><span class="line">                    queue.extend(nextWords)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getNextWords</span>(<span class="params">self, word, visited, dictionary</span>):</span></span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(word)):</span><br><span class="line">            left, right = word[<span class="number">0</span>:i], word[i+<span class="number">1</span>:]</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">26</span>):</span><br><span class="line">                temp = left + <span class="built_in">chr</span>(<span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>) + j) + right</span><br><span class="line">                <span class="keyword">if</span> temp <span class="keyword">not</span> <span class="keyword">in</span> visited <span class="keyword">and</span> temp <span class="keyword">in</span> dictionary:</span><br><span class="line">                    res.append(temp)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/03/03/lintcode-120-%E5%8D%95%E8%AF%8D%E6%8E%A5%E9%BE%99-bfs/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/03/lintcode-137-%E5%85%8B%E9%9A%86%E5%9B%BE-bfs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liuguanzhang.jpg">
-      <meta itemprop="name" content="春春">
-      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="桃园三结义">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/03/lintcode-137-%E5%85%8B%E9%9A%86%E5%9B%BE-bfs/" class="post-title-link" itemprop="url">lintcode-137-克隆图-bfs</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-03-03 14:02:19 / 修改时间：22:12:41" itemprop="dateCreated datePublished" datetime="2022-03-03T14:02:19+08:00">2022-03-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/lintcode/" itemprop="url" rel="index"><span itemprop="name">lintcode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="克隆图"><a href="#克隆图" class="headerlink" title="克隆图"></a>克隆图</h1><ol>
-<li>找到所有的点，应用bfs和set()</li>
-<li>复制所有的点，将映射关系存起来,应用dic()</li>
-<li>找到所有的边，复制每一条边</li>
-<li>分子涵书写，去耦合更容易阅读
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/03/03/lintcode-137-%E5%85%8B%E9%9A%86%E5%9B%BE-bfs/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1066,7 +1053,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
