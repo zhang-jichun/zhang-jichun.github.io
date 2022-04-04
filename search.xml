@@ -1345,7 +1345,7 @@ Name: median_house_value, Length: 3400, dtype: float64
   <entry>
     <title>机器学习-02-支持向量机-人脸分类</title>
     <url>/2022/04/03/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-02-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-%E4%BA%BA%E8%84%B8%E5%88%86%E7%B1%BB/</url>
-    <content><![CDATA[<h1 id="支持向量机-人脸分类"><a href="#支持向量机-人脸分类" class="headerlink" title="支持向量机-人脸分类"></a>支持向量机-人脸分类</h1><p>视频讲解：清华大学-袁博<br><a href="https://www.bilibili.com/video/BV1Vt411v7bg?p">https://www.bilibili.com/video/BV1Vt411v7bg?p</a><br>最大化margin，也就是支持向量到超平面的距离<br>wx + b = 1, 0(超平面), -1<br>条件y(wx + b) - 1 &gt;= 0，求w模的最小值<br>对偶问题 g(x)=∑αyx + b 求其中的非零α<br>soft margin 线性不可分<br>条件y(wx + b) - 1 + ξ &gt;= 0，求w模的最小值<br>目标函数 0.5w’w + C∑ξ 后项为惩罚量<br>线性不可分 升维 转换映射 增加平方项 交叉项<br>核函数绕过高维空间运算 poly gauss</p>
+    <content><![CDATA[<h1 id="支持向量机-人脸分类"><a href="#支持向量机-人脸分类" class="headerlink" title="支持向量机-人脸分类"></a>支持向量机-人脸分类</h1><p>视频讲解：清华大学-袁博<br><a href="https://www.bilibili.com/video/BV1Vt411v7bg?p">https://www.bilibili.com/video/BV1Vt411v7bg?p</a><br>最大化margin，也就是支持向量到超平面的距离<br>wx + b = 1, 0(超平面), -1<br>条件y(wx + b) - 1 &gt;= 0，求w模的最小值<br>对偶问题 g(x)=∑αyx + b 求其中的非零α<br>soft margin 线性不可分<br>条件y(wx + b) - 1 + ξ &gt;= 0，求w模的最小值<br>目标函数 0.5w’w + C∑ξ 后项为惩罚量 C为惩罚系数 系数越大越不容忍误差<br>线性不可分 升维 转换映射 增加平方项 交叉项<br>核函数绕过高维空间运算 poly gauss</p>
 <p>使用支持向量机实现人脸的分类识别，主要流程是对输入的人脸数据，使用主成分分析（PCA）方法进行降维处理，然后利用降维后的数据作为人脸特征，输入到SVM中，进行人脸的分类识别。</p>
 <span id="more"></span>
 
@@ -1525,6 +1525,17 @@ Junichiro Koizumi       0.92      0.92      0.92        12
 ]]></content>
       <categories>
         <category>机器学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>其他-dxomark屏幕质量测试</title>
+    <url>/2022/04/04/%E5%85%B6%E4%BB%96-dxomark%E5%B1%8F%E5%B9%95%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<h1 id="在线屏幕质量检测"><a href="#在线屏幕质量检测" class="headerlink" title="在线屏幕质量检测"></a>在线屏幕质量检测</h1><p><a href="https://screen.bmcx.com/#welcome">https://screen.bmcx.com/#welcome</a><br>纯红色 绿 蓝 黄 青 洋红 白 黑<br>水平线、垂直线、正斜线、点阵：测试模拟信号的干扰水平<br>微型图案：测试crt显示器及投影仪的对焦水平<br>方形网络、彩色网格：测试屏幕边缘是否有显示畸变<br>暗对比度、亮对比度：用于测试屏幕的对比度，一般的非专业显示器无法区分最后一行的色块边缘。<br>白色渐变：用于测试显示器的色彩平滑程度，颜色过渡平滑的显示设备更佳。</p>
+<h1 id="我们如何测试屏幕质量"><a href="#我们如何测试屏幕质量" class="headerlink" title="我们如何测试屏幕质量"></a>我们如何测试屏幕质量</h1><p><a href="http://www.dxomark.cn/?p=57306">http://www.dxomark.cn/?p=57306</a></p>
+<h1 id="深入探究dxomark屏幕测试"><a href="#深入探究dxomark屏幕测试" class="headerlink" title="深入探究dxomark屏幕测试"></a>深入探究dxomark屏幕测试</h1><p><a href="https://www.dxomark.cn/a-closer-look-at-dxomark-display-testing/">https://www.dxomark.cn/a-closer-look-at-dxomark-display-testing/</a></p>
+]]></content>
+      <categories>
+        <category>其他</category>
       </categories>
   </entry>
 </search>
