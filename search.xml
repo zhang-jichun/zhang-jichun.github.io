@@ -1218,6 +1218,7 @@
 <h1 id="设置文章密码"><a href="#设置文章密码" class="headerlink" title="设置文章密码"></a>设置文章密码</h1><p><a href="https://www.tqwba.com/x_d/jishu/36068.html">https://www.tqwba.com/x_d/jishu/36068.html</a></p>
 <h1 id="添加看板娘插件"><a href="#添加看板娘插件" class="headerlink" title="添加看板娘插件"></a>添加看板娘插件</h1><p><a href="https://www.jianshu.com/p/ebde730615f5">https://www.jianshu.com/p/ebde730615f5</a></p>
 <h1 id="markdown学习"><a href="#markdown学习" class="headerlink" title="markdown学习"></a>markdown学习</h1><p><a href="https://www.runoob.com/markdown/md-tutorial.html">https://www.runoob.com/markdown/md-tutorial.html</a><br><a href="https://www.appinn.com/markdown/">https://www.appinn.com/markdown/</a></p>
+<h1 id="插入数学公式"><a href="#插入数学公式" class="headerlink" title="插入数学公式"></a>插入数学公式</h1><p><a href="https://www.jianshu.com/p/70917dab822b">https://www.jianshu.com/p/70917dab822b</a></p>
 ]]></content>
       <categories>
         <category>博客创建</category>
@@ -1536,6 +1537,140 @@ Junichiro Koizumi       0.92      0.92      0.92        12
 ]]></content>
       <categories>
         <category>其他</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>读书-机器学习基础</title>
+    <url>/2022/04/04/%E8%AF%BB%E4%B9%A6-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="机器学习基础"><a href="#机器学习基础" class="headerlink" title="机器学习基础"></a>机器学习基础</h1><p>参考书 零基础学机器学习</p>
+<span id="more"></span>
+<h1 id="第1课-机器学习快速上手路径——唯有实战"><a href="#第1课-机器学习快速上手路径——唯有实战" class="headerlink" title="第1课 机器学习快速上手路径——唯有实战"></a>第1课 机器学习快速上手路径——唯有实战</h1><ul>
+<li>机器学习的关键内涵在于利用计算机的运算能力从大量的数据中发现一个函数或模型，并通过它来模拟现实世界事物之间的关系从而实现预测或判断的功能。</li>
+<li>特征 标签 训练集 验证集 测试集</li>
+<li>训练集、验证集、测试集的作用 <a href="https://blog.csdn.net/ytusdc/article/details/86488537">https://blog.csdn.net/ytusdc/article/details/86488537</a></li>
+<li>监督学习 无监督学习 半监督学习</li>
+<li>深度学习的优势：减少手工进行特征工程任务</li>
+<li>回归与分类：回归问题通常用来预测一个值，其标签值连续；分类问题结果为离散值。</li>
+<li>工具：jupyterNotebook</li>
+<li>案例：加州房价预测</li>
+<li>案例：mnist手写数字识别</li>
+<li>pandas numpy matplotlib seaborn scikit-learn</li>
+<li>数据的预处理：可视化、数据向量化、数据清洗、特征缩放（标准化规范化）</li>
+<li>内部参数（权重、偏置） 超参数</li>
+<li>损失函数：均方误差 分类问题的交叉熵</li>
+<li>K折验证（交叉验证）：K折检验，针对数据集较小的情况下，为确认模型的超参数，而进行的操作。这样的话，其实每一次的K折检验，都是事先固定一组超参，训练得到K个模型，再得到K个评估结果，综合得到此次K折检验的评估分。 设定不同的超参的情况下（可以结合网格搜索方法），对多组超参组合，分别进行多次的K折检验（每次检验就是对一组超参进行评估，得到一个对应的综合评估结果），从而得到多个综合评估结果。从这些评估结果中，找到评估分数最高的那组模型，确定最终模型的超参。然后再使用最终确定的超参和完整的数据集（此时数据集不再进行切分，全部纳入模型训练），训练出一个最终的模型。 <a href="https://blog.csdn.net/u011698800/article/details/107607829">https://blog.csdn.net/u011698800/article/details/107607829</a> 置顶评论</li>
+</ul>
+<h1 id="第2课-数学和python基础知识一天搞定"><a href="#第2课-数学和python基础知识一天搞定" class="headerlink" title="第2课 数学和python基础知识一天搞定"></a>第2课 数学和python基础知识一天搞定</h1><ul>
+<li>线性函数 二次函数和高次函数 激活函数（sigmoid relu leakyRelu）</li>
+<li>凸函数 碗状且只有一个最低点</li>
+<li>梯度下降 凸函数能找到全局最优解 非凸函数可能会找到局部最优解</li>
+<li>张量 轴 阶（轴的个数） 维（某个阶上的元素数目）</li>
+<li>标量 0阶张量 向量 1阶张量 矩阵 2阶张量 序列数据 3阶张量 图像数据 4阶张量 视频数据 5阶张量</li>
+<li>回归 分类 聚类</li>
+<li>条件概率 后验概率 似然</li>
+<li>标准差 方差</li>
+</ul>
+<h1 id="第3课-线性回归——预测网店的销售额"><a href="#第3课-线性回归——预测网店的销售额" class="headerlink" title="第3课 线性回归——预测网店的销售额"></a>第3课 线性回归——预测网店的销售额</h1><ul>
+<li>相关性系数 -1到1</li>
+<li>训练集 验证集 测试集 6：2：2</li>
+<li>归一化不能使用测试集中的信息，使数据范围变为0到1</li>
+<li>假设函数 hypothesis function 预测值y’</li>
+<li>损失函数（误差函数）<ul>
+<li>回归：均方误差L2损失函数、平均绝对误差L1损失函数、平均偏差误差</li>
+<li>分类：交叉熵损失函数、多分类svm损失函数</li>
+</ul>
+</li>
+<li>均方误差损失函数之所以需要平方是为了让L(w,b)形成相对于w和b而言的凸函数</li>
+<li>梯度下降：损失函数的收敛</li>
+<li>学习速率α 即一次梯度变化的步长 学习速率过小学习效率低，过大则可能越过最低点</li>
+<li>迭代次数</li>
+</ul>
+<h1 id="第4课-逻辑回归——给病患和鸢尾花分类"><a href="#第4课-逻辑回归——给病患和鸢尾花分类" class="headerlink" title="第4课 逻辑回归——给病患和鸢尾花分类"></a>第4课 逻辑回归——给病患和鸢尾花分类</h1><ul>
+<li>sigmoid 逻辑函数</li>
+<li>输入-线性函数-sigmoid函数-概率-分类</li>
+<li>假设函数 h(x)=sigmoid(wx)</li>
+<li>逻辑回归的损失函数：<ul>
+<li>y=1时 L=-log(h(x))</li>
+<li>y=-1时 L=-log(1-h(x))</li>
+<li>L=-1/N ∑(ylog(h(x))+(1-y)log(1-h(x)))</li>
+<li>以误差均值作为损失</li>
+</ul>
+</li>
+<li>读取数据</li>
+<li>构建特征集和标签集</li>
+<li>拆分数据集</li>
+<li>数据特征缩放</li>
+<li>绘制损失曲线 迭代次数-损失 迭代次数过多会出现过拟合现象</li>
+<li>哑特征 将多个种类拆成多个特征 只用0和1表示</li>
+<li>多分类：有多少类别就训练多少二元分类器</li>
+<li>多分类损失函数：<ul>
+<li>one-hot分类采用分类交叉熵</li>
+<li>输出标签编码采用稀疏分类交叉熵</li>
+<li>交叉熵越低表示两个概率分布越靠近 <a href="https://blog.csdn.net/u014453898/article/details/81559462">https://blog.csdn.net/u014453898/article/details/81559462</a></li>
+</ul>
+</li>
+<li>正则化：在损失函数里面加惩罚项，增加建模的模糊性，有效防止过拟合</li>
+<li>欠拟合 过拟合 泛化能力</li>
+<li>降低过拟合方法：增加训练集、调整超参数（迭代次数）、选用简单模型、添加正则项</li>
+<li>正则项：当权重大的时候损失加大，λ约大惩罚越大，从而引导机器拟合时不会随便增加权重</li>
+<li>奥卡姆剃刀定律：越简单的模型有可能具有越强的泛化能力</li>
+<li>L1正则化（套索回归LassoRegression）：权重绝对值总和，应用稀疏特征</li>
+<li>L2正则化（岭回归RidgeRegression）：权重平方和，应用线性模型</li>
+<li>正则化力度C：C越小，正则化力度越大，超参数</li>
+</ul>
+<h1 id="第5课-深度神经网络——找出可能流失的客户"><a href="#第5课-深度神经网络——找出可能流失的客户" class="headerlink" title="第5课 深度神经网络——找出可能流失的客户"></a>第5课 深度神经网络——找出可能流失的客户</h1><ul>
+<li>感知机 多层感知器 梯度反向传播</li>
+<li>浅层神经网络可以模拟任何连续函数，深层神经网络更是可以用更少的参数来学到更好的拟合。</li>
+<li>深度学习的机理:它是用—串—串的函数，也就是层堆叠起来，作用于输入数据，进行从原始数据到分类结果的过滤与提纯。这些层通过权重来参数化，通过损失函数来判断当前网络的效能，然后通过优化器来调整权重，寻找从输入到输出的最佳函数。</li>
+<li>感知器：输入-线性函数-激活函数-逻辑值</li>
+<li>神经网络的隐层把手工的特征工程丢给了神经网络。</li>
+<li>二分类问题输出层sigmoid是固定选择</li>
+<li>优化器 adam rmsprop</li>
+<li>损失函数：二分类用二元交叉熵 线性回归用均方误差</li>
+<li>评注指标：准确率</li>
+<li>batchSize:指定数据批量</li>
+<li>混淆矩阵 精确率 召回率 F1分数</li>
+<li>对于神经网络而言，特征缩放极为重要</li>
+<li>阈值调整、欠采样、过采样</li>
+<li>正向传播 反向传播 链式求导法则</li>
+<li>梯度下降优化器：防止进入局部最优点adam集大成者</li>
+<li>sigmoid 反向传播 梯度消失 引出relu</li>
+<li>relu 收敛速度快 不存在梯度消失</li>
+<li>softmax用于多分类输出</li>
+<li>损失函数：<ul>
+<li>回归：均方误差</li>
+<li>二分类：二元交叉熵</li>
+<li>多分类onehot:分类交叉熵</li>
+<li>多分类整数值：稀疏分类交叉熵</li>
+</ul>
+</li>
+<li>神经网络正则化：添加dropout层</li>
+<li>神经网络过拟合：<ul>
+<li>换用小网络</li>
+<li>先用少量数据训练一个小模型</li>
+<li>添加dropout层</li>
+<li>使用较低的学习速率配合神经元权重正则化</li>
+</ul>
+</li>
+<li>梯度消失 梯度爆炸<ul>
+<li>选择合适的激活函数</li>
+<li>权重正则化 L1加入神经元权重的绝对值作为惩罚 L2加入神经元权重的平方作为惩罚 同时加入L1L2</li>
+</ul>
+</li>
+</ul>
+<h1 id="卷积神经网络——识别狗狗的图像"><a href="#卷积神经网络——识别狗狗的图像" class="headerlink" title="卷积神经网络——识别狗狗的图像"></a>卷积神经网络——识别狗狗的图像</h1><ul>
+<li>卷积层 池化层 展平层 全连接层</li>
+<li>通过识别图像中的模式进行分类，识别小模式到识别大模式</li>
+<li>边界效应和填充</li>
+<li>卷积核 响应图 </li>
+<li>池化层 最大池化 平均池化 用来实现下采样</li>
+<li>展平层：将卷积操作的特征图展平后才能输入全连接层</li>
+<li>全连接层 第一层relu 第二层softmax分类</li>
+<li>数据增强：图片平移 颠倒 虚化 加噪声 裁剪等增加样本</li>
+</ul>
+]]></content>
+      <categories>
+        <category>读书</category>
       </categories>
   </entry>
 </search>

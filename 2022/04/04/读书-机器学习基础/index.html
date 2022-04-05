@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/liuguanzhang.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/liuguanzhang.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/liuguanzhang.jpg">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="机器学习基础参考书 零基础学机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书-机器学习基础">
+<meta property="og:url" content="http://example.com/2022/04/04/%E8%AF%BB%E4%B9%A6-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="桃园三结义">
+<meta property="og:description" content="机器学习基础参考书 零基础学机器学习">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-04T15:21:32.000Z">
+<meta property="article:modified_time" content="2022-04-05T15:44:13.586Z">
+<meta property="article:author" content="春春">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/04/04/%E8%AF%BB%E4%B9%A6-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>读书-机器学习基础 | 桃园三结义</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">桃园三结义</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">春春学习笔记</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/04/%E8%AF%BB%E4%B9%A6-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liuguanzhang.jpg">
+      <meta itemprop="name" content="春春">
+      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃园三结义">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          读书-机器学习基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-04 23:21:32" itemprop="dateCreated datePublished" datetime="2022-04-04T23:21:32+08:00">2022-04-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-05 23:44:13" itemprop="dateModified" datetime="2022-04-05T23:44:13+08:00">2022-04-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="机器学习基础"><a href="#机器学习基础" class="headerlink" title="机器学习基础"></a>机器学习基础</h1><p>参考书 零基础学机器学习</p>
+<span id="more"></span>
+<h1 id="第1课-机器学习快速上手路径——唯有实战"><a href="#第1课-机器学习快速上手路径——唯有实战" class="headerlink" title="第1课 机器学习快速上手路径——唯有实战"></a>第1课 机器学习快速上手路径——唯有实战</h1><ul>
+<li>机器学习的关键内涵在于利用计算机的运算能力从大量的数据中发现一个函数或模型，并通过它来模拟现实世界事物之间的关系从而实现预测或判断的功能。</li>
+<li>特征 标签 训练集 验证集 测试集</li>
+<li>训练集、验证集、测试集的作用 <a target="_blank" rel="noopener" href="https://blog.csdn.net/ytusdc/article/details/86488537">https://blog.csdn.net/ytusdc/article/details/86488537</a></li>
+<li>监督学习 无监督学习 半监督学习</li>
+<li>深度学习的优势：减少手工进行特征工程任务</li>
+<li>回归与分类：回归问题通常用来预测一个值，其标签值连续；分类问题结果为离散值。</li>
+<li>工具：jupyterNotebook</li>
+<li>案例：加州房价预测</li>
+<li>案例：mnist手写数字识别</li>
+<li>pandas numpy matplotlib seaborn scikit-learn</li>
+<li>数据的预处理：可视化、数据向量化、数据清洗、特征缩放（标准化规范化）</li>
+<li>内部参数（权重、偏置） 超参数</li>
+<li>损失函数：均方误差 分类问题的交叉熵</li>
+<li>K折验证（交叉验证）：K折检验，针对数据集较小的情况下，为确认模型的超参数，而进行的操作。这样的话，其实每一次的K折检验，都是事先固定一组超参，训练得到K个模型，再得到K个评估结果，综合得到此次K折检验的评估分。 设定不同的超参的情况下（可以结合网格搜索方法），对多组超参组合，分别进行多次的K折检验（每次检验就是对一组超参进行评估，得到一个对应的综合评估结果），从而得到多个综合评估结果。从这些评估结果中，找到评估分数最高的那组模型，确定最终模型的超参。然后再使用最终确定的超参和完整的数据集（此时数据集不再进行切分，全部纳入模型训练），训练出一个最终的模型。 <a target="_blank" rel="noopener" href="https://blog.csdn.net/u011698800/article/details/107607829">https://blog.csdn.net/u011698800/article/details/107607829</a> 置顶评论</li>
+</ul>
+<h1 id="第2课-数学和python基础知识一天搞定"><a href="#第2课-数学和python基础知识一天搞定" class="headerlink" title="第2课 数学和python基础知识一天搞定"></a>第2课 数学和python基础知识一天搞定</h1><ul>
+<li>线性函数 二次函数和高次函数 激活函数（sigmoid relu leakyRelu）</li>
+<li>凸函数 碗状且只有一个最低点</li>
+<li>梯度下降 凸函数能找到全局最优解 非凸函数可能会找到局部最优解</li>
+<li>张量 轴 阶（轴的个数） 维（某个阶上的元素数目）</li>
+<li>标量 0阶张量 向量 1阶张量 矩阵 2阶张量 序列数据 3阶张量 图像数据 4阶张量 视频数据 5阶张量</li>
+<li>回归 分类 聚类</li>
+<li>条件概率 后验概率 似然</li>
+<li>标准差 方差</li>
+</ul>
+<h1 id="第3课-线性回归——预测网店的销售额"><a href="#第3课-线性回归——预测网店的销售额" class="headerlink" title="第3课 线性回归——预测网店的销售额"></a>第3课 线性回归——预测网店的销售额</h1><ul>
+<li>相关性系数 -1到1</li>
+<li>训练集 验证集 测试集 6：2：2</li>
+<li>归一化不能使用测试集中的信息，使数据范围变为0到1</li>
+<li>假设函数 hypothesis function 预测值y’</li>
+<li>损失函数（误差函数）<ul>
+<li>回归：均方误差L2损失函数、平均绝对误差L1损失函数、平均偏差误差</li>
+<li>分类：交叉熵损失函数、多分类svm损失函数</li>
+</ul>
+</li>
+<li>均方误差损失函数之所以需要平方是为了让L(w,b)形成相对于w和b而言的凸函数</li>
+<li>梯度下降：损失函数的收敛</li>
+<li>学习速率α 即一次梯度变化的步长 学习速率过小学习效率低，过大则可能越过最低点</li>
+<li>迭代次数</li>
+</ul>
+<h1 id="第4课-逻辑回归——给病患和鸢尾花分类"><a href="#第4课-逻辑回归——给病患和鸢尾花分类" class="headerlink" title="第4课 逻辑回归——给病患和鸢尾花分类"></a>第4课 逻辑回归——给病患和鸢尾花分类</h1><ul>
+<li>sigmoid 逻辑函数</li>
+<li>输入-线性函数-sigmoid函数-概率-分类</li>
+<li>假设函数 h(x)=sigmoid(wx)</li>
+<li>逻辑回归的损失函数：<ul>
+<li>y=1时 L=-log(h(x))</li>
+<li>y=-1时 L=-log(1-h(x))</li>
+<li>L=-1/N ∑(ylog(h(x))+(1-y)log(1-h(x)))</li>
+<li>以误差均值作为损失</li>
+</ul>
+</li>
+<li>读取数据</li>
+<li>构建特征集和标签集</li>
+<li>拆分数据集</li>
+<li>数据特征缩放</li>
+<li>绘制损失曲线 迭代次数-损失 迭代次数过多会出现过拟合现象</li>
+<li>哑特征 将多个种类拆成多个特征 只用0和1表示</li>
+<li>多分类：有多少类别就训练多少二元分类器</li>
+<li>多分类损失函数：<ul>
+<li>one-hot分类采用分类交叉熵</li>
+<li>输出标签编码采用稀疏分类交叉熵</li>
+<li>交叉熵越低表示两个概率分布越靠近 <a target="_blank" rel="noopener" href="https://blog.csdn.net/u014453898/article/details/81559462">https://blog.csdn.net/u014453898/article/details/81559462</a></li>
+</ul>
+</li>
+<li>正则化：在损失函数里面加惩罚项，增加建模的模糊性，有效防止过拟合</li>
+<li>欠拟合 过拟合 泛化能力</li>
+<li>降低过拟合方法：增加训练集、调整超参数（迭代次数）、选用简单模型、添加正则项</li>
+<li>正则项：当权重大的时候损失加大，λ约大惩罚越大，从而引导机器拟合时不会随便增加权重</li>
+<li>奥卡姆剃刀定律：越简单的模型有可能具有越强的泛化能力</li>
+<li>L1正则化（套索回归LassoRegression）：权重绝对值总和，应用稀疏特征</li>
+<li>L2正则化（岭回归RidgeRegression）：权重平方和，应用线性模型</li>
+<li>正则化力度C：C越小，正则化力度越大，超参数</li>
+</ul>
+<h1 id="第5课-深度神经网络——找出可能流失的客户"><a href="#第5课-深度神经网络——找出可能流失的客户" class="headerlink" title="第5课 深度神经网络——找出可能流失的客户"></a>第5课 深度神经网络——找出可能流失的客户</h1><ul>
+<li>感知机 多层感知器 梯度反向传播</li>
+<li>浅层神经网络可以模拟任何连续函数，深层神经网络更是可以用更少的参数来学到更好的拟合。</li>
+<li>深度学习的机理:它是用—串—串的函数，也就是层堆叠起来，作用于输入数据，进行从原始数据到分类结果的过滤与提纯。这些层通过权重来参数化，通过损失函数来判断当前网络的效能，然后通过优化器来调整权重，寻找从输入到输出的最佳函数。</li>
+<li>感知器：输入-线性函数-激活函数-逻辑值</li>
+<li>神经网络的隐层把手工的特征工程丢给了神经网络。</li>
+<li>二分类问题输出层sigmoid是固定选择</li>
+<li>优化器 adam rmsprop</li>
+<li>损失函数：二分类用二元交叉熵 线性回归用均方误差</li>
+<li>评注指标：准确率</li>
+<li>batchSize:指定数据批量</li>
+<li>混淆矩阵 精确率 召回率 F1分数</li>
+<li>对于神经网络而言，特征缩放极为重要</li>
+<li>阈值调整、欠采样、过采样</li>
+<li>正向传播 反向传播 链式求导法则</li>
+<li>梯度下降优化器：防止进入局部最优点adam集大成者</li>
+<li>sigmoid 反向传播 梯度消失 引出relu</li>
+<li>relu 收敛速度快 不存在梯度消失</li>
+<li>softmax用于多分类输出</li>
+<li>损失函数：<ul>
+<li>回归：均方误差</li>
+<li>二分类：二元交叉熵</li>
+<li>多分类onehot:分类交叉熵</li>
+<li>多分类整数值：稀疏分类交叉熵</li>
+</ul>
+</li>
+<li>神经网络正则化：添加dropout层</li>
+<li>神经网络过拟合：<ul>
+<li>换用小网络</li>
+<li>先用少量数据训练一个小模型</li>
+<li>添加dropout层</li>
+<li>使用较低的学习速率配合神经元权重正则化</li>
+</ul>
+</li>
+<li>梯度消失 梯度爆炸<ul>
+<li>选择合适的激活函数</li>
+<li>权重正则化 L1加入神经元权重的绝对值作为惩罚 L2加入神经元权重的平方作为惩罚 同时加入L1L2</li>
+</ul>
+</li>
+</ul>
+<h1 id="卷积神经网络——识别狗狗的图像"><a href="#卷积神经网络——识别狗狗的图像" class="headerlink" title="卷积神经网络——识别狗狗的图像"></a>卷积神经网络——识别狗狗的图像</h1><ul>
+<li>卷积层 池化层 展平层 全连接层</li>
+<li>通过识别图像中的模式进行分类，识别小模式到识别大模式</li>
+<li>边界效应和填充</li>
+<li>卷积核 响应图 </li>
+<li>池化层 最大池化 平均池化 用来实现下采样</li>
+<li>展平层：将卷积操作的特征图展平后才能输入全连接层</li>
+<li>全连接层 第一层relu 第二层softmax分类</li>
+<li>数据增强：图片平移 颠倒 虚化 加噪声 裁剪等增加样本</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/04/%E5%85%B6%E4%BB%96-dxomark%E5%B1%8F%E5%B9%95%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95/" rel="prev" title="其他-dxomark屏幕质量测试">
+      <i class="fa fa-chevron-left"></i> 其他-dxomark屏幕质量测试
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80"><span class="nav-text">机器学习基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E8%AF%BE-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E8%B7%AF%E5%BE%84%E2%80%94%E2%80%94%E5%94%AF%E6%9C%89%E5%AE%9E%E6%88%98"><span class="nav-text">第1课 机器学习快速上手路径——唯有实战</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E8%AF%BE-%E6%95%B0%E5%AD%A6%E5%92%8Cpython%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80%E5%A4%A9%E6%90%9E%E5%AE%9A"><span class="nav-text">第2课 数学和python基础知识一天搞定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC3%E8%AF%BE-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E2%80%94%E2%80%94%E9%A2%84%E6%B5%8B%E7%BD%91%E5%BA%97%E7%9A%84%E9%94%80%E5%94%AE%E9%A2%9D"><span class="nav-text">第3课 线性回归——预测网店的销售额</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC4%E8%AF%BE-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E2%80%94%E2%80%94%E7%BB%99%E7%97%85%E6%82%A3%E5%92%8C%E9%B8%A2%E5%B0%BE%E8%8A%B1%E5%88%86%E7%B1%BB"><span class="nav-text">第4课 逻辑回归——给病患和鸢尾花分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC5%E8%AF%BE-%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%89%BE%E5%87%BA%E5%8F%AF%E8%83%BD%E6%B5%81%E5%A4%B1%E7%9A%84%E5%AE%A2%E6%88%B7"><span class="nav-text">第5课 深度神经网络——找出可能流失的客户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E8%AF%86%E5%88%AB%E7%8B%97%E7%8B%97%E7%9A%84%E5%9B%BE%E5%83%8F"><span class="nav-text">卷积神经网络——识别狗狗的图像</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="春春"
+      src="/images/liuguanzhang.jpg">
+  <p class="site-author-name" itemprop="name">春春</p>
+  <div class="site-description" itemprop="description">银鞍照白马，飒沓如流星。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">关关</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>
