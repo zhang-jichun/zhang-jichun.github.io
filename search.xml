@@ -57,20 +57,6 @@
       </categories>
   </entry>
   <entry>
-    <title>lintcode-127-拓扑排序-bfs</title>
-    <url>/2022/03/07/lintcode-127-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F-bfs/</url>
-    <content><![CDATA[<h1 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h1><ul>
-<li>先用字典保存所有节点的入度</li>
-<li>把所有入度为0的节点入队</li>
-<li>节点挨个出队，出队后进入结果序列，并将该节点的邻居入度-1，若邻居入度为0则邻居入队<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">class DirectedGraphNode:</span></span><br><span class="line"><span class="string">     def __init__(self, x):</span></span><br><span class="line"><span class="string">         self.label = x</span></span><br><span class="line"><span class="string">         self.neighbors = []</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param graph: A list of Directed graph node</span></span><br><span class="line"><span class="string">    @return: Any topological order for the given graph.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">topSort</span>(<span class="params">self, graph</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        nodesIndegree = self.getIndegree(graph)</span><br><span class="line">        order = []</span><br><span class="line">        queue = [node <span class="keyword">for</span> node <span class="keyword">in</span> nodesIndegree <span class="keyword">if</span> nodesIndegree[node] == <span class="number">0</span>]</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            curNode = queue.pop(<span class="number">0</span>)</span><br><span class="line">            order.append(curNode)</span><br><span class="line">            <span class="keyword">for</span> neighbor <span class="keyword">in</span> curNode.neighbors:</span><br><span class="line">                nodesIndegree[neighbor] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> nodesIndegree[neighbor] == <span class="number">0</span>:</span><br><span class="line">                    queue.append(neighbor)</span><br><span class="line">        <span class="keyword">return</span> order</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getIndegree</span>(<span class="params">self, graph</span>):</span></span><br><span class="line">        nodesIndegree = &#123;node: <span class="number">0</span> <span class="keyword">for</span> node <span class="keyword">in</span> graph&#125;</span><br><span class="line">        <span class="keyword">for</span> node <span class="keyword">in</span> graph:</span><br><span class="line">            <span class="keyword">for</span> neighbor <span class="keyword">in</span> node.neighbors:</span><br><span class="line">                nodesIndegree[neighbor] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> nodesIndegree</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>lintcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>HCIP-02-防火墙下</title>
     <url>/2022/02/28/HCIP-02-%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8B/</url>
     <content><![CDATA[<h1 id="防火墙下"><a href="#防火墙下" class="headerlink" title="防火墙下"></a>防火墙下</h1><ul>
@@ -90,22 +76,6 @@
       </categories>
   </entry>
   <entry>
-    <title>lintcode-13-字符串查找-哈希法</title>
-    <url>/2022/02/08/lintcode-13-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%A5%E6%89%BE-%E5%93%88%E5%B8%8C%E6%B3%95/</url>
-    <content><![CDATA[<p><a href="https://lc.jiuzhang.com/problem/13/">https://lc.jiuzhang.com/problem/13/</a></p>
-<h1 id="哈希法"><a href="#哈希法" class="headerlink" title="哈希法"></a>哈希法</h1><ol>
-<li>特殊情况判断</li>
-<li>哈希函数构造：31为自订值，BASE为模值，取asc值</li>
-<li>continue用法</li>
-<li>利用前值哈希计算后值哈希的方法<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param source: </span></span><br><span class="line"><span class="string">    @param target: </span></span><br><span class="line"><span class="string">    @return: return the index</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">strStr</span>(<span class="params">self, source, target</span>):</span></span><br><span class="line">        <span class="comment"># Write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> target:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(source) &lt; <span class="built_in">len</span>(target):</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">        BASE = <span class="number">10086</span></span><br><span class="line">        targetCode = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> target:</span><br><span class="line">            targetCode = (targetCode * <span class="number">31</span> + <span class="built_in">ord</span>(ch)) % BASE</span><br><span class="line"></span><br><span class="line">        power = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(target)):</span><br><span class="line">            power = (power * <span class="number">31</span>) % BASE</span><br><span class="line"></span><br><span class="line">        hashCode = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(source)):</span><br><span class="line">            hashCode = (hashCode * <span class="number">31</span> + <span class="built_in">ord</span>(source[i])) % BASE</span><br><span class="line">            <span class="keyword">if</span> i &lt; <span class="built_in">len</span>(target) - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> i &gt;= <span class="built_in">len</span>(target):</span><br><span class="line">                hashCode = (hashCode - <span class="built_in">ord</span>(source[i - <span class="built_in">len</span>(target)]) * power) % BASE</span><br><span class="line">                <span class="keyword">if</span> hashCode &lt; <span class="number">0</span> :</span><br><span class="line">                    hashCode = hashCode + BASE          </span><br><span class="line">            <span class="keyword">if</span> hashCode == targetCode:</span><br><span class="line">                <span class="keyword">if</span> target == source[i - <span class="built_in">len</span>(target) + <span class="number">1</span> : i + <span class="number">1</span>]:</span><br><span class="line">                    <span class="keyword">return</span> i - <span class="built_in">len</span>(target) + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>lintcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>lintcode-120-单词接龙-bfs</title>
     <url>/2022/03/03/lintcode-120-%E5%8D%95%E8%AF%8D%E6%8E%A5%E9%BE%99-bfs/</url>
     <content><![CDATA[<h1 id="单词接龙"><a href="#单词接龙" class="headerlink" title="单词接龙"></a>单词接龙</h1><ul>
@@ -116,6 +86,20 @@
 <!--mroe-->
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param: start: a string</span></span><br><span class="line"><span class="string">    @param: end: a string</span></span><br><span class="line"><span class="string">    @param: dict: a set of string</span></span><br><span class="line"><span class="string">    @return: An integer</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ladderLength</span>(<span class="params">self, start, end, dictionary</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        dictionary.add(end)</span><br><span class="line">        queue = [start]</span><br><span class="line">        visited = []</span><br><span class="line">        distance = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            distance += <span class="number">1</span></span><br><span class="line">            length = <span class="built_in">len</span>(queue)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(length):</span><br><span class="line">                curWord = queue.pop(<span class="number">0</span>)               </span><br><span class="line">                <span class="keyword">if</span> curWord == end:</span><br><span class="line">                    <span class="keyword">return</span> distance</span><br><span class="line">                <span class="keyword">if</span> curWord <span class="keyword">in</span> visited:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> curWord <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                    visited.append(curWord)</span><br><span class="line">                    nextWords = self.getNextWords(curWord, visited, dictionary)</span><br><span class="line">                    queue.extend(nextWords)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getNextWords</span>(<span class="params">self, word, visited, dictionary</span>):</span></span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(word)):</span><br><span class="line">            left, right = word[<span class="number">0</span>:i], word[i+<span class="number">1</span>:]</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">26</span>):</span><br><span class="line">                temp = left + <span class="built_in">chr</span>(<span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>) + j) + right</span><br><span class="line">                <span class="keyword">if</span> temp <span class="keyword">not</span> <span class="keyword">in</span> visited <span class="keyword">and</span> temp <span class="keyword">in</span> dictionary:</span><br><span class="line">                    res.append(temp)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>lintcode-127-拓扑排序-bfs</title>
+    <url>/2022/03/07/lintcode-127-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F-bfs/</url>
+    <content><![CDATA[<h1 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h1><ul>
+<li>先用字典保存所有节点的入度</li>
+<li>把所有入度为0的节点入队</li>
+<li>节点挨个出队，出队后进入结果序列，并将该节点的邻居入度-1，若邻居入度为0则邻居入队<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">class DirectedGraphNode:</span></span><br><span class="line"><span class="string">     def __init__(self, x):</span></span><br><span class="line"><span class="string">         self.label = x</span></span><br><span class="line"><span class="string">         self.neighbors = []</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param graph: A list of Directed graph node</span></span><br><span class="line"><span class="string">    @return: Any topological order for the given graph.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">topSort</span>(<span class="params">self, graph</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        nodesIndegree = self.getIndegree(graph)</span><br><span class="line">        order = []</span><br><span class="line">        queue = [node <span class="keyword">for</span> node <span class="keyword">in</span> nodesIndegree <span class="keyword">if</span> nodesIndegree[node] == <span class="number">0</span>]</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            curNode = queue.pop(<span class="number">0</span>)</span><br><span class="line">            order.append(curNode)</span><br><span class="line">            <span class="keyword">for</span> neighbor <span class="keyword">in</span> curNode.neighbors:</span><br><span class="line">                nodesIndegree[neighbor] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> nodesIndegree[neighbor] == <span class="number">0</span>:</span><br><span class="line">                    queue.append(neighbor)</span><br><span class="line">        <span class="keyword">return</span> order</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getIndegree</span>(<span class="params">self, graph</span>):</span></span><br><span class="line">        nodesIndegree = &#123;node: <span class="number">0</span> <span class="keyword">for</span> node <span class="keyword">in</span> graph&#125;</span><br><span class="line">        <span class="keyword">for</span> node <span class="keyword">in</span> graph:</span><br><span class="line">            <span class="keyword">for</span> neighbor <span class="keyword">in</span> node.neighbors:</span><br><span class="line">                nodesIndegree[neighbor] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> nodesIndegree</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
       <categories>
         <category>lintcode</category>
       </categories>
@@ -136,14 +120,16 @@
       </categories>
   </entry>
   <entry>
-    <title>lintcode-183-木材加工-二分法</title>
-    <url>/2022/02/17/lintcode-183-%E6%9C%A8%E6%9D%90%E5%8A%A0%E5%B7%A5-%E4%BA%8C%E5%88%86%E6%B3%95/</url>
-    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/183/description">https://www.lintcode.com/problem/183/description</a></p>
-<h1 id="木材加工"><a href="#木材加工" class="headerlink" title="木材加工"></a>木材加工</h1><ul>
-<li>按照切割木头的长度进行二分</li>
-<li>木头长度的范围在 1 到 max(L)，在这个范围内二分出一个长度 length，然后看看以这个mid长度能切割出多少木头，如果少于 k 根，说明要短一些才行，如果多余 k，说明可以继续边长一些。<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param L: Given n pieces of wood with length L[i]</span></span><br><span class="line"><span class="string">    @param k: An integer</span></span><br><span class="line"><span class="string">    @return: The maximum length of the small pieces</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">woodCut</span>(<span class="params">self, L, k</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> L:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        start, end = <span class="number">1</span>, <span class="built_in">max</span>(L)</span><br><span class="line">        <span class="keyword">while</span> start + <span class="number">1</span> &lt; end:</span><br><span class="line">            mid = (start + end) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> self.get_pieces(L, mid) &gt;= k:</span><br><span class="line">                start = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end = mid</span><br><span class="line">                </span><br><span class="line">        <span class="keyword">if</span> self.get_pieces(L, end) &gt;= k:</span><br><span class="line">            <span class="keyword">return</span> end</span><br><span class="line">        <span class="keyword">if</span> self.get_pieces(L, start) &gt;= k:</span><br><span class="line">            <span class="keyword">return</span> start    </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_pieces</span>(<span class="params">self, L, length</span>):</span></span><br><span class="line">        pieces = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> l <span class="keyword">in</span> L:</span><br><span class="line">            pieces += l // length</span><br><span class="line">        <span class="keyword">return</span> pieces</span><br></pre></td></tr></table></figure></li>
-</ul>
+    <title>lintcode-13-字符串查找-哈希法</title>
+    <url>/2022/02/08/lintcode-13-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%A5%E6%89%BE-%E5%93%88%E5%B8%8C%E6%B3%95/</url>
+    <content><![CDATA[<p><a href="https://lc.jiuzhang.com/problem/13/">https://lc.jiuzhang.com/problem/13/</a></p>
+<h1 id="哈希法"><a href="#哈希法" class="headerlink" title="哈希法"></a>哈希法</h1><ol>
+<li>特殊情况判断</li>
+<li>哈希函数构造：31为自订值，BASE为模值，取asc值</li>
+<li>continue用法</li>
+<li>利用前值哈希计算后值哈希的方法<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param source: </span></span><br><span class="line"><span class="string">    @param target: </span></span><br><span class="line"><span class="string">    @return: return the index</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">strStr</span>(<span class="params">self, source, target</span>):</span></span><br><span class="line">        <span class="comment"># Write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> target:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(source) &lt; <span class="built_in">len</span>(target):</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">        BASE = <span class="number">10086</span></span><br><span class="line">        targetCode = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> target:</span><br><span class="line">            targetCode = (targetCode * <span class="number">31</span> + <span class="built_in">ord</span>(ch)) % BASE</span><br><span class="line"></span><br><span class="line">        power = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(target)):</span><br><span class="line">            power = (power * <span class="number">31</span>) % BASE</span><br><span class="line"></span><br><span class="line">        hashCode = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(source)):</span><br><span class="line">            hashCode = (hashCode * <span class="number">31</span> + <span class="built_in">ord</span>(source[i])) % BASE</span><br><span class="line">            <span class="keyword">if</span> i &lt; <span class="built_in">len</span>(target) - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> i &gt;= <span class="built_in">len</span>(target):</span><br><span class="line">                hashCode = (hashCode - <span class="built_in">ord</span>(source[i - <span class="built_in">len</span>(target)]) * power) % BASE</span><br><span class="line">                <span class="keyword">if</span> hashCode &lt; <span class="number">0</span> :</span><br><span class="line">                    hashCode = hashCode + BASE          </span><br><span class="line">            <span class="keyword">if</span> hashCode == targetCode:</span><br><span class="line">                <span class="keyword">if</span> target == source[i - <span class="built_in">len</span>(target) + <span class="number">1</span> : i + <span class="number">1</span>]:</span><br><span class="line">                    <span class="keyword">return</span> i - <span class="built_in">len</span>(target) + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure></li>
+</ol>
 ]]></content>
       <categories>
         <category>lintcode</category>
@@ -179,14 +165,13 @@
       </categories>
   </entry>
   <entry>
-    <title>lintcode-159-寻找旋转数组中的最小值-二分法</title>
-    <url>/2022/02/17/lintcode-159-%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC-%E4%BA%8C%E5%88%86%E6%B3%95/</url>
-    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/159/">https://www.lintcode.com/problem/159/</a></p>
-<h1 id="寻找旋转数组中的最小值"><a href="#寻找旋转数组中的最小值" class="headerlink" title="寻找旋转数组中的最小值"></a>寻找旋转数组中的最小值</h1><ul>
-<li>判断mid是否为最小值</li>
-<li>判断mid在上半区还是下半区</li>
-<li>特殊情况：短数列、单调递增数列<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param nums: a rotated sorted array</span></span><br><span class="line"><span class="string">    @return: the minimum number in the array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMin</span>(<span class="params">self, nums</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span> </span><br><span class="line">        <span class="keyword">while</span> left + <span class="number">1</span> &lt; right:</span><br><span class="line">            mid = (left + right) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &lt; nums[mid -  <span class="number">1</span>] <span class="keyword">and</span> nums[mid] &lt; nums[mid + <span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">return</span> nums[mid]</span><br><span class="line">            <span class="keyword">elif</span> nums[<span class="number">0</span>] &gt; nums[-<span class="number">1</span>] <span class="keyword">and</span> nums[mid] &lt; nums[<span class="number">0</span>]:</span><br><span class="line">                right = mid</span><br><span class="line">            <span class="keyword">elif</span> nums[<span class="number">0</span>] &gt; nums[-<span class="number">1</span>] <span class="keyword">and</span> nums[mid] &gt; nums[<span class="number">0</span>]:</span><br><span class="line">                left = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> nums[left] &lt; nums[right]:</span><br><span class="line">            <span class="keyword">return</span> nums[left]</span><br><span class="line">        <span class="keyword">else</span> :</span><br><span class="line">            <span class="keyword">return</span> nums[right]</span><br></pre></td></tr></table></figure></li>
+    <title>lintcode-183-木材加工-二分法</title>
+    <url>/2022/02/17/lintcode-183-%E6%9C%A8%E6%9D%90%E5%8A%A0%E5%B7%A5-%E4%BA%8C%E5%88%86%E6%B3%95/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/183/description">https://www.lintcode.com/problem/183/description</a></p>
+<h1 id="木材加工"><a href="#木材加工" class="headerlink" title="木材加工"></a>木材加工</h1><ul>
+<li>按照切割木头的长度进行二分</li>
+<li>木头长度的范围在 1 到 max(L)，在这个范围内二分出一个长度 length，然后看看以这个mid长度能切割出多少木头，如果少于 k 根，说明要短一些才行，如果多余 k，说明可以继续边长一些。<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param L: Given n pieces of wood with length L[i]</span></span><br><span class="line"><span class="string">    @param k: An integer</span></span><br><span class="line"><span class="string">    @return: The maximum length of the small pieces</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">woodCut</span>(<span class="params">self, L, k</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> L:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        start, end = <span class="number">1</span>, <span class="built_in">max</span>(L)</span><br><span class="line">        <span class="keyword">while</span> start + <span class="number">1</span> &lt; end:</span><br><span class="line">            mid = (start + end) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> self.get_pieces(L, mid) &gt;= k:</span><br><span class="line">                start = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end = mid</span><br><span class="line">                </span><br><span class="line">        <span class="keyword">if</span> self.get_pieces(L, end) &gt;= k:</span><br><span class="line">            <span class="keyword">return</span> end</span><br><span class="line">        <span class="keyword">if</span> self.get_pieces(L, start) &gt;= k:</span><br><span class="line">            <span class="keyword">return</span> start    </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_pieces</span>(<span class="params">self, L, length</span>):</span></span><br><span class="line">        pieces = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> l <span class="keyword">in</span> L:</span><br><span class="line">            pieces += l // length</span><br><span class="line">        <span class="keyword">return</span> pieces</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -212,21 +197,6 @@
       </tags>
   </entry>
   <entry>
-    <title>lintcode-200-最长回文子串-暴力解</title>
-    <url>/2022/01/28/lintcode-200-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2-%E6%9A%B4%E5%8A%9B%E8%A7%A3/</url>
-    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/200/description">https://www.lintcode.com/problem/200/description</a></p>
-<h1 id="三层循环暴力解法"><a href="#三层循环暴力解法" class="headerlink" title="三层循环暴力解法"></a>三层循环暴力解法</h1><ol>
-<li>start,end两层循环取出待检查字符串</li>
-<li>isPalindrome判断字符串是否为回文串</li>
-<li>判断temp与res长短，留存最长temp<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param s: input string</span></span><br><span class="line"><span class="string">    @return: a string as the longest palindromic substring</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        res = <span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s:</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> start <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(s), <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> end <span class="keyword">in</span> <span class="built_in">range</span>(start, <span class="built_in">len</span>(s), <span class="number">1</span>):</span><br><span class="line">                temp = s[start : end + <span class="number">1</span>]</span><br><span class="line">                <span class="keyword">if</span> self.isPalindrome(temp) <span class="keyword">is</span> <span class="literal">True</span> <span class="keyword">and</span> <span class="built_in">len</span>(temp) &gt; <span class="built_in">len</span>(res):</span><br><span class="line">                    res = temp </span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span>(<span class="params">self, temp</span>):</span></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = <span class="built_in">len</span>(temp) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right <span class="keyword">and</span> temp[left] == temp[right]):</span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line">            right -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> left &gt; right:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>lintcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>lintcode-200-最长回文子串-动态规划</title>
     <url>/2022/01/29/lintcode-200-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</url>
     <content><![CDATA[<p><a href="https://www.lintcode.com/problem/200/description">https://www.lintcode.com/problem/200/description</a></p>
@@ -246,13 +216,29 @@
       </tags>
   </entry>
   <entry>
-    <title>lintcode-366-斐波那契数列</title>
-    <url>/2022/02/14/lintcode-366-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/</url>
-    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/366/description">https://www.lintcode.com/problem/366/description</a></p>
-<h1 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h1><ul>
-<li>递归法会StackOverflow</li>
-<li>采用递推法<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param n: an integer</span></span><br><span class="line"><span class="string">    @return: an ineger f(n)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fibonacci</span>(<span class="params">self, n</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        temp = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> temp[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">elif</span> n == <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> temp[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>, n, <span class="number">1</span>):</span><br><span class="line">                temp[<span class="number">0</span>] = temp[<span class="number">1</span>]</span><br><span class="line">                temp[<span class="number">1</span>] = temp[<span class="number">2</span>]</span><br><span class="line">                temp[<span class="number">2</span>] = temp[<span class="number">0</span>] + temp[<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">return</span> temp[<span class="number">2</span>]</span><br></pre></td></tr></table></figure></li>
+    <title>lintcode-200-最长回文子串-暴力解</title>
+    <url>/2022/01/28/lintcode-200-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2-%E6%9A%B4%E5%8A%9B%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/200/description">https://www.lintcode.com/problem/200/description</a></p>
+<h1 id="三层循环暴力解法"><a href="#三层循环暴力解法" class="headerlink" title="三层循环暴力解法"></a>三层循环暴力解法</h1><ol>
+<li>start,end两层循环取出待检查字符串</li>
+<li>isPalindrome判断字符串是否为回文串</li>
+<li>判断temp与res长短，留存最长temp<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param s: input string</span></span><br><span class="line"><span class="string">    @return: a string as the longest palindromic substring</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span>(<span class="params">self, s</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        res = <span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s:</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> start <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(s), <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> end <span class="keyword">in</span> <span class="built_in">range</span>(start, <span class="built_in">len</span>(s), <span class="number">1</span>):</span><br><span class="line">                temp = s[start : end + <span class="number">1</span>]</span><br><span class="line">                <span class="keyword">if</span> self.isPalindrome(temp) <span class="keyword">is</span> <span class="literal">True</span> <span class="keyword">and</span> <span class="built_in">len</span>(temp) &gt; <span class="built_in">len</span>(res):</span><br><span class="line">                    res = temp </span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span>(<span class="params">self, temp</span>):</span></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = <span class="built_in">len</span>(temp) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right <span class="keyword">and</span> temp[left] == temp[right]):</span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line">            right -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> left &gt; right:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>lintcode-159-寻找旋转数组中的最小值-二分法</title>
+    <url>/2022/02/17/lintcode-159-%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC-%E4%BA%8C%E5%88%86%E6%B3%95/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/159/">https://www.lintcode.com/problem/159/</a></p>
+<h1 id="寻找旋转数组中的最小值"><a href="#寻找旋转数组中的最小值" class="headerlink" title="寻找旋转数组中的最小值"></a>寻找旋转数组中的最小值</h1><ul>
+<li>判断mid是否为最小值</li>
+<li>判断mid在上半区还是下半区</li>
+<li>特殊情况：短数列、单调递增数列<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param nums: a rotated sorted array</span></span><br><span class="line"><span class="string">    @return: the minimum number in the array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMin</span>(<span class="params">self, nums</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span> </span><br><span class="line">        <span class="keyword">while</span> left + <span class="number">1</span> &lt; right:</span><br><span class="line">            mid = (left + right) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &lt; nums[mid -  <span class="number">1</span>] <span class="keyword">and</span> nums[mid] &lt; nums[mid + <span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">return</span> nums[mid]</span><br><span class="line">            <span class="keyword">elif</span> nums[<span class="number">0</span>] &gt; nums[-<span class="number">1</span>] <span class="keyword">and</span> nums[mid] &lt; nums[<span class="number">0</span>]:</span><br><span class="line">                right = mid</span><br><span class="line">            <span class="keyword">elif</span> nums[<span class="number">0</span>] &gt; nums[-<span class="number">1</span>] <span class="keyword">and</span> nums[mid] &gt; nums[<span class="number">0</span>]:</span><br><span class="line">                left = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> nums[left] &lt; nums[right]:</span><br><span class="line">            <span class="keyword">return</span> nums[left]</span><br><span class="line">        <span class="keyword">else</span> :</span><br><span class="line">            <span class="keyword">return</span> nums[right]</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -288,6 +274,20 @@
       </categories>
   </entry>
   <entry>
+    <title>lintcode-366-斐波那契数列</title>
+    <url>/2022/02/14/lintcode-366-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/366/description">https://www.lintcode.com/problem/366/description</a></p>
+<h1 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h1><ul>
+<li>递归法会StackOverflow</li>
+<li>采用递推法<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param n: an integer</span></span><br><span class="line"><span class="string">    @return: an ineger f(n)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fibonacci</span>(<span class="params">self, n</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        temp = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> temp[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">elif</span> n == <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> temp[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>, n, <span class="number">1</span>):</span><br><span class="line">                temp[<span class="number">0</span>] = temp[<span class="number">1</span>]</span><br><span class="line">                temp[<span class="number">1</span>] = temp[<span class="number">2</span>]</span><br><span class="line">                temp[<span class="number">2</span>] = temp[<span class="number">0</span>] + temp[<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">return</span> temp[<span class="number">2</span>]</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>lintcode-457-二分查找-找下标最大的结果</title>
     <url>/2022/02/14/lintcode-457-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-%E6%89%BE%E4%B8%8B%E6%A0%87%E6%9C%80%E5%A4%A7%E7%9A%84%E7%BB%93%E6%9E%9C/</url>
     <content><![CDATA[<p><a href="https://www.lintcode.com/problem/458/">https://www.lintcode.com/problem/458/</a></p>
@@ -296,18 +296,6 @@
 <li>异常检测 if not nums:</li>
 <li>没有查到要返回-1<span id="more"></span>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param nums: An integer array sorted in ascending order</span></span><br><span class="line"><span class="string">    @param target: An integer</span></span><br><span class="line"><span class="string">    @return: An integer</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lastPosition</span>(<span class="params">self, nums, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> self.helper(nums, <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span>, target)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">helper</span>(<span class="params">self, nums, left, right, target</span>):</span></span><br><span class="line">        <span class="keyword">while</span> left + <span class="number">1</span> &lt; right:</span><br><span class="line">            mid = left + (right - left) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">                left = mid</span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &gt; target:</span><br><span class="line">                right = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &lt; target:</span><br><span class="line">                left = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> nums[right] == target:</span><br><span class="line">            <span class="keyword">return</span> right</span><br><span class="line">        <span class="keyword">elif</span> nums[left] == target:</span><br><span class="line">            <span class="keyword">return</span> left</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>lintcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>lintcode-433-岛屿的个数-bfs</title>
-    <url>/2022/03/03/lintcode-433-%E5%B2%9B%E5%B1%BF%E7%9A%84%E4%B8%AA%E6%95%B0-bfs/</url>
-    <content><![CDATA[<h1 id="岛屿的个数"><a href="#岛屿的个数" class="headerlink" title="岛屿的个数"></a>岛屿的个数</h1><ul>
-<li>遍历每一个点，如果发现为1的点就进行宽度优先搜索，建立一个集合保存搜索到为1的点的坐标，再次遇到搜索过的点时就跳过该点<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> (</span><br><span class="line">    <span class="type">List</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param grid: a boolean 2D matrix</span></span><br><span class="line"><span class="string">    @return: an integer</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">num_islands</span>(<span class="params">self, grid: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">bool</span>]]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> grid <span class="keyword">or</span> <span class="keyword">not</span> grid[<span class="number">0</span>]:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        islands = <span class="number">0</span></span><br><span class="line">        visited = <span class="built_in">set</span>()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(grid)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(grid[<span class="number">0</span>])):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="number">1</span> <span class="keyword">and</span> (i, j) <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                    islands += <span class="number">1</span></span><br><span class="line">                    visited.add((i, j))</span><br><span class="line">                    self.bfs(i, j, grid, visited)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> islands</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bfs</span>(<span class="params">self, i, j, grid, visited</span>):</span></span><br><span class="line">        queue = [(i, j)]</span><br><span class="line">        direction = [(<span class="number">1</span>,<span class="number">0</span>),(-<span class="number">1</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">1</span>),(<span class="number">0</span>,-<span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            x, y = queue.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">for</span> dx, dy <span class="keyword">in</span> direction:</span><br><span class="line">                <span class="keyword">if</span> x + dx &lt; <span class="number">0</span> <span class="keyword">or</span> x + dx &gt;= <span class="built_in">len</span>(grid) <span class="keyword">or</span> y + dy &lt; <span class="number">0</span> <span class="keyword">or</span> y + dy &gt;= <span class="built_in">len</span>(grid[<span class="number">0</span>]):</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> (x + dx, y + dy) <span class="keyword">not</span> <span class="keyword">in</span> visited <span class="keyword">and</span> grid[x + dx][y + dy] == <span class="number">1</span>:</span><br><span class="line">                    visited.add((x + dx, y + dy))</span><br><span class="line">                    queue.append((x + dx, y + dy))</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -329,19 +317,6 @@
       </categories>
   </entry>
   <entry>
-    <title>lintcode-460-在排序数组中找最接近的K个数-二分法</title>
-    <url>/2022/02/16/lintcode-460-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%89%BE%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84K%E4%B8%AA%E6%95%B0-%E4%BA%8C%E5%88%86%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="在排序数组中找最接近的K个数"><a href="#在排序数组中找最接近的K个数" class="headerlink" title="在排序数组中找最接近的K个数"></a>在排序数组中找最接近的K个数</h1><ul>
-<li>首先用二分法找到小于等于target中的最大数下标</li>
-<li>而后采用背向双指针从该下标开始找最接近的K个数<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param A: an integer array</span></span><br><span class="line"><span class="string">    @param target: An integer</span></span><br><span class="line"><span class="string">    @param k: An integer</span></span><br><span class="line"><span class="string">    @return: an integer array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kClosestNumbers</span>(<span class="params">self, A, target, k</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> A:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        flag = self.findFlag(A, target, k)</span><br><span class="line">        <span class="keyword">return</span> self.getRes(A, target, k, flag)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findFlag</span>(<span class="params">self, A, target, k</span>):</span></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = <span class="built_in">len</span>(A) - <span class="number">1</span></span><br><span class="line">        flag = -<span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left + <span class="number">1</span> &lt; right:</span><br><span class="line">            mid = (left + right) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> A[mid] == target:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">elif</span> A[mid] &lt; target:</span><br><span class="line">                left = mid</span><br><span class="line">            <span class="keyword">elif</span> A[mid] &gt; target:</span><br><span class="line">                right = mid</span><br><span class="line">        <span class="keyword">if</span> A[left] == target:</span><br><span class="line">            <span class="keyword">return</span> left</span><br><span class="line">        <span class="keyword">elif</span> A[right] == target:</span><br><span class="line">            <span class="keyword">return</span> right</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> left <span class="comment">#小于等于target的最大值为定位点</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getRes</span>(<span class="params">self, A, target, k, flag</span>):</span></span><br><span class="line">        res = []</span><br><span class="line">        left = flag</span><br><span class="line">        right = flag + <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">            <span class="keyword">if</span> left &gt;= <span class="number">0</span> <span class="keyword">and</span> right &lt;= <span class="built_in">len</span>(A) - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> target - A[left] &lt;= A[right] - target:</span><br><span class="line">                    res.append(A[left])</span><br><span class="line">                    left -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> target - A[left] &gt; A[right] - target:</span><br><span class="line">                    res.append(A[right])</span><br><span class="line">                    right += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> left &gt;= <span class="number">0</span> <span class="keyword">and</span> right &gt; <span class="built_in">len</span>(A) - <span class="number">1</span>:</span><br><span class="line">                res.append(A[left])</span><br><span class="line">                left -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> left &lt; <span class="number">0</span> <span class="keyword">and</span> right &lt;= <span class="built_in">len</span>(A) - <span class="number">1</span>:</span><br><span class="line">                res.append(A[right])</span><br><span class="line">                right += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> left &lt; <span class="number">0</span> <span class="keyword">and</span> right &gt; <span class="built_in">len</span>(A) - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> res</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>lintcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>lintcode-463-整数排序-归并</title>
     <url>/2022/02/11/lintcode-463-%E6%95%B4%E6%95%B0%E6%8E%92%E5%BA%8F-%E5%BD%92%E5%B9%B6/</url>
     <content><![CDATA[<p><a href="https://www.lintcode.com/problem/463/">https://www.lintcode.com/problem/463/</a></p>
@@ -350,6 +325,31 @@
 <li>两边归并后，将两数组合并</li>
 <li>合并数组中需要开辟额外空间，开辟空间也要时间，整体没有快排快速。<span id="more"></span>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param A: an integer array</span></span><br><span class="line"><span class="string">    @return: nothing</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortIntegers</span>(<span class="params">self, A</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        self.mergeSort(A, <span class="number">0</span>, <span class="built_in">len</span>(A) - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mergeSort</span>(<span class="params">self, A, start, end</span>):</span></span><br><span class="line">        <span class="keyword">if</span> start &gt;= end:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        self.mergeSort(A, start, (start + end) // <span class="number">2</span>)</span><br><span class="line">        self.mergeSort(A, (start + end)//<span class="number">2</span> + <span class="number">1</span>, end)</span><br><span class="line">        self.merge(A, start, (start + end) // <span class="number">2</span>, end)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span>(<span class="params">self, A, start, mid, end</span>):</span></span><br><span class="line">        temp1 = A[start : mid + <span class="number">1</span>]</span><br><span class="line">        temp2 = A[mid + <span class="number">1</span> : end + <span class="number">1</span>]</span><br><span class="line">        ind1 = <span class="number">0</span></span><br><span class="line">        ind2 = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(start, end + <span class="number">1</span>, <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> ind1 &lt; <span class="built_in">len</span>(temp1) <span class="keyword">and</span> ind2 &lt; <span class="built_in">len</span>(temp2):</span><br><span class="line">                <span class="keyword">if</span> temp1[ind1] &lt;= temp2[ind2]:</span><br><span class="line">                    A[i] = temp1[ind1]</span><br><span class="line">                    ind1 += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    A[i] = temp2[ind2]</span><br><span class="line">                    ind2 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> ind1 &gt;= <span class="built_in">len</span>(temp1):</span><br><span class="line">                A[i] = temp2[ind2]</span><br><span class="line">                ind2 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> ind2 &gt;= <span class="built_in">len</span>(temp2):</span><br><span class="line">                A[i] = temp1[ind1]</span><br><span class="line">                ind1 += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>lintcode-433-岛屿的个数-bfs</title>
+    <url>/2022/03/03/lintcode-433-%E5%B2%9B%E5%B1%BF%E7%9A%84%E4%B8%AA%E6%95%B0-bfs/</url>
+    <content><![CDATA[<h1 id="岛屿的个数"><a href="#岛屿的个数" class="headerlink" title="岛屿的个数"></a>岛屿的个数</h1><ul>
+<li>遍历每一个点，如果发现为1的点就进行宽度优先搜索，建立一个集合保存搜索到为1的点的坐标，再次遇到搜索过的点时就跳过该点<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> (</span><br><span class="line">    <span class="type">List</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param grid: a boolean 2D matrix</span></span><br><span class="line"><span class="string">    @return: an integer</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">num_islands</span>(<span class="params">self, grid: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">bool</span>]]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> grid <span class="keyword">or</span> <span class="keyword">not</span> grid[<span class="number">0</span>]:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        islands = <span class="number">0</span></span><br><span class="line">        visited = <span class="built_in">set</span>()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(grid)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(grid[<span class="number">0</span>])):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="number">1</span> <span class="keyword">and</span> (i, j) <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                    islands += <span class="number">1</span></span><br><span class="line">                    visited.add((i, j))</span><br><span class="line">                    self.bfs(i, j, grid, visited)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> islands</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bfs</span>(<span class="params">self, i, j, grid, visited</span>):</span></span><br><span class="line">        queue = [(i, j)]</span><br><span class="line">        direction = [(<span class="number">1</span>,<span class="number">0</span>),(-<span class="number">1</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">1</span>),(<span class="number">0</span>,-<span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            x, y = queue.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">for</span> dx, dy <span class="keyword">in</span> direction:</span><br><span class="line">                <span class="keyword">if</span> x + dx &lt; <span class="number">0</span> <span class="keyword">or</span> x + dx &gt;= <span class="built_in">len</span>(grid) <span class="keyword">or</span> y + dy &lt; <span class="number">0</span> <span class="keyword">or</span> y + dy &gt;= <span class="built_in">len</span>(grid[<span class="number">0</span>]):</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> (x + dx, y + dy) <span class="keyword">not</span> <span class="keyword">in</span> visited <span class="keyword">and</span> grid[x + dx][y + dy] == <span class="number">1</span>:</span><br><span class="line">                    visited.add((x + dx, y + dy))</span><br><span class="line">                    queue.append((x + dx, y + dy))</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>lintcode-460-在排序数组中找最接近的K个数-二分法</title>
+    <url>/2022/02/16/lintcode-460-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%89%BE%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84K%E4%B8%AA%E6%95%B0-%E4%BA%8C%E5%88%86%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="在排序数组中找最接近的K个数"><a href="#在排序数组中找最接近的K个数" class="headerlink" title="在排序数组中找最接近的K个数"></a>在排序数组中找最接近的K个数</h1><ul>
+<li>首先用二分法找到小于等于target中的最大数下标</li>
+<li>而后采用背向双指针从该下标开始找最接近的K个数<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param A: an integer array</span></span><br><span class="line"><span class="string">    @param target: An integer</span></span><br><span class="line"><span class="string">    @param k: An integer</span></span><br><span class="line"><span class="string">    @return: an integer array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kClosestNumbers</span>(<span class="params">self, A, target, k</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> A:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        flag = self.findFlag(A, target, k)</span><br><span class="line">        <span class="keyword">return</span> self.getRes(A, target, k, flag)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findFlag</span>(<span class="params">self, A, target, k</span>):</span></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = <span class="built_in">len</span>(A) - <span class="number">1</span></span><br><span class="line">        flag = -<span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left + <span class="number">1</span> &lt; right:</span><br><span class="line">            mid = (left + right) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> A[mid] == target:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">elif</span> A[mid] &lt; target:</span><br><span class="line">                left = mid</span><br><span class="line">            <span class="keyword">elif</span> A[mid] &gt; target:</span><br><span class="line">                right = mid</span><br><span class="line">        <span class="keyword">if</span> A[left] == target:</span><br><span class="line">            <span class="keyword">return</span> left</span><br><span class="line">        <span class="keyword">elif</span> A[right] == target:</span><br><span class="line">            <span class="keyword">return</span> right</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> left <span class="comment">#小于等于target的最大值为定位点</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getRes</span>(<span class="params">self, A, target, k, flag</span>):</span></span><br><span class="line">        res = []</span><br><span class="line">        left = flag</span><br><span class="line">        right = flag + <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">            <span class="keyword">if</span> left &gt;= <span class="number">0</span> <span class="keyword">and</span> right &lt;= <span class="built_in">len</span>(A) - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> target - A[left] &lt;= A[right] - target:</span><br><span class="line">                    res.append(A[left])</span><br><span class="line">                    left -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> target - A[left] &gt; A[right] - target:</span><br><span class="line">                    res.append(A[right])</span><br><span class="line">                    right += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> left &gt;= <span class="number">0</span> <span class="keyword">and</span> right &gt; <span class="built_in">len</span>(A) - <span class="number">1</span>:</span><br><span class="line">                res.append(A[left])</span><br><span class="line">                left -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> left &lt; <span class="number">0</span> <span class="keyword">and</span> right &lt;= <span class="built_in">len</span>(A) - <span class="number">1</span>:</span><br><span class="line">                res.append(A[right])</span><br><span class="line">                right += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> left &lt; <span class="number">0</span> <span class="keyword">and</span> right &gt; <span class="built_in">len</span>(A) - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> res</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -399,36 +399,6 @@
       </categories>
   </entry>
   <entry>
-    <title>lintcode-5-第K大元素-快排法</title>
-    <url>/2022/02/11/lintcode-5-%E7%AC%ACK%E5%A4%A7%E5%85%83%E7%B4%A0-%E5%BF%AB%E6%8E%92%E6%B3%95/</url>
-    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/5/">https://www.lintcode.com/problem/5/</a></p>
-<h1 id="第K大元素"><a href="#第K大元素" class="headerlink" title="第K大元素"></a>第K大元素</h1><ul>
-<li>应用快排的基本原理</li>
-<li>注意从大到小排列</li>
-<li>最后比较K与left,right的大小关系而划分区间</li>
-<li>注意left,right中间有可能会隔一个元素，元素位置要与K比较<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param k: An integer</span></span><br><span class="line"><span class="string">    @param nums: An array</span></span><br><span class="line"><span class="string">    @return: the Kth largest element</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kthLargestElement</span>(<span class="params">self, k, nums</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> self.quickSelect(nums, <span class="number">0</span>, <span class="built_in">len</span>(nums)-<span class="number">1</span>, k)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">quickSelect</span>(<span class="params">self, nums, start, end, k</span>):</span></span><br><span class="line">        <span class="keyword">if</span> start == end <span class="keyword">and</span> start == k - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[start]</span><br><span class="line"></span><br><span class="line">        left = start</span><br><span class="line">        right = end</span><br><span class="line">        pivot = nums[(start + end) // <span class="number">2</span>]</span><br><span class="line">        <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">            <span class="keyword">while</span> left &lt;= right <span class="keyword">and</span> nums[left] &gt; pivot:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> left &lt;= right <span class="keyword">and</span> nums[right] &lt; pivot:</span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> left &lt;= right:</span><br><span class="line">                temp = nums[left]</span><br><span class="line">                nums[left] = nums[right]</span><br><span class="line">                nums[right] = temp</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> k - <span class="number">1</span> &lt;= right:</span><br><span class="line">            <span class="keyword">return</span> self.quickSelect(nums, start, right, k)</span><br><span class="line">        <span class="keyword">elif</span> k - <span class="number">1</span> &gt;= left:</span><br><span class="line">            <span class="keyword">return</span> self.quickSelect(nums, left, end, k)</span><br><span class="line">        <span class="keyword">elif</span> left - right == <span class="number">2</span> <span class="keyword">and</span> k - <span class="number">1</span> == left - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[left - <span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>lintcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>lintcode-56-两数之和-哈希表</title>
-    <url>/2022/02/09/lintcode-56-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-%E5%93%88%E5%B8%8C%E8%A1%A8/</url>
-    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/56/description">https://www.lintcode.com/problem/56/description</a></p>
-<ul>
-<li>python的哈希表就是字典</li>
-<li>enumerate(numbers)<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param numbers: An array of Integer</span></span><br><span class="line"><span class="string">    @param target: target = numbers[index1] + numbers[index2]</span></span><br><span class="line"><span class="string">    @return: [index1, index2] (index1 &lt; index2)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span>(<span class="params">self, numbers, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        hashset = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> ind, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(numbers):</span><br><span class="line">            <span class="keyword">if</span> target - num <span class="keyword">in</span> hashset:</span><br><span class="line">                <span class="keyword">return</span> [hashset[target - num], ind]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                hashset[num] = ind</span><br><span class="line">        <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>lintcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>lintcode-56-两数之和-排序双指针</title>
     <url>/2022/02/09/lintcode-56-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-%E6%8E%92%E5%BA%8F%E5%8F%8C%E6%8C%87%E9%92%88/</url>
     <content><![CDATA[<p><a href="https://www.lintcode.com/problem/56/description">https://www.lintcode.com/problem/56/description</a></p>
@@ -462,14 +432,15 @@
       </categories>
   </entry>
   <entry>
-    <title>lintcode-585-山脉序列中的最大值-二分法</title>
-    <url>/2022/02/17/lintcode-585-%E5%B1%B1%E8%84%89%E5%BA%8F%E5%88%97%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC-%E4%BA%8C%E5%88%86%E6%B3%95/</url>
-    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/585/">https://www.lintcode.com/problem/585/</a></p>
-<h1 id="山脉序列中的最大值"><a href="#山脉序列中的最大值" class="headerlink" title="山脉序列中的最大值"></a>山脉序列中的最大值</h1><ul>
-<li>序列先增后减</li>
-<li>选定mid后，判断mid值是封顶还是递增区间还是递减区间</li>
-<li>考虑特殊情况<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param nums: a mountain sequence which increase firstly and then decrease</span></span><br><span class="line"><span class="string">    @return: then mountain top</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mountainSequence</span>(<span class="params">self, nums</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left + <span class="number">1</span> &lt; right:</span><br><span class="line">            mid = (left + right) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid - <span class="number">1</span>] &lt; nums[mid] <span class="keyword">and</span> nums[mid] &gt; nums[mid + <span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">return</span> nums[mid]</span><br><span class="line">            <span class="keyword">elif</span> nums[mid - <span class="number">1</span>] &lt; nums[mid] <span class="keyword">and</span> nums[mid] &lt; nums[mid + <span class="number">1</span>]:</span><br><span class="line">                left = mid</span><br><span class="line">            <span class="keyword">elif</span> nums[mid - <span class="number">1</span>] &gt; nums[mid] <span class="keyword">and</span> nums[mid] &gt; nums[mid + <span class="number">1</span>]:</span><br><span class="line">                right = mid</span><br><span class="line">        <span class="keyword">if</span> nums[left] &gt; nums[right]:</span><br><span class="line">            <span class="keyword">return</span> nums[left]</span><br><span class="line">        <span class="keyword">elif</span> nums[left] &lt;= nums[right]:</span><br><span class="line">            <span class="keyword">return</span> nums[right]</span><br></pre></td></tr></table></figure></li>
+    <title>lintcode-5-第K大元素-快排法</title>
+    <url>/2022/02/11/lintcode-5-%E7%AC%ACK%E5%A4%A7%E5%85%83%E7%B4%A0-%E5%BF%AB%E6%8E%92%E6%B3%95/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/5/">https://www.lintcode.com/problem/5/</a></p>
+<h1 id="第K大元素"><a href="#第K大元素" class="headerlink" title="第K大元素"></a>第K大元素</h1><ul>
+<li>应用快排的基本原理</li>
+<li>注意从大到小排列</li>
+<li>最后比较K与left,right的大小关系而划分区间</li>
+<li>注意left,right中间有可能会隔一个元素，元素位置要与K比较<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param k: An integer</span></span><br><span class="line"><span class="string">    @param nums: An array</span></span><br><span class="line"><span class="string">    @return: the Kth largest element</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kthLargestElement</span>(<span class="params">self, k, nums</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> self.quickSelect(nums, <span class="number">0</span>, <span class="built_in">len</span>(nums)-<span class="number">1</span>, k)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">quickSelect</span>(<span class="params">self, nums, start, end, k</span>):</span></span><br><span class="line">        <span class="keyword">if</span> start == end <span class="keyword">and</span> start == k - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[start]</span><br><span class="line"></span><br><span class="line">        left = start</span><br><span class="line">        right = end</span><br><span class="line">        pivot = nums[(start + end) // <span class="number">2</span>]</span><br><span class="line">        <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">            <span class="keyword">while</span> left &lt;= right <span class="keyword">and</span> nums[left] &gt; pivot:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> left &lt;= right <span class="keyword">and</span> nums[right] &lt; pivot:</span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> left &lt;= right:</span><br><span class="line">                temp = nums[left]</span><br><span class="line">                nums[left] = nums[right]</span><br><span class="line">                nums[right] = temp</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> k - <span class="number">1</span> &lt;= right:</span><br><span class="line">            <span class="keyword">return</span> self.quickSelect(nums, start, right, k)</span><br><span class="line">        <span class="keyword">elif</span> k - <span class="number">1</span> &gt;= left:</span><br><span class="line">            <span class="keyword">return</span> self.quickSelect(nums, left, end, k)</span><br><span class="line">        <span class="keyword">elif</span> left - right == <span class="number">2</span> <span class="keyword">and</span> k - <span class="number">1</span> == left - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[left - <span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -477,14 +448,13 @@
       </categories>
   </entry>
   <entry>
-    <title>lintcode-605-序列重构-bfs</title>
-    <url>/2022/03/09/lintcode-605-%E5%BA%8F%E5%88%97%E9%87%8D%E6%9E%84-bfs/</url>
-    <content><![CDATA[<h1 id="序列重构"><a href="#序列重构" class="headerlink" title="序列重构"></a>序列重构</h1><ul>
-<li>首先用字典与seqs构建边字典</li>
-<li>再用边字典构建入度字典</li>
-<li>最后用入度字典与边字典重构序列，如果发现queue中元素大于1个则重构序列不唯一</li>
-<li>返回重构序列与原始序列的对比<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> (</span><br><span class="line">    <span class="type">List</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param org: a permutation of the integers from 1 to n</span></span><br><span class="line"><span class="string">    @param seqs: a list of sequences</span></span><br><span class="line"><span class="string">    @return: true if it can be reconstructed only one or false</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sequence_reconstruction</span>(<span class="params">self, org: <span class="type">List</span>[<span class="built_in">int</span>], seqs: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="built_in">bool</span>:</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        vector = self.getVector(seqs)</span><br><span class="line">        indegree = self.getIndegree(seqs, vector)</span><br><span class="line">        newList = self.getSortedList(indegree, vector)</span><br><span class="line">        <span class="keyword">return</span> newList == org</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getVector</span>(<span class="params">self, seqs</span>):</span></span><br><span class="line">        vector = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> seq <span class="keyword">in</span> seqs:</span><br><span class="line">            <span class="keyword">for</span> temp <span class="keyword">in</span> seq:</span><br><span class="line">                <span class="keyword">if</span> temp <span class="keyword">not</span> <span class="keyword">in</span> vector:</span><br><span class="line">                    vector[temp] = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> seq <span class="keyword">in</span> seqs:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(seq)):</span><br><span class="line">                vector[seq[i - <span class="number">1</span>]].append(seq[i])</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">return</span> vector</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getIndegree</span>(<span class="params">self, seqs, vector</span>):</span></span><br><span class="line">        indegree = &#123;x: <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> vector.keys()&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> vector:</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> vector[i]:</span><br><span class="line">                indegree[j] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> indegree</span><br><span class="line">            </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getSortedList</span>(<span class="params">self, indegree, vector</span>):</span></span><br><span class="line">        queue = []</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> indegree.keys():</span><br><span class="line">            <span class="keyword">if</span> indegree[i] == <span class="number">0</span>:</span><br><span class="line">                queue.append(i)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(queue) &gt; <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            cur = queue.pop(<span class="number">0</span>)</span><br><span class="line">            res.append(cur)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> vector[cur]:</span><br><span class="line">                indegree[i] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> indegree[i] == <span class="number">0</span>:</span><br><span class="line">                    queue.append(i)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></li>
+    <title>lintcode-56-两数之和-哈希表</title>
+    <url>/2022/02/09/lintcode-56-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-%E5%93%88%E5%B8%8C%E8%A1%A8/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/56/description">https://www.lintcode.com/problem/56/description</a></p>
+<ul>
+<li>python的哈希表就是字典</li>
+<li>enumerate(numbers)<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param numbers: An array of Integer</span></span><br><span class="line"><span class="string">    @param target: target = numbers[index1] + numbers[index2]</span></span><br><span class="line"><span class="string">    @return: [index1, index2] (index1 &lt; index2)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span>(<span class="params">self, numbers, target</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        hashset = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> ind, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(numbers):</span><br><span class="line">            <span class="keyword">if</span> target - num <span class="keyword">in</span> hashset:</span><br><span class="line">                <span class="keyword">return</span> [hashset[target - num], ind]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                hashset[num] = ind</span><br><span class="line">        <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -499,6 +469,21 @@
 <li>遇到0便将其变为1并入队，遇到1遇到2均不操作</li>
 <li>最后遍历矩阵，存在0返回-1，否则返回days<span id="more"></span>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> (</span><br><span class="line">    <span class="type">List</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param grid: a 2D integer grid</span></span><br><span class="line"><span class="string">    @return: an integer</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">zombie</span>(<span class="params">self, grid: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        queue = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(grid)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(grid[<span class="number">0</span>])):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="number">1</span>:</span><br><span class="line">                    queue.append((i, j))</span><br><span class="line"></span><br><span class="line">        direction = [(<span class="number">1</span>,<span class="number">0</span>),(-<span class="number">1</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">1</span>),(<span class="number">0</span>,-<span class="number">1</span>)]</span><br><span class="line">        days = -<span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            days += <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(queue)):</span><br><span class="line">                x, y = queue.pop(<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">for</span> dx, dy <span class="keyword">in</span> direction:</span><br><span class="line">                    newX, newY = x + dx, y + dy</span><br><span class="line">                    <span class="keyword">if</span> newX &gt;=<span class="number">0</span> <span class="keyword">and</span> newX &lt; <span class="built_in">len</span>(grid) <span class="keyword">and</span> newY &gt;= <span class="number">0</span> <span class="keyword">and</span> newY &lt; <span class="built_in">len</span>(grid[<span class="number">0</span>]):</span><br><span class="line">                        <span class="keyword">if</span> grid[newX][newY] == <span class="number">0</span>:</span><br><span class="line">                            queue.append((newX,newY))</span><br><span class="line">                            grid[newX][newY] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(grid)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(grid[<span class="number">0</span>])):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> days</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>lintcode-585-山脉序列中的最大值-二分法</title>
+    <url>/2022/02/17/lintcode-585-%E5%B1%B1%E8%84%89%E5%BA%8F%E5%88%97%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC-%E4%BA%8C%E5%88%86%E6%B3%95/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/585/">https://www.lintcode.com/problem/585/</a></p>
+<h1 id="山脉序列中的最大值"><a href="#山脉序列中的最大值" class="headerlink" title="山脉序列中的最大值"></a>山脉序列中的最大值</h1><ul>
+<li>序列先增后减</li>
+<li>选定mid后，判断mid值是封顶还是递增区间还是递减区间</li>
+<li>考虑特殊情况<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param nums: a mountain sequence which increase firstly and then decrease</span></span><br><span class="line"><span class="string">    @return: then mountain top</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mountainSequence</span>(<span class="params">self, nums</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        left, right = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> left + <span class="number">1</span> &lt; right:</span><br><span class="line">            mid = (left + right) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid - <span class="number">1</span>] &lt; nums[mid] <span class="keyword">and</span> nums[mid] &gt; nums[mid + <span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">return</span> nums[mid]</span><br><span class="line">            <span class="keyword">elif</span> nums[mid - <span class="number">1</span>] &lt; nums[mid] <span class="keyword">and</span> nums[mid] &lt; nums[mid + <span class="number">1</span>]:</span><br><span class="line">                left = mid</span><br><span class="line">            <span class="keyword">elif</span> nums[mid - <span class="number">1</span>] &gt; nums[mid] <span class="keyword">and</span> nums[mid] &gt; nums[mid + <span class="number">1</span>]:</span><br><span class="line">                right = mid</span><br><span class="line">        <span class="keyword">if</span> nums[left] &gt; nums[right]:</span><br><span class="line">            <span class="keyword">return</span> nums[left]</span><br><span class="line">        <span class="keyword">elif</span> nums[left] &lt;= nums[right]:</span><br><span class="line">            <span class="keyword">return</span> nums[right]</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -533,13 +518,14 @@
       </categories>
   </entry>
   <entry>
-    <title>lintcode-616-课程表2-有向图bfs</title>
-    <url>/2022/03/09/lintcode-616-%E8%AF%BE%E7%A8%8B%E8%A1%A82-%E6%9C%89%E5%90%91%E5%9B%BEbfs/</url>
-    <content><![CDATA[<h1 id="课程表2"><a href="#课程表2" class="headerlink" title="课程表2"></a>课程表2</h1><ul>
-<li>计算入度和每个点出发的边，用字典保存</li>
-<li>queue放入度为0的点，这些课程直接可修</li>
-<li>queue出队，出队的点减少对应指向点的度，使得其他点度为0时可以入队<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param: numCourses: a total of n courses</span></span><br><span class="line"><span class="string">    @param: prerequisites: a list of prerequisite pairs</span></span><br><span class="line"><span class="string">    @return: the course order</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findOrder</span>(<span class="params">self, numCourses, prerequisites</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        </span><br><span class="line">        indegree = &#123;x: <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(numCourses)&#125;</span><br><span class="line">        edge = &#123;x: [] <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(numCourses)&#125;</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> prerequisites:</span><br><span class="line">            indegree[i] += <span class="number">1</span></span><br><span class="line">            edge[j].append(i)</span><br><span class="line"></span><br><span class="line">        queue = []</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> temp <span class="keyword">in</span> indegree:</span><br><span class="line">            <span class="keyword">if</span> indegree[temp] == <span class="number">0</span>:</span><br><span class="line">                queue.append(temp)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            curClass = queue.pop(<span class="number">0</span>)</span><br><span class="line">            res.append(curClass)</span><br><span class="line">            <span class="keyword">if</span> edge[curClass] == []:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">for</span> nextClass <span class="keyword">in</span> edge[curClass]:</span><br><span class="line">                indegree[nextClass] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> indegree[nextClass] == <span class="number">0</span>:</span><br><span class="line">                    queue.append(nextClass)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(res) == numCourses:</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br></pre></td></tr></table></figure></li>
+    <title>lintcode-605-序列重构-bfs</title>
+    <url>/2022/03/09/lintcode-605-%E5%BA%8F%E5%88%97%E9%87%8D%E6%9E%84-bfs/</url>
+    <content><![CDATA[<h1 id="序列重构"><a href="#序列重构" class="headerlink" title="序列重构"></a>序列重构</h1><ul>
+<li>首先用字典与seqs构建边字典</li>
+<li>再用边字典构建入度字典</li>
+<li>最后用入度字典与边字典重构序列，如果发现queue中元素大于1个则重构序列不唯一</li>
+<li>返回重构序列与原始序列的对比<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> (</span><br><span class="line">    <span class="type">List</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param org: a permutation of the integers from 1 to n</span></span><br><span class="line"><span class="string">    @param seqs: a list of sequences</span></span><br><span class="line"><span class="string">    @return: true if it can be reconstructed only one or false</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sequence_reconstruction</span>(<span class="params">self, org: <span class="type">List</span>[<span class="built_in">int</span>], seqs: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="built_in">bool</span>:</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        vector = self.getVector(seqs)</span><br><span class="line">        indegree = self.getIndegree(seqs, vector)</span><br><span class="line">        newList = self.getSortedList(indegree, vector)</span><br><span class="line">        <span class="keyword">return</span> newList == org</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getVector</span>(<span class="params">self, seqs</span>):</span></span><br><span class="line">        vector = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> seq <span class="keyword">in</span> seqs:</span><br><span class="line">            <span class="keyword">for</span> temp <span class="keyword">in</span> seq:</span><br><span class="line">                <span class="keyword">if</span> temp <span class="keyword">not</span> <span class="keyword">in</span> vector:</span><br><span class="line">                    vector[temp] = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> seq <span class="keyword">in</span> seqs:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(seq)):</span><br><span class="line">                vector[seq[i - <span class="number">1</span>]].append(seq[i])</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">return</span> vector</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getIndegree</span>(<span class="params">self, seqs, vector</span>):</span></span><br><span class="line">        indegree = &#123;x: <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> vector.keys()&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> vector:</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> vector[i]:</span><br><span class="line">                indegree[j] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> indegree</span><br><span class="line">            </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getSortedList</span>(<span class="params">self, indegree, vector</span>):</span></span><br><span class="line">        queue = []</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> indegree.keys():</span><br><span class="line">            <span class="keyword">if</span> indegree[i] == <span class="number">0</span>:</span><br><span class="line">                queue.append(i)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(queue) &gt; <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            cur = queue.pop(<span class="number">0</span>)</span><br><span class="line">            res.append(cur)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> vector[cur]:</span><br><span class="line">                indegree[i] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> indegree[i] == <span class="number">0</span>:</span><br><span class="line">                    queue.append(i)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -567,18 +553,6 @@
 <li>而后从栈中开始pop,如果当前节点无右节点则说明当前节点为以该节点为根节点的中序遍历的最后节点，因为其左子树均pop，结果记录并弹出该节点即可</li>
 <li>如果当前节点存在右节点，则需要再结果记录该节点后遍历它的右子树，需要将右子树的第一个dfs入栈，再重复弹出操作<span id="more"></span>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> (</span><br><span class="line">    <span class="type">List</span>,</span><br><span class="line">)</span><br><span class="line"><span class="keyword">from</span> lintcode <span class="keyword">import</span> (</span><br><span class="line">    TreeNode,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Definition of TreeNode:</span></span><br><span class="line"><span class="string">class TreeNode:</span></span><br><span class="line"><span class="string">    def __init__(self, val):</span></span><br><span class="line"><span class="string">        self.val = val</span></span><br><span class="line"><span class="string">        self.left, self.right = None, None</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param root: A Tree</span></span><br><span class="line"><span class="string">    @return: Inorder in ArrayList which contains node values.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorder_traversal</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        </span><br><span class="line">        stack = []</span><br><span class="line">        res = []</span><br><span class="line"></span><br><span class="line">        temp = root</span><br><span class="line">        <span class="keyword">while</span> temp:</span><br><span class="line">            stack.append(temp)</span><br><span class="line">            temp = temp.left</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            curNode = stack.pop()</span><br><span class="line">            res.append(curNode.val)</span><br><span class="line">            <span class="keyword">if</span> curNode.right:</span><br><span class="line">                temp = curNode.right</span><br><span class="line">                <span class="keyword">while</span> temp:</span><br><span class="line">                    stack.append(temp)</span><br><span class="line">                    temp = temp.left</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>lintcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>lintcode-67-二叉树的中序遍历-递归法</title>
-    <url>/2022/02/23/lintcode-67-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86-%E9%80%92%E5%BD%92%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h1><ul>
-<li>根节点左侧中序遍历 + 根节点值 + 根节点右侧中序遍历<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> (</span><br><span class="line">    <span class="type">List</span>,</span><br><span class="line">)</span><br><span class="line"><span class="keyword">from</span> lintcode <span class="keyword">import</span> (</span><br><span class="line">    TreeNode,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Definition of TreeNode:</span></span><br><span class="line"><span class="string">class TreeNode:</span></span><br><span class="line"><span class="string">    def __init__(self, val):</span></span><br><span class="line"><span class="string">        self.val = val</span></span><br><span class="line"><span class="string">        self.left, self.right = None, None</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param root: A Tree</span></span><br><span class="line"><span class="string">    @return: Inorder in ArrayList which contains node values.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorder_traversal</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        leftList = self.inorder_traversal(root.left)</span><br><span class="line">        rightList = self.inorder_traversal(root.right)</span><br><span class="line">        <span class="keyword">return</span> leftList + [root.val] + rightList</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -624,33 +598,26 @@
       </categories>
   </entry>
   <entry>
-    <title>lintcode-69-二叉树的层次遍历-单队列</title>
-    <url>/2022/02/18/lintcode-69-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86-%E5%8D%95%E9%98%9F%E5%88%97/</url>
-    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/69/description">https://www.lintcode.com/problem/69/description</a></p>
-<h1 id="二叉树的层次遍历"><a href="#二叉树的层次遍历" class="headerlink" title="二叉树的层次遍历"></a>二叉树的层次遍历</h1><ul>
-<li>把表头放入队列</li>
-<li>用for来循环当前队列长度并出队，出队元素的值构成新列表加入结果列表，出队元素的左右节点加入队列尾部</li>
-<li>直到队列为空，遍历结束<span id="more"></span>
-```python<br>“””<br>Definition of TreeNode:<br>class TreeNode:<br>  def <strong>init</strong>(self, val):<pre><code>  self.val = val
-  self.left, self.right = None, None
-</code></pre>
-“””</li>
+    <title>lintcode-616-课程表2-有向图bfs</title>
+    <url>/2022/03/09/lintcode-616-%E8%AF%BE%E7%A8%8B%E8%A1%A82-%E6%9C%89%E5%90%91%E5%9B%BEbfs/</url>
+    <content><![CDATA[<h1 id="课程表2"><a href="#课程表2" class="headerlink" title="课程表2"></a>课程表2</h1><ul>
+<li>计算入度和每个点出发的边，用字典保存</li>
+<li>queue放入度为0的点，这些课程直接可修</li>
+<li>queue出队，出队的点减少对应指向点的度，使得其他点度为0时可以入队<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param: numCourses: a total of n courses</span></span><br><span class="line"><span class="string">    @param: prerequisites: a list of prerequisite pairs</span></span><br><span class="line"><span class="string">    @return: the course order</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findOrder</span>(<span class="params">self, numCourses, prerequisites</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        </span><br><span class="line">        indegree = &#123;x: <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(numCourses)&#125;</span><br><span class="line">        edge = &#123;x: [] <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(numCourses)&#125;</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> prerequisites:</span><br><span class="line">            indegree[i] += <span class="number">1</span></span><br><span class="line">            edge[j].append(i)</span><br><span class="line"></span><br><span class="line">        queue = []</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> temp <span class="keyword">in</span> indegree:</span><br><span class="line">            <span class="keyword">if</span> indegree[temp] == <span class="number">0</span>:</span><br><span class="line">                queue.append(temp)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            curClass = queue.pop(<span class="number">0</span>)</span><br><span class="line">            res.append(curClass)</span><br><span class="line">            <span class="keyword">if</span> edge[curClass] == []:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">for</span> nextClass <span class="keyword">in</span> edge[curClass]:</span><br><span class="line">                indegree[nextClass] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> indegree[nextClass] == <span class="number">0</span>:</span><br><span class="line">                    queue.append(nextClass)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(res) == numCourses:</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>class Solution:<br>    “””<br>    @param root: A Tree<br>    @return: Level order a list of lists of integer<br>    “””<br>    def levelOrder(self, root):<br>        # write your code here<br>        if not root:<br>            return []</p>
-<pre><code>    queue = [root]
-    res = []
-    while queue:
-        level = []
-        for i in range(len(queue)):
-            node = queue.pop(0)
-            level.append(node.val)
-            if node.left:
-                queue.append(node.left)
-            if node.right:
-                queue.append(node.right)
-        res.append(level)
-    return res
-</code></pre>
+]]></content>
+      <categories>
+        <category>lintcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>lintcode-67-二叉树的中序遍历-递归法</title>
+    <url>/2022/02/23/lintcode-67-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86-%E9%80%92%E5%BD%92%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h1><ul>
+<li>根节点左侧中序遍历 + 根节点值 + 根节点右侧中序遍历<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> (</span><br><span class="line">    <span class="type">List</span>,</span><br><span class="line">)</span><br><span class="line"><span class="keyword">from</span> lintcode <span class="keyword">import</span> (</span><br><span class="line">    TreeNode,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Definition of TreeNode:</span></span><br><span class="line"><span class="string">class TreeNode:</span></span><br><span class="line"><span class="string">    def __init__(self, val):</span></span><br><span class="line"><span class="string">        self.val = val</span></span><br><span class="line"><span class="string">        self.left, self.right = None, None</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param root: A Tree</span></span><br><span class="line"><span class="string">    @return: Inorder in ArrayList which contains node values.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorder_traversal</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        leftList = self.inorder_traversal(root.left)</span><br><span class="line">        rightList = self.inorder_traversal(root.right)</span><br><span class="line">        <span class="keyword">return</span> leftList + [root.val] + rightList</span><br></pre></td></tr></table></figure></li>
+</ul>
 ]]></content>
       <categories>
         <category>lintcode</category>
@@ -712,17 +679,33 @@
       </categories>
   </entry>
   <entry>
-    <title>lintcode-892-外星人字典-拓扑bfs</title>
-    <url>/2022/03/10/lintcode-892-%E5%A4%96%E6%98%9F%E4%BA%BA%E5%AD%97%E5%85%B8-%E6%8B%93%E6%89%91bfs/</url>
-    <content><![CDATA[<h1 id="外星人字典"><a href="#外星人字典" class="headerlink" title="外星人字典"></a>外星人字典</h1><ul>
-<li>题意中从 “wrt”和”wrf” ,我们可以得到 ‘t’&lt;’f’，得不到wrt三字母的关系</li>
-<li>建立每个字母的入度</li>
-<li>根据排序关系建立向量关系</li>
-<li>abc,ab为错误排序,空字符字典排序最高</li>
-<li>题意这里可能有多个有效的字母顺序，返回以正常字典顺序看来最小的。就是说queue的内部的排序规则按照正常字典排序，应用堆结构。</li>
-<li>堆用法from heapq import * heapify/heappop()/heappush()<span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> (</span><br><span class="line">    <span class="type">List</span>,</span><br><span class="line">)</span><br><span class="line"><span class="keyword">from</span> heapq <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param words: a list of words</span></span><br><span class="line"><span class="string">    @return: a string which is correct order</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">alien_order</span>(<span class="params">self, words: <span class="type">List</span>[<span class="built_in">str</span>]</span>) -&gt; <span class="built_in">str</span>:</span></span><br><span class="line">        <span class="comment"># Write your code here</span></span><br><span class="line">        indegree = &#123;ch: <span class="number">0</span> <span class="keyword">for</span> word <span class="keyword">in</span> words <span class="keyword">for</span> ch <span class="keyword">in</span> word&#125;</span><br><span class="line">        vector = &#123;ch: [] <span class="keyword">for</span> word <span class="keyword">in</span> words <span class="keyword">for</span> ch <span class="keyword">in</span> word&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(words)):</span><br><span class="line">            preWord = words[i - <span class="number">1</span>]</span><br><span class="line">            curWord = words[i]</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(preWord) &gt; <span class="built_in">len</span>(curWord) <span class="keyword">and</span> preWord[<span class="number">0</span>: <span class="built_in">len</span>(curWord)] == curWord:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">min</span>(<span class="built_in">len</span>(preWord),<span class="built_in">len</span>(curWord))):</span><br><span class="line">                <span class="keyword">if</span> preWord[j] != curWord[j]:</span><br><span class="line">                    indegree[curWord[j]] += <span class="number">1</span></span><br><span class="line">                    vector[preWord[j]].append(curWord[j])</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        queue = []</span><br><span class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> indegree.keys():</span><br><span class="line">            <span class="keyword">if</span> indegree[ch] == <span class="number">0</span>:</span><br><span class="line">                queue.append(ch)</span><br><span class="line"></span><br><span class="line">        res = []</span><br><span class="line">        heapify(queue)</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            cur = heappop(queue)</span><br><span class="line">            res.append(cur)</span><br><span class="line">            <span class="keyword">for</span> ch <span class="keyword">in</span> vector[cur]:</span><br><span class="line">                indegree[ch] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> indegree[ch] == <span class="number">0</span>:</span><br><span class="line">                    heappush(queue, ch)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(indegree) == <span class="built_in">len</span>(res):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span>.join(res)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure></li>
+    <title>lintcode-69-二叉树的层次遍历-单队列</title>
+    <url>/2022/02/18/lintcode-69-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86-%E5%8D%95%E9%98%9F%E5%88%97/</url>
+    <content><![CDATA[<p><a href="https://www.lintcode.com/problem/69/description">https://www.lintcode.com/problem/69/description</a></p>
+<h1 id="二叉树的层次遍历"><a href="#二叉树的层次遍历" class="headerlink" title="二叉树的层次遍历"></a>二叉树的层次遍历</h1><ul>
+<li>把表头放入队列</li>
+<li>用for来循环当前队列长度并出队，出队元素的值构成新列表加入结果列表，出队元素的左右节点加入队列尾部</li>
+<li>直到队列为空，遍历结束<span id="more"></span>
+```python<br>“””<br>Definition of TreeNode:<br>class TreeNode:<br>  def <strong>init</strong>(self, val):<pre><code>  self.val = val
+  self.left, self.right = None, None
+</code></pre>
+“””</li>
 </ul>
+<p>class Solution:<br>    “””<br>    @param root: A Tree<br>    @return: Level order a list of lists of integer<br>    “””<br>    def levelOrder(self, root):<br>        # write your code here<br>        if not root:<br>            return []</p>
+<pre><code>    queue = [root]
+    res = []
+    while queue:
+        level = []
+        for i in range(len(queue)):
+            node = queue.pop(0)
+            level.append(node.val)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        res.append(level)
+    return res
+</code></pre>
 ]]></content>
       <categories>
         <category>lintcode</category>
@@ -742,43 +725,62 @@
       </categories>
   </entry>
   <entry>
-    <title>九章算法-03-真实案例-字符串查找</title>
-    <url>/2022/01/31/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-03-%E7%9C%9F%E5%AE%9E%E6%A1%88%E4%BE%8B-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<h1 id="implement-strStr"><a href="#implement-strStr" class="headerlink" title="implement strStr()"></a>implement strStr()</h1><p>查询字符串中的子串<br>KMP算法-三个人名的缩写<br>首先暴力方法实现</p>
-<span id="more"></span>
-<p>java不可以用substring,python不可以用切片<br>保证不越界<br>+1 -1 的问题代入一个特殊值验证<br>rabin-karp算法利用hashcode<br>hash(abcd) = [a<em>31(3) + b</em>31(2) + c<em>31(1) + d</em>31(0)]%10(6)<br>31叫做matchNumber可以随意设置，31为经验值</p>
+    <title>lintcode-892-外星人字典-拓扑bfs</title>
+    <url>/2022/03/10/lintcode-892-%E5%A4%96%E6%98%9F%E4%BA%BA%E5%AD%97%E5%85%B8-%E6%8B%93%E6%89%91bfs/</url>
+    <content><![CDATA[<h1 id="外星人字典"><a href="#外星人字典" class="headerlink" title="外星人字典"></a>外星人字典</h1><ul>
+<li>题意中从 “wrt”和”wrf” ,我们可以得到 ‘t’&lt;’f’，得不到wrt三字母的关系</li>
+<li>建立每个字母的入度</li>
+<li>根据排序关系建立向量关系</li>
+<li>abc,ab为错误排序,空字符字典排序最高</li>
+<li>题意这里可能有多个有效的字母顺序，返回以正常字典顺序看来最小的。就是说queue的内部的排序规则按照正常字典排序，应用堆结构。</li>
+<li>堆用法from heapq import * heapify/heappop()/heappush()<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> (</span><br><span class="line">    <span class="type">List</span>,</span><br><span class="line">)</span><br><span class="line"><span class="keyword">from</span> heapq <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param words: a list of words</span></span><br><span class="line"><span class="string">    @return: a string which is correct order</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">alien_order</span>(<span class="params">self, words: <span class="type">List</span>[<span class="built_in">str</span>]</span>) -&gt; <span class="built_in">str</span>:</span></span><br><span class="line">        <span class="comment"># Write your code here</span></span><br><span class="line">        indegree = &#123;ch: <span class="number">0</span> <span class="keyword">for</span> word <span class="keyword">in</span> words <span class="keyword">for</span> ch <span class="keyword">in</span> word&#125;</span><br><span class="line">        vector = &#123;ch: [] <span class="keyword">for</span> word <span class="keyword">in</span> words <span class="keyword">for</span> ch <span class="keyword">in</span> word&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(words)):</span><br><span class="line">            preWord = words[i - <span class="number">1</span>]</span><br><span class="line">            curWord = words[i]</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(preWord) &gt; <span class="built_in">len</span>(curWord) <span class="keyword">and</span> preWord[<span class="number">0</span>: <span class="built_in">len</span>(curWord)] == curWord:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">min</span>(<span class="built_in">len</span>(preWord),<span class="built_in">len</span>(curWord))):</span><br><span class="line">                <span class="keyword">if</span> preWord[j] != curWord[j]:</span><br><span class="line">                    indegree[curWord[j]] += <span class="number">1</span></span><br><span class="line">                    vector[preWord[j]].append(curWord[j])</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        queue = []</span><br><span class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> indegree.keys():</span><br><span class="line">            <span class="keyword">if</span> indegree[ch] == <span class="number">0</span>:</span><br><span class="line">                queue.append(ch)</span><br><span class="line"></span><br><span class="line">        res = []</span><br><span class="line">        heapify(queue)</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            cur = heappop(queue)</span><br><span class="line">            res.append(cur)</span><br><span class="line">            <span class="keyword">for</span> ch <span class="keyword">in</span> vector[cur]:</span><br><span class="line">                indegree[ch] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> indegree[ch] == <span class="number">0</span>:</span><br><span class="line">                    heappush(queue, ch)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(indegree) == <span class="built_in">len</span>(res):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span>.join(res)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
 ]]></content>
       <categories>
-        <category>九章算法</category>
+        <category>lintcode</category>
       </categories>
   </entry>
   <entry>
-    <title>九章算法-01-高效刷题</title>
-    <url>/2022/01/25/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-01-%E9%AB%98%E6%95%88%E5%88%B7%E9%A2%98/</url>
-    <content><![CDATA[<ul>
-<li>有的题不要刷，有的题目可以多刷。</li>
-<li>缩进与循环尽量不要超过三层，若多层可以采用子函数，代码缩进越多bug越多。<span id="more"></span></li>
-<li>进步最快的是代码被更高级的员工code review。</li>
-<li>magicNumber(定义wall=1,water=2)</li>
-<li>缺乏项目经验：耦合度高，重复代码，全局变量。</li>
-<li>解耦合：整体逻辑用子函数表达，子函数实现具体步骤。</li>
-<li>好的代码不需要注释。更清晰的变量名，更易懂的逻辑。</li>
-<li>子函数化，避免全局变量可以降低bug.</li>
-<li>逻辑思维能力，代码质量，代码风格，异常检测。</li>
-<li>面试是一个试用的过程，不是考试的过程。</li>
-<li>不要闷头写，先沟通清除再写，写完了再解释。</li>
-<li>不会刻意要提示，但先自己努力一下。</li>
-<li>会就会，不会就是不会，坦诚很重要。</li>
-<li>一个Django项目课，可以咨询。</li>
-<li>面试语言首推python,其次java,不要用C++。</li>
-<li>lintcode 算法能力，bugFree能力，题量。</li>
-<li>lintcodeCat帮助评估算法能力。</li>
-<li>判断算法考不考，带名字的算法都不考。</li>
-<li>参考考察表v4.1</li>
-<li>熟悉每一种常用的数据结构。</li>
-<li>互联网公司考systemDesign多，软件公司考OOD</li>
-<li>OOD有5章节10课时的课程。</li>
-<li>BehaviorQuestion也要有准备，主要准备与面试公司的联系。</li>
+    <title>九章算法-04-复杂度与双指针</title>
+    <url>/2022/02/09/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-04-%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E5%8F%8C%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<h1 id="算法的四个复杂度"><a href="#算法的四个复杂度" class="headerlink" title="算法的四个复杂度"></a>算法的四个复杂度</h1><ul>
+<li>时间复杂度-注重</li>
+<li>空间复杂度</li>
+<li>编程复杂度-能看得懂</li>
+<li>思维复杂度-能想得出<span id="more"></span>
+<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1></li>
+<li>On On2 On3 O(m+n) O(1) O(logn) O(nlogn) O(2n) O(nn) O(n!)</li>
+<li>快排最坏是On2，平均复杂度是Onlogn</li>
+</ul>
+<h1 id="双指针的分类"><a href="#双指针的分类" class="headerlink" title="双指针的分类"></a>双指针的分类</h1><ul>
+<li>O(n+m)&gt;Omax(n,m)&gt;O((m+n)/2)导出O(m+n)=O(max(m,n))</li>
+<li>On常用算法双指针、打擂台、单调栈、单调队列</li>
+<li>相向双指针-判断回文<ul>
+<li>reverse 翻转字符串 判断回文</li>
+<li>two sum 两数和 三数和</li>
+<li>partition 快排 颜色排序</li>
+</ul>
+</li>
+<li>背向双指针-最长回文</li>
+<li>同向双指针</li>
+</ul>
+<h1 id="有效回文串-validPalindrome-1-amp-2"><a href="#有效回文串-validPalindrome-1-amp-2" class="headerlink" title="有效回文串 validPalindrome 1&amp;2"></a>有效回文串 validPalindrome 1&amp;2</h1><ul>
+<li>常用函数<ul>
+<li>isdigit()</li>
+<li>isalpha()</li>
+<li>lower()</li>
+<li>upper()</li>
+</ul>
+</li>
+</ul>
+<h1 id="twoSum"><a href="#twoSum" class="headerlink" title="twoSum"></a>twoSum</h1><ul>
+<li>哈希表 时间On 空间On</li>
+<li>排序+双指针 时间Onlogn 空间O1<ul>
+<li>如果数据已排序，则双指针算法更好，因为不需要额外空间</li>
+<li>如果需要返回下标，则双指针算法不如哈希表，双指针算法需要与下标共同排序</li>
+</ul>
+</li>
 </ul>
 ]]></content>
       <categories>
@@ -842,46 +844,44 @@
       </categories>
   </entry>
   <entry>
-    <title>九章算法-04-复杂度与双指针</title>
-    <url>/2022/02/09/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-04-%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E5%8F%8C%E6%8C%87%E9%92%88/</url>
-    <content><![CDATA[<h1 id="算法的四个复杂度"><a href="#算法的四个复杂度" class="headerlink" title="算法的四个复杂度"></a>算法的四个复杂度</h1><ul>
-<li>时间复杂度-注重</li>
-<li>空间复杂度</li>
-<li>编程复杂度-能看得懂</li>
-<li>思维复杂度-能想得出<span id="more"></span>
-<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1></li>
-<li>On On2 On3 O(m+n) O(1) O(logn) O(nlogn) O(2n) O(nn) O(n!)</li>
-<li>快排最坏是On2，平均复杂度是Onlogn</li>
+    <title>九章算法-01-高效刷题</title>
+    <url>/2022/01/25/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-01-%E9%AB%98%E6%95%88%E5%88%B7%E9%A2%98/</url>
+    <content><![CDATA[<ul>
+<li>有的题不要刷，有的题目可以多刷。</li>
+<li>缩进与循环尽量不要超过三层，若多层可以采用子函数，代码缩进越多bug越多。<span id="more"></span></li>
+<li>进步最快的是代码被更高级的员工code review。</li>
+<li>magicNumber(定义wall=1,water=2)</li>
+<li>缺乏项目经验：耦合度高，重复代码，全局变量。</li>
+<li>解耦合：整体逻辑用子函数表达，子函数实现具体步骤。</li>
+<li>好的代码不需要注释。更清晰的变量名，更易懂的逻辑。</li>
+<li>子函数化，避免全局变量可以降低bug.</li>
+<li>逻辑思维能力，代码质量，代码风格，异常检测。</li>
+<li>面试是一个试用的过程，不是考试的过程。</li>
+<li>不要闷头写，先沟通清除再写，写完了再解释。</li>
+<li>不会刻意要提示，但先自己努力一下。</li>
+<li>会就会，不会就是不会，坦诚很重要。</li>
+<li>一个Django项目课，可以咨询。</li>
+<li>面试语言首推python,其次java,不要用C++。</li>
+<li>lintcode 算法能力，bugFree能力，题量。</li>
+<li>lintcodeCat帮助评估算法能力。</li>
+<li>判断算法考不考，带名字的算法都不考。</li>
+<li>参考考察表v4.1</li>
+<li>熟悉每一种常用的数据结构。</li>
+<li>互联网公司考systemDesign多，软件公司考OOD</li>
+<li>OOD有5章节10课时的课程。</li>
+<li>BehaviorQuestion也要有准备，主要准备与面试公司的联系。</li>
 </ul>
-<h1 id="双指针的分类"><a href="#双指针的分类" class="headerlink" title="双指针的分类"></a>双指针的分类</h1><ul>
-<li>O(n+m)&gt;Omax(n,m)&gt;O((m+n)/2)导出O(m+n)=O(max(m,n))</li>
-<li>On常用算法双指针、打擂台、单调栈、单调队列</li>
-<li>相向双指针-判断回文<ul>
-<li>reverse 翻转字符串 判断回文</li>
-<li>two sum 两数和 三数和</li>
-<li>partition 快排 颜色排序</li>
-</ul>
-</li>
-<li>背向双指针-最长回文</li>
-<li>同向双指针</li>
-</ul>
-<h1 id="有效回文串-validPalindrome-1-amp-2"><a href="#有效回文串-validPalindrome-1-amp-2" class="headerlink" title="有效回文串 validPalindrome 1&amp;2"></a>有效回文串 validPalindrome 1&amp;2</h1><ul>
-<li>常用函数<ul>
-<li>isdigit()</li>
-<li>isalpha()</li>
-<li>lower()</li>
-<li>upper()</li>
-</ul>
-</li>
-</ul>
-<h1 id="twoSum"><a href="#twoSum" class="headerlink" title="twoSum"></a>twoSum</h1><ul>
-<li>哈希表 时间On 空间On</li>
-<li>排序+双指针 时间Onlogn 空间O1<ul>
-<li>如果数据已排序，则双指针算法更好，因为不需要额外空间</li>
-<li>如果需要返回下标，则双指针算法不如哈希表，双指针算法需要与下标共同排序</li>
-</ul>
-</li>
-</ul>
+]]></content>
+      <categories>
+        <category>九章算法</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>九章算法-03-真实案例-字符串查找</title>
+    <url>/2022/01/31/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-03-%E7%9C%9F%E5%AE%9E%E6%A1%88%E4%BE%8B-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h1 id="implement-strStr"><a href="#implement-strStr" class="headerlink" title="implement strStr()"></a>implement strStr()</h1><p>查询字符串中的子串<br>KMP算法-三个人名的缩写<br>首先暴力方法实现</p>
+<span id="more"></span>
+<p>java不可以用substring,python不可以用切片<br>保证不越界<br>+1 -1 的问题代入一个特殊值验证<br>rabin-karp算法利用hashcode<br>hash(abcd) = [a<em>31(3) + b</em>31(2) + c<em>31(1) + d</em>31(0)]%10(6)<br>31叫做matchNumber可以随意设置，31为经验值</p>
 ]]></content>
       <categories>
         <category>九章算法</category>
@@ -931,6 +931,23 @@
       </categories>
   </entry>
   <entry>
+    <title>九章算法-07-二分法模板</title>
+    <url>/2022/02/14/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-07-%E4%BA%8C%E5%88%86%E6%B3%95%E6%A8%A1%E6%9D%BF/</url>
+    <content><![CDATA[<h1 id="二分法原理"><a href="#二分法原理" class="headerlink" title="二分法原理"></a>二分法原理</h1><ul>
+<li>基于有序数组</li>
+<li>确定start,end,mid<span id="more"></span>
+<h1 id="二分法模板"><a href="#二分法模板" class="headerlink" title="二分法模板"></a>二分法模板</h1></li>
+<li>目标的最后一个索引</li>
+<li>两道题firstPositionOfTarget LastPositionOfTarget</li>
+<li>start + 1 &lt; end 避免死循环</li>
+<li>单独判断start 与 end</li>
+</ul>
+]]></content>
+      <categories>
+        <category>九章算法</category>
+      </categories>
+  </entry>
+  <entry>
     <title>九章算法-09-二分法的四重境界</title>
     <url>/2022/02/15/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-09-%E4%BA%8C%E5%88%86%E6%B3%95%E7%9A%84%E5%9B%9B%E9%87%8D%E5%A2%83%E7%95%8C/</url>
     <content><![CDATA[<h1 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h1><ul>
@@ -960,23 +977,6 @@
 <li>确定答案范围</li>
 <li>验证答案大小</li>
 <li>183题，木材加工</li>
-</ul>
-]]></content>
-      <categories>
-        <category>九章算法</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>九章算法-07-二分法模板</title>
-    <url>/2022/02/14/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-07-%E4%BA%8C%E5%88%86%E6%B3%95%E6%A8%A1%E6%9D%BF/</url>
-    <content><![CDATA[<h1 id="二分法原理"><a href="#二分法原理" class="headerlink" title="二分法原理"></a>二分法原理</h1><ul>
-<li>基于有序数组</li>
-<li>确定start,end,mid<span id="more"></span>
-<h1 id="二分法模板"><a href="#二分法模板" class="headerlink" title="二分法模板"></a>二分法模板</h1></li>
-<li>目标的最后一个索引</li>
-<li>两道题firstPositionOfTarget LastPositionOfTarget</li>
-<li>start + 1 &lt; end 避免死循环</li>
-<li>单独判断start 与 end</li>
 </ul>
 ]]></content>
       <categories>
@@ -1186,27 +1186,6 @@
       </categories>
   </entry>
   <entry>
-    <title>九章算法-17-排列类DFS</title>
-    <url>/2022/03/29/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-17-%E6%8E%92%E5%88%97%E7%B1%BBDFS/</url>
-    <content><![CDATA[<h1 id="排列类DFS"><a href="#排列类DFS" class="headerlink" title="排列类DFS"></a>排列类DFS</h1><ul>
-<li>问题的模型是求出一个集合中所有元素的满足某个条件的排列</li>
-<li>lintcode-全排列问题 时间复杂度O(N!*N)</li>
-<li>lintcode-travelingSalesmanProblem<ul>
-<li>暴力dfs</li>
-<li>暴力dfs + 最优性剪枝</li>
-<li>状态压缩动态规划</li>
-<li>随机化算法（又称遗传算法） - 使用交换调整策略</li>
-<li>随机化算法 - 使用反转调整策略</li>
-</ul>
-</li>
-<li>lintcode-16-带重复元素的排列问题</li>
-</ul>
-]]></content>
-      <categories>
-        <category>九章算法</category>
-      </categories>
-  </entry>
-  <entry>
     <title>基于github与hexo博客创建全流程</title>
     <url>/2022/01/25/%E5%9F%BA%E4%BA%8Egithub%E4%B8%8Ehexo%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA%E5%85%A8%E6%B5%81%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="创建github帐号并安装hexo"><a href="#创建github帐号并安装hexo" class="headerlink" title="创建github帐号并安装hexo"></a>创建github帐号并安装hexo</h1><p><a href="https://zhuanlan.zhihu.com/p/26625249">https://zhuanlan.zhihu.com/p/26625249</a></p>
@@ -1230,107 +1209,35 @@
       </tags>
   </entry>
   <entry>
-    <title>markdown格式测试</title>
-    <url>/2022/01/25/%E6%A0%BC%E5%BC%8F%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="1cf92338afb0004f035be68b24ee1334b95cb18968902992d3a2d3a46617782a">fb95aa7c407f8ccaa0f86ec63474b39fc11ae3d89777ade9f24a7080707288d14695b8a5248b1f11b9e44f63cbd827b457e924f331c4e953ec65a0dbc9d6601441378d66387ecd99a24d3d66637f32ef87e84423625328945a8b3028aa031905c7e2c9b1a93519bf9d0c7d8f0df8b1d33f7d889e261ea3b2edf3051ff96339cd7e0a5b64e318e8168867fa1f6dad2c2ee86686727596b15328e95f67f3c585c200a0078f293a00d0872d8ec1452378988269d46c83733c084ef8ff7a381b2e1736d37b3b8a56cbbd0e7b5fdedf96eb4ed7f7a0f097e94a5fa17afc98f3bac56982182333119efc201f64416342905705e64e5482986c7a5965c070d2cdfddb0551f5d59664388ed11035679d27fbcae76cfa05b1a53b3101f6ea181c923c4ae7c444b700dadf7e062734a565d768f48d9c1a1e2cb1b19d442bbc3dc320507808b93b5bae7095afae609f672768b3e6db30a60cdcbb8a838c8d5adde0af4434172b68098bc942877bc803a574d5d31b4daa8533a1e39704b3790965d44d76d89acff4eb628b31e6feff2c86d8160cb7774a8c54efb0fb248257e2d37fa6b5d6a97f0a14f5c42676c18665539288538aa591f6f200fc6235ec81a173350b8677659757b418f0b7d72dcf6b72e63c623601192db36a9a01350024fafd633b9fc72cde5c2f9fbdc7c2ce4d46e6d83b62256aa93998f2b5f5be9fae7aefaed23820017ff0e4f2c80c737097951f2327d467ebdccfe0b738e7c64281d1ea1a26720a977b87bfde653b7be2c39e69b94edd34cda222ba03b2a1111772530bfc29d232947284f801f16d67b1ea120103cff60d46638a660a21960510f2da28d272695db1be0a8b51aff41da2b12ab24358ec342821e4b1f0ff3419f7fb5c827cf17faa803af1c4f633bbf39d502f7117bdb8903870313492c935e82b8cc180d0ec876382d0f759feba020052d742d4db507a910a2495c1133b000b6441432aa084625ab96b892e716caa91077db95eeea789bbf2b5e9f87b357c4e1b163071503fb788374ca2c439d610af6c8178da760e7a86df06f933b9ee89b3c5b927303642564da9ef83602cc1f36d2447f55cc958d1359a9edd96e18f4e249617bbbd8f64e1b786178fb9d74b7c651b7d4f77795a99aace2a31d3a284565385bb570d3b4719d4058cc71ffd8c35ca672a572c1be08e9034c0a75bf9c24f62fc61fcf32a1e6b2b7bc04ca67a7b43cf4b3687fcd17306c4f22e2d388b58281d854a1bf5f81d1a461956cce5c2000f718faea16506d382ae8aefd05df8fdc6e179dcea15cc0e77beb4eddd675555c3d83d32d16723490e2c2b2323d3a73fd0dff1dff2f46adfa1e8f457a271a1f9530b8bee2b4646e7c24be512d5c146393010febd1e1057de17c37826041ef5589ecb3c94d5151c64e367adaed0f291702d1ea3acd46b953fa8f035679b2954321407aab6074b009216ad294438b86e94dd771f2f33637d44fbf9c107f2084991fcfd9cfb01fdf7fb23a41d61e7eea43a312c8b6e83e7da2b06e6c44b17e721bad146dbcf0527e263c6e87d62cddbcff37e9350685fa27991b79c2ff3d316d192257d840aa051eed2c73440056a4d9997bab5d41720ceb0ea1406bf47f0ab72c9c4c6f1c8cbcfeeffb8e8294ed0422690281334089ce34ac7a9ed3e6149c7842919a2fa33f5f2bcdd79c8175cf652db87059bff96b3555a45662ca3dc3526f086730e0fc90fb670d27d48eac4f5143723c5e39711f48b265a830e16212e4781472b32aab78bce932c73074c690310978469696b7a8a62810d9be5fed14e0e9801f74a1731812e2df71d7ca1fb6b8cc362104eb5cb8d11680d7141e5667bb6ee479435b3696881fa09edb49b4d78d285663b01310a0cf0b6596a858c4b575bd671f8507118d56b39e384c302f4780621a8914c5321c982b86c60f4b808e33d535b8df3e0298a9559cc60b157c41d6889cb155bff084b4b76ee7bba2222c322fa55fe7a1ec3310bdf78ecdd6e286eeae57470317a544f599f14b362f25b278a9a120ca22d414340324920676c445f2a0e18d92a214a8fd69386e2959d05bdcc3d70f94e2a581118058b2465180fecc6fc3656d1953313986b113de56fa8de1da3226d24ce5294314f50ca5a6c055e1b9f7978c95f5722323fac9609ef1482a29c11ba3566eb6c63d5946c422513cafe8f52362e96c552e62e6a095bac7143da7622b89b3d714a52851e14f6260b9b4609f8f02307be6ca24e481933a37deb96f1c758f499dbb6732d3cf0f518abb0aa5be534a12f748f25f965a379afdd0fce8d57bd6c2dfe957e503091b031cd9131e92aaca4d28a62d8f43628b981316ef744ad55c02e9735c76fe5be402448b3b56436dd4b24606a5d8a60fb41e504117d5909a0dfdd436ea241c71f5d71e429d2ad8b769073a6c27d9d5daed12172eb51516f3083eaefc05fccb7cf290571f07ec87b90bb74a3d302e0456bae2f2bafff4675ec05d2485097235c3637d366facd88571af0bf51f57916343cc1f988a8578fc896b90b35c6f37929c258f8246ea03d457eef139ac83c90dd0092e82f298e8c4f247ce1f0510ad5745e7659a1c7117d7b125701a9963499480f26fbf12b6b821b8add8e1912ccdd5d4a2a227bba5f52457a7743119765611e79435370c627f331a1b6c3c588f5fae42337af380ca67315021af9be535f549cd0653cf283a0bf681ce76d253d6c297ec69353a9c19ee4f737954a654e08cd9d1241d21cc7a62d5e7ff0d458c136243da992807e75680eb062da86e1c3c189cb877dc9d2f9855610a6ad673e03da73ff43d5a01855ab0b1e4d9db6d618d43145ecb93625f95cd3ed046612740d646b6aa75ecd25ca58ce7cbfb09b6bb35512788832a19c6063f2449bf4b0f0cec6f881dd04d6d3959610cf0385b3e2d1945765e96fe668109e80b29ed2c34467828db5cafee240c1f3595b1b47f85b2d283da979fe5a2ada918720f10e9c637cdc1206b07eb6dfa42cfb3d8d732337ec25cb04e9b35c6a1ae7be2311b10fb1cb194215fe7d55c505077fd68eb5822cf99e9826c21013415c673348c6af73750d2ac0db7046e60b06b32ec582d7230570c2bc15b9f26aa9fac2cbc8d096bb6fd6f6014a77f6f5ef11b760c35bb8c0e71bdc5d1f17d729ad21070f7a47640ebd79a0d48d5b65bc69aa3c56ed901c947ff140e0a1af811d2ec0a9d415668e5e73998cedd4b485a1f5e20445f84e9509fc6c9e17ff7abd265d2ce0a5ed06284dd1f2aa560843a79c5c3fe59f1d6a99813f3fe638431879321a9a56c925a5ecf72618c22fd99f8db205b99a6ce0297fc02059e67bd1c85d46ef24a0dba67a661283f9a699c5e712ccd62170cd83b5a5f421e4d96f54416704768687e64ddc3cbcfa811a8534b42c55294d54c9dca21cb145146d1ea596b4cae9e49f5c54b13fc75f6cf4d7a02ba23a7a09603ff4e6af5ed52c72e4023e2c2022cb2ba769f28c2c86af637625a1d981009a40b111e2ba9393648a08e995ccad7f3a4a1e1b3fa385579fb7fb62377e26af1ffffc1aa2f63225f284447d0b262ecec04bbe33db7d5dc7968184bb5a69bc205fc51d9337c03ea4e372c2c78e7b3e1fc746a37cb21a1c2c3af60826d1a12501b820741b81bffd46aa2df331d7a410817302fed926ad81a4c5c37a5a28d1c2b60b3ca43953e8aa758354218a6df4d014e9de34768e7cb25b33762270e824bca54419b77a9381870ee4a951d110937fcd268e70428797ff14802d4356c0bac3425d51a074196fd2d94d892d9f5a74231839e2a4d3c47de2db1fd61df75422c985bb7284a71601a1c1f776f05404737d656b4171dde92475f3a966b90324cd2defa64d7169a357a09fdaf41d88c1d820feb34fe9f83c68ec0ae4288deea48aff5d9a27f56ef0a19c139d78b6f793331b8d8ae2c6e11da785841d245eb8b5fea16c27fad760ebb2582b5b1e68daefb641e0b80bb4809e1545bd3a716a0268fb60edd823613121a296ba4a84f306f06c387cbb181fa053bd575784309aefe628392d99ae20b31ae3bc131cf9080667df0578a5de1d24b85c976894a6066ad0452daa0cf399e8e001d94770585c5337dbe2a5550348a6663c269cd83276739195d7d308fe8126a40966ff60081be201e74381a68c3b638b9409f565ea21a5c1289966793f7ffdcb426935c5982901d3478abb8c1b7cf6b4e0a6dbcb466742137855b65961cbcb6d26efc667bf43b0746eb3b73c4d01f5ba6097274c549e41aea976741dc02e8e1847d568137054586bd567ba6db166ea3a5691b9c9ca1480154478e68b1fedee7386ccb7cae833845a5aa0a106c451d1f59a96117afb77f4d7bdcdfd4d7d998bfee2b1629f702d01dc92e86013d1d1b4d326e4d25f0b1849afa1da68ae8bb10aa25a74682bb2dd4960723f5b2882f9da23c4c8931fc715497bb296f169dbd629225357d73f78c343542ef347c03a05d1fb9d0b1de79321064e3f4ea1b36df6edbf79909d686e606cd663d6bb9559a795b3344d9b6a0a1d5538ffff3517d5dd411f116bf711f56513de67bea6e9561cfac73bad7d72e7d0b6984d72260d7aefcad26233750a60164a4931f1ef271004e6601e927b2c78b318d709d4108f48ff3e3c38ed3115077fcc363811809141b5e9805ae16cd5b7cf8ee28739943e3224277704befb777905ec50c4f39830be0a0368318dd52f0948fbf9ef13351779cc4f8963e80ef85c39134023928b240fad2129643f63eb0b06206afd288fb165ec589ac5d3a2f290709392c5a801498410ab4d55d284beb86a2c40d4cf4bd64a7cb5766b86d54362f6f6a3b9ac85ebaf05619634e355e598c2fa8b15b9604822a532613eacb07370cbff89cd8d97f0546318a4f26b7f980e898b8c28c3c2a0be6920c39a42ade970fab0ca7b56d2c2cac309b1a62dd321930a935aa7599da0515329f731ac23d59db9fbc8ff3db2cecf47edc6706cba3aa9e26713e170eadcd09f521b50fb974f399df58289046aa6e20e241da5b44ef747f78fdc6a528f19d7c30863174bd5628866e706c8b94667626d6d73943597c3888934c48d77db8b4854d0552d1b243147df264f6690c57f5d4b833d3da8195e0ee84a80512cb5affb7adb06dba3d313c793945e8da33cdecd235187244dae6fbdf9eba2a86949ce3cf7e6f4bb3c0729282e2efc5d8a4c47b787f7caea268c7c2164709c3a5f6551ed6cd4d5b5234ff685f6befe380148ac2649a384fd461143e2d71d5e72eb3bc6958a3969ca47c6aaf397e0f5cafa30518e0b529ab75302a21971a66266409e282e95822693ec325f76db404527ea9422261172e42583d67615b0592ef1a0978145a64cb98e12a43367e6393c4582acc2dd642f1fd1c5dc3778938cc855a62d2d9a215c0c37952ba139ebc0ceeb34f5cd59a7d9ded8b03a6d6adc06bc7fa401272a06c18d4d6932f0f7d8e530970598b27448bcda69ed7ef4838283ecec81fe30c8720b25d082aecc836fa9ca79be2f0eebc169b6e003ea24179f953939ffa2a02ec06a25e5428e781198bc93540245a3373f7702d9f72ac0bc4ef891b1ae608c133f58bc5dadca4596b1ba1427cfb47c719244513f171204a32e6f60256aa1514cbb4eb39ab62f74c0d0d80d3bc53f8c699a4b774c019ec45014bbd03cf3cfc09ab4ec02508ecb8d78c40eb34a3f90bdc02fa369933f496ed41a7c886bced43d745e84bbf11be9205d67a86f90d7259e929d4d3f0a306a9ceac16c40237a0e91b92336a20af07b7ec3c507ba3c312a74608f82a0a36c25d5555d8e03e131830a5d4e37413141410b328379631c15bcb1f32293a1b6e7e14cdb181342de7f53b70eadba888589314ad160ea45b45ef7d419e33003e0cbec1c2fead5625e6bddd6588b15d9111357683ee44152bb6914f8373a06f3974fa5cd1474baab70cbe6e7847d1dfa4c18aa122532df86e5c06410be17e8abec97d58e5594115ddc57df37572d8d6680e1c080358caf12b01168cb92130c6ddf34f9c2075d1aff2bd87c546f77edef3f2d51ed31312b8a1378fef36ee251099161720a773c40665efe7d08a50268cc3278b98bcce278e8ec4aae71fb9e000c68b891637d456715398b2bb78a1465b03966694701c17c882a47a4a1ea563a3916415820dd5eb2d8b34189650a2724d309642ed08670b2e4c8285cafb7e451a56d9ff882a2797d9f45cc487da8bff8381c6ab8b22fc5dbe643567f7fc4dbf80fcd10c049cb62b6631bbdb75c91e0519cb18065e18d890b5ad4b5e2e2b35d0f5f3b86e451a7b61cf4bb1e32bb8f51af8730036cfd94b08c5a84db525e9a2491cbcc4e2d0c7ba813702c158c21d248a285983cc03d3ff6ed46581d2e3a9b23d3a96bed80c28d531e995f45f171be384d74190e7c7df17492884d0640852bed3040ba439327c161a7415ac169f96e2b6586938ffef46f22dfdd986f97012e9baf6eea0c2bb3b057079ebefd2d272d5acb6cddb650be92712a89ce93124dd67b9a3d704380a4fbbae8a6870334a3584aec5235e51de8cc19d00fd5399975cc2eb9a3d08d044ddec1a7875ee36830ba8334323810fe06f3ca6816639d32b17f272253c7330f30af9c09d192aa42f47fe5267a904887f17c7c9d7b794ea4b624a344ba508d0bbdf704fe0a67206ca31a442e15633a884bf3c8fece38264f6076feabc15f7237cf65f5a4f13a99ff9f07d24514102f62aa757a44a85482119cfce7f58d447238d409e7d0d287aac24a4ded2aa34284acc024fe8bd247f2f223e2df76a227877e5a1910bfeada57e6f649aa74f2f02d66cde2b3264fc9e62b716c71c3a678e88c04ee1871d4a2704f74e0f0151be76f3b99603cc92c01b2839a37b9f43d00ffab81aaf5812aa6fc46bc6bdd93b80685a4acbcbf9ab6cc622b4a00a803de7aee5adea02c4a0d052577f3957a0a2037704678469963403dd3d82f27915eeb6ec559e3f8a4ecf3cbff7e657c250e3da83347517362a1caf692fd3f0e73f56503cdc49327e5ab753336efe648a3c0c180194f992d7a6d681860ede7c9bd958bb755ac49d44785427c641928b29810ac143b79831423ab7f53e41924945dd8e9aadecb720c7c6f5e59a7cd0acaf77ef7232b3392a10364e8bd496f6fe2a5bcef9b24717ce0e9f8e51973a6087421a64f07e447da13f6b51285f2813ba90b61b127a2ebfea17f0c83f5baf40775533394c210ca6f27d36b6ca62b34fa34c21d31dbcbe4206085408411243e07181fc28e0aca33f84f0608874e22898292a7080dc817361ff5a4f421b9b8</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入密码</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>博客创建</category>
-      </categories>
-      <tags>
-        <tag>markdown</tag>
-        <tag>格式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>机器学习-01-线性回归-加州房价</title>
-    <url>/2022/03/29/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-01-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%8A%A0%E5%B7%9E%E6%88%BF%E4%BB%B7/</url>
-    <content><![CDATA[<h1 id="加州房价预测"><a href="#加州房价预测" class="headerlink" title="加州房价预测"></a>加州房价预测</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd <span class="comment">#导入Pandas，用于数据读取和处理</span></span><br><span class="line"><span class="comment"># 读入房价数据</span></span><br><span class="line"><span class="comment"># 当数据集和代码文件位于相同本地目录，路径名应为&quot;./house.csv&quot;，或直接放&quot;house.csv&quot;</span></span><br><span class="line">df_housing = pd.read_csv(<span class="string">&quot;./house.csv&quot;</span>) </span><br><span class="line">df_housing.head <span class="comment">#显示加州房价数据</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-
-
-
-
-<pre><code>&lt;bound method NDFrame.head of        longitude  latitude  housing_median_age  total_rooms  total_bedrooms  \
-0        -114.31     34.19                15.0       5612.0          1283.0   
-1        -114.47     34.40                19.0       7650.0          1901.0   
-2        -114.56     33.69                17.0        720.0           174.0   
-3        -114.57     33.64                14.0       1501.0           337.0   
-4        -114.57     33.57                20.0       1454.0           326.0   
-...          ...       ...                 ...          ...             ...   
-16995    -124.26     40.58                52.0       2217.0           394.0   
-16996    -124.27     40.69                36.0       2349.0           528.0   
-16997    -124.30     41.84                17.0       2677.0           531.0   
-16998    -124.30     41.80                19.0       2672.0           552.0   
-16999    -124.35     40.54                52.0       1820.0           300.0   
-
-       population  households  median_income  median_house_value  
-0          1015.0       472.0         1.4936             66900.0  
-1          1129.0       463.0         1.8200             80100.0  
-2           333.0       117.0         1.6509             85700.0  
-3           515.0       226.0         3.1917             73400.0  
-4           624.0       262.0         1.9250             65500.0  
-...           ...         ...            ...                 ...  
-16995       907.0       369.0         2.3571            111400.0  
-16996      1194.0       465.0         2.5179             79000.0  
-16997      1244.0       456.0         3.0313            103600.0  
-16998      1298.0       478.0         1.9797             85800.0  
-16999       806.0       270.0         3.0147             94600.0  
-
-[17000 rows x 9 columns]&gt;
-</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X = df_housing.drop(<span class="string">&quot;median_house_value&quot;</span>,axis = <span class="number">1</span>) <span class="comment">#构建特征集X</span></span><br><span class="line">y = df_housing.median_house_value <span class="comment">#构建标签集y</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split <span class="comment">#导入数据集拆分工具</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, </span><br><span class="line">         test_size=<span class="number">0.2</span>, random_state=<span class="number">0</span>) <span class="comment">#以80%/20%的比例进行数据集的拆分</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression <span class="comment">#导入线性回归算法模型</span></span><br><span class="line">model = LinearRegression() <span class="comment">#使用线性回归算法</span></span><br><span class="line">model.fit(X_train, y_train) <span class="comment">#用训练集数据，训练机器，拟合函数，确定参数</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>LinearRegression()
-</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">y_pred = model.predict(X_test) <span class="comment">#预测测试集的Y值</span></span><br><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;房价的真值(测试集)&#x27;</span>,y_test)</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;预测的房价(测试集)&#x27;</span>,y_pred)</span><br></pre></td></tr></table></figure>
-
-<pre><code>房价的真值(测试集) 3873     171400.0
-3625     189600.0
-3028     500001.0
-13814    229400.0
-15398    163400.0
-           ...   
-1363     212500.0
-7947     210500.0
-14574    142900.0
-10009    128300.0
-9149      84700.0
-Name: median_house_value, Length: 3400, dtype: float64
-预测的房价(测试集) [211157.06335417 218581.64298575 465317.31295563 ... 201751.23969632
- 160873.51846958 138847.26913351]
-</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;给预测评分：&quot;</span>, model.score(X_test, y_test)) <span class="comment">#评估预测结果</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>给预测评分： 0.6321014171579493
-</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt <span class="comment">#导入matplotlib画图库</span></span><br><span class="line"><span class="comment">#用散点图显示家庭收入中位数和房价中位数的分布</span></span><br><span class="line">plt.scatter(X_test.median_income, y_test,  color=<span class="string">&#x27;brown&#x27;</span>)</span><br><span class="line"><span class="comment">#画出回归函数(从特征到预测标签)</span></span><br><span class="line">plt.plot(X_test.median_income, y_pred, color=<span class="string">&#x27;green&#x27;</span>, linewidth=<span class="number">1</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Median Income&#x27;</span>) <span class="comment">#X轴-家庭收入中位数</span></span><br><span class="line">plt.ylabel(<span class="string">&#x27;Median House Value&#x27;</span>) <span class="comment">#Y轴-房价中位数</span></span><br><span class="line">plt.show() <span class="comment">#显示房价分布和机器习得的函数图形</span></span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-01-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%8A%A0%E5%B7%9E%E6%88%BF%E4%BB%B7.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>其他-dxomark屏幕质量测试</title>
+    <url>/2022/04/04/%E5%85%B6%E4%BB%96-dxomark%E5%B1%8F%E5%B9%95%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<h1 id="在线屏幕质量检测"><a href="#在线屏幕质量检测" class="headerlink" title="在线屏幕质量检测"></a>在线屏幕质量检测</h1><p><a href="https://screen.bmcx.com/#welcome">https://screen.bmcx.com/#welcome</a><br>纯红色 绿 蓝 黄 青 洋红 白 黑<br>水平线、垂直线、正斜线、点阵：测试模拟信号的干扰水平<br>微型图案：测试crt显示器及投影仪的对焦水平<br>方形网络、彩色网格：测试屏幕边缘是否有显示畸变<br>暗对比度、亮对比度：用于测试屏幕的对比度，一般的非专业显示器无法区分最后一行的色块边缘。<br>白色渐变：用于测试显示器的色彩平滑程度，颜色过渡平滑的显示设备更佳。</p>
+<h1 id="我们如何测试屏幕质量"><a href="#我们如何测试屏幕质量" class="headerlink" title="我们如何测试屏幕质量"></a>我们如何测试屏幕质量</h1><p><a href="http://www.dxomark.cn/?p=57306">http://www.dxomark.cn/?p=57306</a></p>
+<h1 id="深入探究dxomark屏幕测试"><a href="#深入探究dxomark屏幕测试" class="headerlink" title="深入探究dxomark屏幕测试"></a>深入探究dxomark屏幕测试</h1><p><a href="https://www.dxomark.cn/a-closer-look-at-dxomark-display-testing/">https://www.dxomark.cn/a-closer-look-at-dxomark-display-testing/</a></p>
 ]]></content>
       <categories>
-        <category>机器学习</category>
+        <category>其他</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>九章算法-17-排列类DFS</title>
+    <url>/2022/03/29/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-17-%E6%8E%92%E5%88%97%E7%B1%BBDFS/</url>
+    <content><![CDATA[<h1 id="排列类DFS"><a href="#排列类DFS" class="headerlink" title="排列类DFS"></a>排列类DFS</h1><ul>
+<li>问题的模型是求出一个集合中所有元素的满足某个条件的排列</li>
+<li>lintcode-全排列问题 时间复杂度O(N!*N)</li>
+<li>lintcode-travelingSalesmanProblem<ul>
+<li>暴力dfs</li>
+<li>暴力dfs + 最优性剪枝</li>
+<li>状态压缩动态规划</li>
+<li>随机化算法（又称遗传算法） - 使用交换调整策略</li>
+<li>随机化算法 - 使用反转调整策略</li>
+</ul>
+</li>
+<li>lintcode-16-带重复元素的排列问题</li>
+</ul>
+]]></content>
+      <categories>
+        <category>九章算法</category>
       </categories>
   </entry>
   <entry>
@@ -1529,15 +1436,108 @@ Junichiro Koizumi       0.92      0.92      0.92        12
       </categories>
   </entry>
   <entry>
-    <title>其他-dxomark屏幕质量测试</title>
-    <url>/2022/04/04/%E5%85%B6%E4%BB%96-dxomark%E5%B1%8F%E5%B9%95%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<h1 id="在线屏幕质量检测"><a href="#在线屏幕质量检测" class="headerlink" title="在线屏幕质量检测"></a>在线屏幕质量检测</h1><p><a href="https://screen.bmcx.com/#welcome">https://screen.bmcx.com/#welcome</a><br>纯红色 绿 蓝 黄 青 洋红 白 黑<br>水平线、垂直线、正斜线、点阵：测试模拟信号的干扰水平<br>微型图案：测试crt显示器及投影仪的对焦水平<br>方形网络、彩色网格：测试屏幕边缘是否有显示畸变<br>暗对比度、亮对比度：用于测试屏幕的对比度，一般的非专业显示器无法区分最后一行的色块边缘。<br>白色渐变：用于测试显示器的色彩平滑程度，颜色过渡平滑的显示设备更佳。</p>
-<h1 id="我们如何测试屏幕质量"><a href="#我们如何测试屏幕质量" class="headerlink" title="我们如何测试屏幕质量"></a>我们如何测试屏幕质量</h1><p><a href="http://www.dxomark.cn/?p=57306">http://www.dxomark.cn/?p=57306</a></p>
-<h1 id="深入探究dxomark屏幕测试"><a href="#深入探究dxomark屏幕测试" class="headerlink" title="深入探究dxomark屏幕测试"></a>深入探究dxomark屏幕测试</h1><p><a href="https://www.dxomark.cn/a-closer-look-at-dxomark-display-testing/">https://www.dxomark.cn/a-closer-look-at-dxomark-display-testing/</a></p>
+    <title>机器学习-01-线性回归-加州房价</title>
+    <url>/2022/03/29/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-01-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%8A%A0%E5%B7%9E%E6%88%BF%E4%BB%B7/</url>
+    <content><![CDATA[<h1 id="加州房价预测"><a href="#加州房价预测" class="headerlink" title="加州房价预测"></a>加州房价预测</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd <span class="comment">#导入Pandas，用于数据读取和处理</span></span><br><span class="line"><span class="comment"># 读入房价数据</span></span><br><span class="line"><span class="comment"># 当数据集和代码文件位于相同本地目录，路径名应为&quot;./house.csv&quot;，或直接放&quot;house.csv&quot;</span></span><br><span class="line">df_housing = pd.read_csv(<span class="string">&quot;./house.csv&quot;</span>) </span><br><span class="line">df_housing.head <span class="comment">#显示加州房价数据</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+
+
+
+<pre><code>&lt;bound method NDFrame.head of        longitude  latitude  housing_median_age  total_rooms  total_bedrooms  \
+0        -114.31     34.19                15.0       5612.0          1283.0   
+1        -114.47     34.40                19.0       7650.0          1901.0   
+2        -114.56     33.69                17.0        720.0           174.0   
+3        -114.57     33.64                14.0       1501.0           337.0   
+4        -114.57     33.57                20.0       1454.0           326.0   
+...          ...       ...                 ...          ...             ...   
+16995    -124.26     40.58                52.0       2217.0           394.0   
+16996    -124.27     40.69                36.0       2349.0           528.0   
+16997    -124.30     41.84                17.0       2677.0           531.0   
+16998    -124.30     41.80                19.0       2672.0           552.0   
+16999    -124.35     40.54                52.0       1820.0           300.0   
+
+       population  households  median_income  median_house_value  
+0          1015.0       472.0         1.4936             66900.0  
+1          1129.0       463.0         1.8200             80100.0  
+2           333.0       117.0         1.6509             85700.0  
+3           515.0       226.0         3.1917             73400.0  
+4           624.0       262.0         1.9250             65500.0  
+...           ...         ...            ...                 ...  
+16995       907.0       369.0         2.3571            111400.0  
+16996      1194.0       465.0         2.5179             79000.0  
+16997      1244.0       456.0         3.0313            103600.0  
+16998      1298.0       478.0         1.9797             85800.0  
+16999       806.0       270.0         3.0147             94600.0  
+
+[17000 rows x 9 columns]&gt;
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X = df_housing.drop(<span class="string">&quot;median_house_value&quot;</span>,axis = <span class="number">1</span>) <span class="comment">#构建特征集X</span></span><br><span class="line">y = df_housing.median_house_value <span class="comment">#构建标签集y</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split <span class="comment">#导入数据集拆分工具</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, </span><br><span class="line">         test_size=<span class="number">0.2</span>, random_state=<span class="number">0</span>) <span class="comment">#以80%/20%的比例进行数据集的拆分</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression <span class="comment">#导入线性回归算法模型</span></span><br><span class="line">model = LinearRegression() <span class="comment">#使用线性回归算法</span></span><br><span class="line">model.fit(X_train, y_train) <span class="comment">#用训练集数据，训练机器，拟合函数，确定参数</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>LinearRegression()
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">y_pred = model.predict(X_test) <span class="comment">#预测测试集的Y值</span></span><br><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;房价的真值(测试集)&#x27;</span>,y_test)</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;预测的房价(测试集)&#x27;</span>,y_pred)</span><br></pre></td></tr></table></figure>
+
+<pre><code>房价的真值(测试集) 3873     171400.0
+3625     189600.0
+3028     500001.0
+13814    229400.0
+15398    163400.0
+           ...   
+1363     212500.0
+7947     210500.0
+14574    142900.0
+10009    128300.0
+9149      84700.0
+Name: median_house_value, Length: 3400, dtype: float64
+预测的房价(测试集) [211157.06335417 218581.64298575 465317.31295563 ... 201751.23969632
+ 160873.51846958 138847.26913351]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;给预测评分：&quot;</span>, model.score(X_test, y_test)) <span class="comment">#评估预测结果</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>给预测评分： 0.6321014171579493
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt <span class="comment">#导入matplotlib画图库</span></span><br><span class="line"><span class="comment">#用散点图显示家庭收入中位数和房价中位数的分布</span></span><br><span class="line">plt.scatter(X_test.median_income, y_test,  color=<span class="string">&#x27;brown&#x27;</span>)</span><br><span class="line"><span class="comment">#画出回归函数(从特征到预测标签)</span></span><br><span class="line">plt.plot(X_test.median_income, y_pred, color=<span class="string">&#x27;green&#x27;</span>, linewidth=<span class="number">1</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Median Income&#x27;</span>) <span class="comment">#X轴-家庭收入中位数</span></span><br><span class="line">plt.ylabel(<span class="string">&#x27;Median House Value&#x27;</span>) <span class="comment">#Y轴-房价中位数</span></span><br><span class="line">plt.show() <span class="comment">#显示房价分布和机器习得的函数图形</span></span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-01-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%8A%A0%E5%B7%9E%E6%88%BF%E4%BB%B7.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>其他</category>
+        <category>机器学习</category>
       </categories>
+  </entry>
+  <entry>
+    <title>markdown格式测试</title>
+    <url>/2022/01/25/%E6%A0%BC%E5%BC%8F%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="1cf92338afb0004f035be68b24ee1334b95cb18968902992d3a2d3a46617782a">fb95aa7c407f8ccaa0f86ec63474b39fc11ae3d89777ade9f24a7080707288d14695b8a5248b1f11b9e44f63cbd827b457e924f331c4e953ec65a0dbc9d6601441378d66387ecd99a24d3d66637f32ef87e84423625328945a8b3028aa031905c7e2c9b1a93519bf9d0c7d8f0df8b1d33f7d889e261ea3b2edf3051ff96339cd7e0a5b64e318e8168867fa1f6dad2c2ee86686727596b15328e95f67f3c585c200a0078f293a00d0872d8ec1452378988269d46c83733c084ef8ff7a381b2e1736d37b3b8a56cbbd0e7b5fdedf96eb4ed7f7a0f097e94a5fa17afc98f3bac56982182333119efc201f64416342905705e64e5482986c7a5965c070d2cdfddb0551f5d59664388ed11035679d27fbcae76cfa05b1a53b3101f6ea181c923c4ae7c444b700dadf7e062734a565d768f48d9c1a1e2cb1b19d442bbc3dc320507808b93b5bae7095afae609f672768b3e6db30a60cdcbb8a838c8d5adde0af4434172b68098bc942877bc803a574d5d31b4daa8533a1e39704b3790965d44d76d89acff4eb628b31e6feff2c86d8160cb7774a8c54efb0fb248257e2d37fa6b5d6a97f0a14f5c42676c18665539288538aa591f6f200fc6235ec81a173350b8677659757b418f0b7d72dcf6b72e63c623601192db36a9a01350024fafd633b9fc72cde5c2f9fbdc7c2ce4d46e6d83b62256aa93998f2b5f5be9fae7aefaed23820017ff0e4f2c80c737097951f2327d467ebdccfe0b738e7c64281d1ea1a26720a977b87bfde653b7be2c39e69b94edd34cda222ba03b2a1111772530bfc29d232947284f801f16d67b1ea120103cff60d46638a660a21960510f2da28d272695db1be0a8b51aff41da2b12ab24358ec342821e4b1f0ff3419f7fb5c827cf17faa803af1c4f633bbf39d502f7117bdb8903870313492c935e82b8cc180d0ec876382d0f759feba020052d742d4db507a910a2495c1133b000b6441432aa084625ab96b892e716caa91077db95eeea789bbf2b5e9f87b357c4e1b163071503fb788374ca2c439d610af6c8178da760e7a86df06f933b9ee89b3c5b927303642564da9ef83602cc1f36d2447f55cc958d1359a9edd96e18f4e249617bbbd8f64e1b786178fb9d74b7c651b7d4f77795a99aace2a31d3a284565385bb570d3b4719d4058cc71ffd8c35ca672a572c1be08e9034c0a75bf9c24f62fc61fcf32a1e6b2b7bc04ca67a7b43cf4b3687fcd17306c4f22e2d388b58281d854a1bf5f81d1a461956cce5c2000f718faea16506d382ae8aefd05df8fdc6e179dcea15cc0e77beb4eddd675555c3d83d32d16723490e2c2b2323d3a73fd0dff1dff2f46adfa1e8f457a271a1f9530b8bee2b4646e7c24be512d5c146393010febd1e1057de17c37826041ef5589ecb3c94d5151c64e367adaed0f291702d1ea3acd46b953fa8f035679b2954321407aab6074b009216ad294438b86e94dd771f2f33637d44fbf9c107f2084991fcfd9cfb01fdf7fb23a41d61e7eea43a312c8b6e83e7da2b06e6c44b17e721bad146dbcf0527e263c6e87d62cddbcff37e9350685fa27991b79c2ff3d316d192257d840aa051eed2c73440056a4d9997bab5d41720ceb0ea1406bf47f0ab72c9c4c6f1c8cbcfeeffb8e8294ed0422690281334089ce34ac7a9ed3e6149c7842919a2fa33f5f2bcdd79c8175cf652db87059bff96b3555a45662ca3dc3526f086730e0fc90fb670d27d48eac4f5143723c5e39711f48b265a830e16212e4781472b32aab78bce932c73074c690310978469696b7a8a62810d9be5fed14e0e9801f74a1731812e2df71d7ca1fb6b8cc362104eb5cb8d11680d7141e5667bb6ee479435b3696881fa09edb49b4d78d285663b01310a0cf0b6596a858c4b575bd671f8507118d56b39e384c302f4780621a8914c5321c982b86c60f4b808e33d535b8df3e0298a9559cc60b157c41d6889cb155bff084b4b76ee7bba2222c322fa55fe7a1ec3310bdf78ecdd6e286eeae57470317a544f599f14b362f25b278a9a120ca22d414340324920676c445f2a0e18d92a214a8fd69386e2959d05bdcc3d70f94e2a581118058b2465180fecc6fc3656d1953313986b113de56fa8de1da3226d24ce5294314f50ca5a6c055e1b9f7978c95f5722323fac9609ef1482a29c11ba3566eb6c63d5946c422513cafe8f52362e96c552e62e6a095bac7143da7622b89b3d714a52851e14f6260b9b4609f8f02307be6ca24e481933a37deb96f1c758f499dbb6732d3cf0f518abb0aa5be534a12f748f25f965a379afdd0fce8d57bd6c2dfe957e503091b031cd9131e92aaca4d28a62d8f43628b981316ef744ad55c02e9735c76fe5be402448b3b56436dd4b24606a5d8a60fb41e504117d5909a0dfdd436ea241c71f5d71e429d2ad8b769073a6c27d9d5daed12172eb51516f3083eaefc05fccb7cf290571f07ec87b90bb74a3d302e0456bae2f2bafff4675ec05d2485097235c3637d366facd88571af0bf51f57916343cc1f988a8578fc896b90b35c6f37929c258f8246ea03d457eef139ac83c90dd0092e82f298e8c4f247ce1f0510ad5745e7659a1c7117d7b125701a9963499480f26fbf12b6b821b8add8e1912ccdd5d4a2a227bba5f52457a7743119765611e79435370c627f331a1b6c3c588f5fae42337af380ca67315021af9be535f549cd0653cf283a0bf681ce76d253d6c297ec69353a9c19ee4f737954a654e08cd9d1241d21cc7a62d5e7ff0d458c136243da992807e75680eb062da86e1c3c189cb877dc9d2f9855610a6ad673e03da73ff43d5a01855ab0b1e4d9db6d618d43145ecb93625f95cd3ed046612740d646b6aa75ecd25ca58ce7cbfb09b6bb35512788832a19c6063f2449bf4b0f0cec6f881dd04d6d3959610cf0385b3e2d1945765e96fe668109e80b29ed2c34467828db5cafee240c1f3595b1b47f85b2d283da979fe5a2ada918720f10e9c637cdc1206b07eb6dfa42cfb3d8d732337ec25cb04e9b35c6a1ae7be2311b10fb1cb194215fe7d55c505077fd68eb5822cf99e9826c21013415c673348c6af73750d2ac0db7046e60b06b32ec582d7230570c2bc15b9f26aa9fac2cbc8d096bb6fd6f6014a77f6f5ef11b760c35bb8c0e71bdc5d1f17d729ad21070f7a47640ebd79a0d48d5b65bc69aa3c56ed901c947ff140e0a1af811d2ec0a9d415668e5e73998cedd4b485a1f5e20445f84e9509fc6c9e17ff7abd265d2ce0a5ed06284dd1f2aa560843a79c5c3fe59f1d6a99813f3fe638431879321a9a56c925a5ecf72618c22fd99f8db205b99a6ce0297fc02059e67bd1c85d46ef24a0dba67a661283f9a699c5e712ccd62170cd83b5a5f421e4d96f54416704768687e64ddc3cbcfa811a8534b42c55294d54c9dca21cb145146d1ea596b4cae9e49f5c54b13fc75f6cf4d7a02ba23a7a09603ff4e6af5ed52c72e4023e2c2022cb2ba769f28c2c86af637625a1d981009a40b111e2ba9393648a08e995ccad7f3a4a1e1b3fa385579fb7fb62377e26af1ffffc1aa2f63225f284447d0b262ecec04bbe33db7d5dc7968184bb5a69bc205fc51d9337c03ea4e372c2c78e7b3e1fc746a37cb21a1c2c3af60826d1a12501b820741b81bffd46aa2df331d7a410817302fed926ad81a4c5c37a5a28d1c2b60b3ca43953e8aa758354218a6df4d014e9de34768e7cb25b33762270e824bca54419b77a9381870ee4a951d110937fcd268e70428797ff14802d4356c0bac3425d51a074196fd2d94d892d9f5a74231839e2a4d3c47de2db1fd61df75422c985bb7284a71601a1c1f776f05404737d656b4171dde92475f3a966b90324cd2defa64d7169a357a09fdaf41d88c1d820feb34fe9f83c68ec0ae4288deea48aff5d9a27f56ef0a19c139d78b6f793331b8d8ae2c6e11da785841d245eb8b5fea16c27fad760ebb2582b5b1e68daefb641e0b80bb4809e1545bd3a716a0268fb60edd823613121a296ba4a84f306f06c387cbb181fa053bd575784309aefe628392d99ae20b31ae3bc131cf9080667df0578a5de1d24b85c976894a6066ad0452daa0cf399e8e001d94770585c5337dbe2a5550348a6663c269cd83276739195d7d308fe8126a40966ff60081be201e74381a68c3b638b9409f565ea21a5c1289966793f7ffdcb426935c5982901d3478abb8c1b7cf6b4e0a6dbcb466742137855b65961cbcb6d26efc667bf43b0746eb3b73c4d01f5ba6097274c549e41aea976741dc02e8e1847d568137054586bd567ba6db166ea3a5691b9c9ca1480154478e68b1fedee7386ccb7cae833845a5aa0a106c451d1f59a96117afb77f4d7bdcdfd4d7d998bfee2b1629f702d01dc92e86013d1d1b4d326e4d25f0b1849afa1da68ae8bb10aa25a74682bb2dd4960723f5b2882f9da23c4c8931fc715497bb296f169dbd629225357d73f78c343542ef347c03a05d1fb9d0b1de79321064e3f4ea1b36df6edbf79909d686e606cd663d6bb9559a795b3344d9b6a0a1d5538ffff3517d5dd411f116bf711f56513de67bea6e9561cfac73bad7d72e7d0b6984d72260d7aefcad26233750a60164a4931f1ef271004e6601e927b2c78b318d709d4108f48ff3e3c38ed3115077fcc363811809141b5e9805ae16cd5b7cf8ee28739943e3224277704befb777905ec50c4f39830be0a0368318dd52f0948fbf9ef13351779cc4f8963e80ef85c39134023928b240fad2129643f63eb0b06206afd288fb165ec589ac5d3a2f290709392c5a801498410ab4d55d284beb86a2c40d4cf4bd64a7cb5766b86d54362f6f6a3b9ac85ebaf05619634e355e598c2fa8b15b9604822a532613eacb07370cbff89cd8d97f0546318a4f26b7f980e898b8c28c3c2a0be6920c39a42ade970fab0ca7b56d2c2cac309b1a62dd321930a935aa7599da0515329f731ac23d59db9fbc8ff3db2cecf47edc6706cba3aa9e26713e170eadcd09f521b50fb974f399df58289046aa6e20e241da5b44ef747f78fdc6a528f19d7c30863174bd5628866e706c8b94667626d6d73943597c3888934c48d77db8b4854d0552d1b243147df264f6690c57f5d4b833d3da8195e0ee84a80512cb5affb7adb06dba3d313c793945e8da33cdecd235187244dae6fbdf9eba2a86949ce3cf7e6f4bb3c0729282e2efc5d8a4c47b787f7caea268c7c2164709c3a5f6551ed6cd4d5b5234ff685f6befe380148ac2649a384fd461143e2d71d5e72eb3bc6958a3969ca47c6aaf397e0f5cafa30518e0b529ab75302a21971a66266409e282e95822693ec325f76db404527ea9422261172e42583d67615b0592ef1a0978145a64cb98e12a43367e6393c4582acc2dd642f1fd1c5dc3778938cc855a62d2d9a215c0c37952ba139ebc0ceeb34f5cd59a7d9ded8b03a6d6adc06bc7fa401272a06c18d4d6932f0f7d8e530970598b27448bcda69ed7ef4838283ecec81fe30c8720b25d082aecc836fa9ca79be2f0eebc169b6e003ea24179f953939ffa2a02ec06a25e5428e781198bc93540245a3373f7702d9f72ac0bc4ef891b1ae608c133f58bc5dadca4596b1ba1427cfb47c719244513f171204a32e6f60256aa1514cbb4eb39ab62f74c0d0d80d3bc53f8c699a4b774c019ec45014bbd03cf3cfc09ab4ec02508ecb8d78c40eb34a3f90bdc02fa369933f496ed41a7c886bced43d745e84bbf11be9205d67a86f90d7259e929d4d3f0a306a9ceac16c40237a0e91b92336a20af07b7ec3c507ba3c312a74608f82a0a36c25d5555d8e03e131830a5d4e37413141410b328379631c15bcb1f32293a1b6e7e14cdb181342de7f53b70eadba888589314ad160ea45b45ef7d419e33003e0cbec1c2fead5625e6bddd6588b15d9111357683ee44152bb6914f8373a06f3974fa5cd1474baab70cbe6e7847d1dfa4c18aa122532df86e5c06410be17e8abec97d58e5594115ddc57df37572d8d6680e1c080358caf12b01168cb92130c6ddf34f9c2075d1aff2bd87c546f77edef3f2d51ed31312b8a1378fef36ee251099161720a773c40665efe7d08a50268cc3278b98bcce278e8ec4aae71fb9e000c68b891637d456715398b2bb78a1465b03966694701c17c882a47a4a1ea563a3916415820dd5eb2d8b34189650a2724d309642ed08670b2e4c8285cafb7e451a56d9ff882a2797d9f45cc487da8bff8381c6ab8b22fc5dbe643567f7fc4dbf80fcd10c049cb62b6631bbdb75c91e0519cb18065e18d890b5ad4b5e2e2b35d0f5f3b86e451a7b61cf4bb1e32bb8f51af8730036cfd94b08c5a84db525e9a2491cbcc4e2d0c7ba813702c158c21d248a285983cc03d3ff6ed46581d2e3a9b23d3a96bed80c28d531e995f45f171be384d74190e7c7df17492884d0640852bed3040ba439327c161a7415ac169f96e2b6586938ffef46f22dfdd986f97012e9baf6eea0c2bb3b057079ebefd2d272d5acb6cddb650be92712a89ce93124dd67b9a3d704380a4fbbae8a6870334a3584aec5235e51de8cc19d00fd5399975cc2eb9a3d08d044ddec1a7875ee36830ba8334323810fe06f3ca6816639d32b17f272253c7330f30af9c09d192aa42f47fe5267a904887f17c7c9d7b794ea4b624a344ba508d0bbdf704fe0a67206ca31a442e15633a884bf3c8fece38264f6076feabc15f7237cf65f5a4f13a99ff9f07d24514102f62aa757a44a85482119cfce7f58d447238d409e7d0d287aac24a4ded2aa34284acc024fe8bd247f2f223e2df76a227877e5a1910bfeada57e6f649aa74f2f02d66cde2b3264fc9e62b716c71c3a678e88c04ee1871d4a2704f74e0f0151be76f3b99603cc92c01b2839a37b9f43d00ffab81aaf5812aa6fc46bc6bdd93b80685a4acbcbf9ab6cc622b4a00a803de7aee5adea02c4a0d052577f3957a0a2037704678469963403dd3d82f27915eeb6ec559e3f8a4ecf3cbff7e657c250e3da83347517362a1caf692fd3f0e73f56503cdc49327e5ab753336efe648a3c0c180194f992d7a6d681860ede7c9bd958bb755ac49d44785427c641928b29810ac143b79831423ab7f53e41924945dd8e9aadecb720c7c6f5e59a7cd0acaf77ef7232b3392a10364e8bd496f6fe2a5bcef9b24717ce0e9f8e51973a6087421a64f07e447da13f6b51285f2813ba90b61b127a2ebfea17f0c83f5baf40775533394c210ca6f27d36b6ca62b34fa34c21d31dbcbe4206085408411243e07181fc28e0aca33f84f0608874e22898292a7080dc817361ff5a4f421b9b8</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>博客创建</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+        <tag>格式</tag>
+      </tags>
   </entry>
   <entry>
     <title>读书-机器学习基础</title>
