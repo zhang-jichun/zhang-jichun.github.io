@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/liuguanzhang.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/liuguanzhang.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/liuguanzhang.jpg">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="支持向量机-人脸分类视频讲解：清华大学-袁博https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1Vt411v7bg?p最大化margin，也就是支持向量到超平面的距离wx + b &#x3D; 1, 0(超平面), -1条件y(wx + b) - 1 &gt;&#x3D; 0，求w模的最小值对偶问题 g(x)&#x3D;∑αyx + b 求其中的非零αsoft margin 线性不可分条件y(wx + b) -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习-02-支持向量机-人脸分类">
+<meta property="og:url" content="http://example.com/2022/04/03/01%E8%AF%BB%E4%B9%A6/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-02-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-%E4%BA%BA%E8%84%B8%E5%88%86%E7%B1%BB/index.html">
+<meta property="og:site_name" content="桃园三结义">
+<meta property="og:description" content="支持向量机-人脸分类视频讲解：清华大学-袁博https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1Vt411v7bg?p最大化margin，也就是支持向量到超平面的距离wx + b &#x3D; 1, 0(超平面), -1条件y(wx + b) - 1 &gt;&#x3D; 0，求w模的最小值对偶问题 g(x)&#x3D;∑αyx + b 求其中的非零αsoft margin 线性不可分条件y(wx + b) -">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-02-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-%E4%BA%BA%E8%84%B8%E5%88%86%E7%B1%BB01.png">
+<meta property="og:image" content="http://example.com/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-02-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-%E4%BA%BA%E8%84%B8%E5%88%86%E7%B1%BB02.png">
+<meta property="og:image" content="http://example.com/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-02-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-%E4%BA%BA%E8%84%B8%E5%88%86%E7%B1%BB03.png">
+<meta property="article:published_time" content="2022-04-03T12:13:07.000Z">
+<meta property="article:modified_time" content="2022-04-03T14:18:01.340Z">
+<meta property="article:author" content="春春">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-02-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-%E4%BA%BA%E8%84%B8%E5%88%86%E7%B1%BB01.png">
+
+<link rel="canonical" href="http://example.com/2022/04/03/01%E8%AF%BB%E4%B9%A6/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-02-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-%E4%BA%BA%E8%84%B8%E5%88%86%E7%B1%BB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>机器学习-02-支持向量机-人脸分类 | 桃园三结义</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">桃园三结义</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">春春学习笔记</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/03/01%E8%AF%BB%E4%B9%A6/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-02-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-%E4%BA%BA%E8%84%B8%E5%88%86%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liuguanzhang.jpg">
+      <meta itemprop="name" content="春春">
+      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃园三结义">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          机器学习-02-支持向量机-人脸分类
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-03 20:13:07 / 修改时间：22:18:01" itemprop="dateCreated datePublished" datetime="2022-04-03T20:13:07+08:00">2022-04-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="支持向量机-人脸分类"><a href="#支持向量机-人脸分类" class="headerlink" title="支持向量机-人脸分类"></a>支持向量机-人脸分类</h1><p>视频讲解：清华大学-袁博<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Vt411v7bg?p">https://www.bilibili.com/video/BV1Vt411v7bg?p</a><br>最大化margin，也就是支持向量到超平面的距离<br>wx + b = 1, 0(超平面), -1<br>条件y(wx + b) - 1 &gt;= 0，求w模的最小值<br>对偶问题 g(x)=∑αyx + b 求其中的非零α<br>soft margin 线性不可分<br>条件y(wx + b) - 1 + ξ &gt;= 0，求w模的最小值<br>目标函数 0.5w’w + C∑ξ 后项为惩罚量 C为惩罚系数 系数越大越不容忍误差<br>线性不可分 升维 转换映射 增加平方项 交叉项<br>核函数绕过高维空间运算 poly gauss</p>
+<p>使用支持向量机实现人脸的分类识别，主要流程是对输入的人脸数据，使用主成分分析（PCA）方法进行降维处理，然后利用降维后的数据作为人脸特征，输入到SVM中，进行人脸的分类识别。</p>
+<span id="more"></span>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns; </span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> fetch_lfw_people</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report,confusion_matrix</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br></pre></td></tr></table></figure>
+
+<h1 id="获取数据集"><a href="#获取数据集" class="headerlink" title="获取数据集"></a>获取数据集</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取人脸数据 </span></span><br><span class="line">faces = fetch_lfw_people(min_faces_per_person=<span class="number">60</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打印目标名称</span></span><br><span class="line"><span class="built_in">print</span>(faces.target_names)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;Ariel Sharon&#39; &#39;Colin Powell&#39; &#39;Donald Rumsfeld&#39; &#39;George W Bush&#39;
+ &#39;Gerhard Schroeder&#39; &#39;Hugo Chavez&#39; &#39;Junichiro Koizumi&#39; &#39;Tony Blair&#39;]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 样本集的形状</span></span><br><span class="line"><span class="built_in">print</span>(faces.images.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(1348, 62, 47)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取样本个数和图像的宽高</span></span><br><span class="line">n_samples, h, w = faces.images.shape</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制样本数据，选择前15个样本进行绘制 </span></span><br><span class="line">fig, ax = plt.subplots(<span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line"><span class="keyword">for</span> i, axi <span class="keyword">in</span> <span class="built_in">enumerate</span>(ax.flat):</span><br><span class="line">    axi.imshow(faces.images[i], cmap=<span class="string">&#x27;bone&#x27;</span>)</span><br><span class="line">    axi.<span class="built_in">set</span>(xticks=[], yticks=[],</span><br><span class="line">            xlabel=faces.target_names[faces.target[i]])</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-02-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-%E4%BA%BA%E8%84%B8%E5%88%86%E7%B1%BB01.png" alt="png"></p>
+<h1 id="数据集划分"><a href="#数据集划分" class="headerlink" title="数据集划分"></a>数据集划分</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将数据集划分为训练集和测试集</span></span><br><span class="line">xtrain, xtest, ytrain, ytest = train_test_split(faces.data, faces.target,</span><br><span class="line">                                                random_state=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 训练集大小</span></span><br><span class="line"><span class="built_in">print</span>(xtrain.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(1011, 2914)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 测试集大小</span></span><br><span class="line">xtest.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(337, 2914)
+</code></pre>
+<h1 id="PCA特征提取"><a href="#PCA特征提取" class="headerlink" title="PCA特征提取"></a>PCA特征提取</h1><p>对人脸数据进行PCA处理，保留100维特征</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对人脸数据进行PCA处理，保留100维特征</span></span><br><span class="line">n_components =<span class="number">100</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对PCA进行训练</span></span><br><span class="line">pca = PCA(n_components=n_components, svd_solver=<span class="string">&#x27;randomized&#x27;</span>,</span><br><span class="line">          whiten=<span class="literal">True</span>, random_state=<span class="number">42</span>).fit(xtrain)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对样本数据进行降维处理</span></span><br><span class="line">xtrain_pca = pca.transform(xtrain)</span><br><span class="line">xtest_pca = pca.transform(xtest)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtest_pca.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(337, 100)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtest.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(337, 2914)
+</code></pre>
+<h1 id="使用线性SVM进行预测"><a href="#使用线性SVM进行预测" class="headerlink" title="使用线性SVM进行预测"></a>使用线性SVM进行预测</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 实例化SVM</span></span><br><span class="line">svc = SVC(kernel=<span class="string">&#x27;linear&#x27;</span>,C=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 训练线性SVM</span></span><br><span class="line">svc.fit(xtrain_pca, ytrain)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>SVC(C=10, cache_size=200, class_weight=None, coef0=0.0,
+    decision_function_shape=&#39;ovr&#39;, degree=3, gamma=&#39;auto_deprecated&#39;,
+    kernel=&#39;linear&#39;, max_iter=-1, probability=False, random_state=None,
+    shrinking=True, tol=0.001, verbose=False)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 预测</span></span><br><span class="line">yfit = svc.predict(xtest_pca)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(classification_report(ytest, yfit,</span><br><span class="line">                            target_names=faces.target_names))</span><br></pre></td></tr></table></figure>
+
+<pre><code>                   precision    recall  f1-score   support
+
+     Ariel Sharon       0.64      0.67      0.65        21
+     Colin Powell       0.74      0.75      0.75        65
+  Donald Rumsfeld       0.57      0.50      0.53        24
+    George W Bush       0.81      0.82      0.82       134
+Gerhard Schroeder       0.83      0.58      0.68        26
+      Hugo Chavez       0.94      0.88      0.91        17
+Junichiro Koizumi       0.73      0.92      0.81        12
+       Tony Blair       0.66      0.76      0.71        38
+
+         accuracy                           0.76       337
+        macro avg       0.74      0.74      0.73       337
+     weighted avg       0.76      0.76      0.76       337
+</code></pre>
+<h1 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h1><p>通过交叉验证的方法寻找最佳的kernel及相关参数，进行超参数调参</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 参数列表</span></span><br><span class="line">param_grid = [</span><br><span class="line">    &#123;<span class="string">&#x27;kernel&#x27;</span>: [<span class="string">&#x27;linear&#x27;</span>], <span class="string">&#x27;C&#x27;</span>: [<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">50</span>]&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;kernel&#x27;</span>: [<span class="string">&#x27;rbf&#x27;</span>], <span class="string">&#x27;C&#x27;</span>: [<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">50</span>], <span class="string">&#x27;gamma&#x27;</span>: [<span class="number">0.0001</span>, <span class="number">0.0005</span>, <span class="number">0.001</span>, <span class="number">0.005</span>, <span class="number">0.01</span>, <span class="number">0.1</span>]&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;kernel&#x27;</span>: [<span class="string">&#x27;poly&#x27;</span>], <span class="string">&#x27;C&#x27;</span>: [<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">50</span>], <span class="string">&#x27;degree&#x27;</span>:[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>], <span class="string">&#x27;gamma&#x27;</span>: [<span class="string">&#x27;auto&#x27;</span>]&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3折交叉验证</span></span><br><span class="line">grid = GridSearchCV(SVC(class_weight=<span class="string">&#x27;balanced&#x27;</span>), param_grid,cv=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 训练</span></span><br><span class="line">%time grid.fit(xtrain_pca, ytrain)</span><br></pre></td></tr></table></figure>
+
+<pre><code>CPU times: user 14.1 s, sys: 12.9 ms, total: 14.1 s
+Wall time: 14.1 s
+
+
+/Users/yaoxiaoying/.py3virtualEnv/ai/lib/python3.7/site-packages/sklearn/model_selection/_search.py:813: DeprecationWarning: The default of the `iid` parameter will change from True to False in version 0.22 and will be removed in 0.24. This will change numeric results when test-set sizes are unequal.
+  DeprecationWarning)
+
+
+
+
+
+GridSearchCV(cv=3, error_score=&#39;raise-deprecating&#39;,
+             estimator=SVC(C=1.0, cache_size=200, class_weight=&#39;balanced&#39;,
+                           coef0=0.0, decision_function_shape=&#39;ovr&#39;, degree=3,
+                           gamma=&#39;auto_deprecated&#39;, kernel=&#39;rbf&#39;, max_iter=-1,
+                           probability=False, random_state=None, shrinking=True,
+                           tol=0.001, verbose=False),
+             iid=&#39;warn&#39;, n_jobs=None,
+             param_grid=[&#123;&#39;C&#39;: [1, 5, 10, 50], &#39;kernel&#39;: [&#39;linear&#39;]&#125;,
+                         &#123;&#39;C&#39;: [1, 5, 10, 50],
+                          &#39;gamma&#39;: [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.1],
+                          &#39;kernel&#39;: [&#39;rbf&#39;]&#125;,
+                         &#123;&#39;C&#39;: [1, 5, 10, 50], &#39;degree&#39;: [2, 3, 4],
+                          &#39;gamma&#39;: [&#39;auto&#39;], &#39;kernel&#39;: [&#39;poly&#39;]&#125;],
+             pre_dispatch=&#39;2*n_jobs&#39;, refit=True, return_train_score=False,
+             scoring=None, verbose=0)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 最好的模型</span></span><br><span class="line">grid.best_estimator_</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>SVC(C=1, cache_size=200, class_weight=&#39;balanced&#39;, coef0=0.0,
+    decision_function_shape=&#39;ovr&#39;, degree=3, gamma=0.005, kernel=&#39;rbf&#39;,
+    max_iter=-1, probability=False, random_state=None, shrinking=True,
+    tol=0.001, verbose=False)
+</code></pre>
+<h1 id="使用最好的超参预测"><a href="#使用最好的超参预测" class="headerlink" title="使用最好的超参预测"></a>使用最好的超参预测</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 最好的模型</span></span><br><span class="line">model = grid.best_estimator_</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 预测</span></span><br><span class="line">yfit = model.predict(xtest_pca)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 结果展示</span></span><br><span class="line">fig, ax = plt.subplots(<span class="number">4</span>, <span class="number">6</span>)</span><br><span class="line"><span class="keyword">for</span> i, axi <span class="keyword">in</span> <span class="built_in">enumerate</span>(ax.flat):</span><br><span class="line">    axi.imshow(xtest[i].reshape(<span class="number">62</span>, <span class="number">47</span>), cmap=<span class="string">&#x27;bone&#x27;</span>)</span><br><span class="line">    axi.<span class="built_in">set</span>(xticks=[], yticks=[])</span><br><span class="line">    axi.set_ylabel(faces.target_names[yfit[i]].split()[-<span class="number">1</span>],</span><br><span class="line">                   color=<span class="string">&#x27;black&#x27;</span> <span class="keyword">if</span> yfit[i] == ytest[i] <span class="keyword">else</span> <span class="string">&#x27;red&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-02-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-%E4%BA%BA%E8%84%B8%E5%88%86%E7%B1%BB02.png" alt="png"></p>
+<h1 id="性能报告"><a href="#性能报告" class="headerlink" title="性能报告"></a>性能报告</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(classification_report(ytest, yfit,</span><br><span class="line">                            target_names=faces.target_names))</span><br></pre></td></tr></table></figure>
+
+<pre><code>                   precision    recall  f1-score   support
+
+     Ariel Sharon       0.76      0.76      0.76        21
+     Colin Powell       0.88      0.91      0.89        65
+  Donald Rumsfeld       0.55      0.50      0.52        24
+    George W Bush       0.91      0.90      0.91       134
+Gerhard Schroeder       0.72      0.81      0.76        26
+      Hugo Chavez       0.93      0.82      0.87        17
+Junichiro Koizumi       0.92      0.92      0.92        12
+       Tony Blair       0.84      0.84      0.84        38
+
+         accuracy                           0.85       337
+        macro avg       0.81      0.81      0.81       337
+     weighted avg       0.85      0.85      0.85       337
+</code></pre>
+<h1 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 利用预测结果和真实结果绘制混淆矩阵</span></span><br><span class="line">mat = confusion_matrix(ytest, yfit)</span><br><span class="line">sns.heatmap(mat.T, square=<span class="literal">True</span>, annot=<span class="literal">True</span>, fmt=<span class="string">&#x27;d&#x27;</span>, cbar=<span class="literal">False</span>,</span><br><span class="line">            xticklabels=faces.target_names,</span><br><span class="line">            yticklabels=faces.target_names)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;true label&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;predicted label&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-02-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-%E4%BA%BA%E8%84%B8%E5%88%86%E7%B1%BB03.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/01/01%E8%AF%BB%E4%B9%A6/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-01-%E9%9C%8D%E5%A4%AB%E5%8F%98%E6%8D%A2/" rel="prev" title="数字图像处理-01-霍夫变换">
+      <i class="fa fa-chevron-left"></i> 数字图像处理-01-霍夫变换
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/04/01%E8%AF%BB%E4%B9%A6/%E5%85%B6%E4%BB%96-dxomark%E5%B1%8F%E5%B9%95%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95/" rel="next" title="其他-dxomark屏幕质量测试">
+      其他-dxomark屏幕质量测试 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-%E4%BA%BA%E8%84%B8%E5%88%86%E7%B1%BB"><span class="nav-text">支持向量机-人脸分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-text">获取数据集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%92%E5%88%86"><span class="nav-text">数据集划分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PCA%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="nav-text">PCA特征提取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%BA%BF%E6%80%A7SVM%E8%BF%9B%E8%A1%8C%E9%A2%84%E6%B5%8B"><span class="nav-text">使用线性SVM进行预测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81"><span class="nav-text">交叉验证</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%9C%80%E5%A5%BD%E7%9A%84%E8%B6%85%E5%8F%82%E9%A2%84%E6%B5%8B"><span class="nav-text">使用最好的超参预测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E6%8A%A5%E5%91%8A"><span class="nav-text">性能报告</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5"><span class="nav-text">混淆矩阵</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="春春"
+      src="/images/liuguanzhang.jpg">
+  <p class="site-author-name" itemprop="name">春春</p>
+  <div class="site-description" itemprop="description">银鞍照白马，飒沓如流星。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">关关</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>

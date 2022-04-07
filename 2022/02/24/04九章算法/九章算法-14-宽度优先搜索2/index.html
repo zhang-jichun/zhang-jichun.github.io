@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/liuguanzhang.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/liuguanzhang.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/liuguanzhang.jpg">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="连通块问题 通过一个点找到图中联通的所有点 非递归的方式找到所有方案 简单图没有方向没有权重两点间只有一条线，复杂图有方向有权重">
+<meta property="og:type" content="article">
+<meta property="og:title" content="九章算法-14-宽度优先搜索2">
+<meta property="og:url" content="http://example.com/2022/02/24/04%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-14-%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A22/index.html">
+<meta property="og:site_name" content="桃园三结义">
+<meta property="og:description" content="连通块问题 通过一个点找到图中联通的所有点 非递归的方式找到所有方案 简单图没有方向没有权重两点间只有一条线，复杂图有方向有权重">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-24T02:27:24.000Z">
+<meta property="article:modified_time" content="2022-03-03T06:09:36.805Z">
+<meta property="article:author" content="春春">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/02/24/04%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-14-%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A22/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>九章算法-14-宽度优先搜索2 | 桃园三结义</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">桃园三结义</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">春春学习笔记</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/24/04%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-14-%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liuguanzhang.jpg">
+      <meta itemprop="name" content="春春">
+      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃园三结义">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          九章算法-14-宽度优先搜索2
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-24 10:27:24" itemprop="dateCreated datePublished" datetime="2022-02-24T10:27:24+08:00">2022-02-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-03 14:09:36" itemprop="dateModified" datetime="2022-03-03T14:09:36+08:00">2022-03-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">九章算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="连通块问题"><a href="#连通块问题" class="headerlink" title="连通块问题"></a>连通块问题</h1><ul>
+<li>通过一个点找到图中联通的所有点</li>
+<li>非递归的方式找到所有方案</li>
+<li>简单图没有方向没有权重两点间只有一条线，复杂图有方向有权重<span id="more"></span></li>
+<li>n个点m个边，时间复杂度O(m+n) m最大是n(n-1)/2</li>
+<li>lintcode-137-克隆图 寻找点 复制点 复制边 分开<ol>
+<li>找到所有点:bfs</li>
+<li>复制所有点</li>
+<li>复制所有边</li>
+<li>不要写高耦合代码，写成三个函数</li>
+</ol>
+</li>
+</ul>
+<h1 id="分层遍历"><a href="#分层遍历" class="headerlink" title="分层遍历"></a>分层遍历</h1><ul>
+<li>图的层次遍历：使用dict/set来记录点是否被遍历过</li>
+<li>简单图最短路径<ul>
+<li>简单图没有方向，没有权重</li>
+<li>简单图的两点之间只有一条边，自己不连自己</li>
+<li>使用queue = collections.deque([node])</li>
+<li>用visited标记已入队的点,一旦入队就要马上标记访问，否则会有重复元素入队</li>
+<li>n点m边，时间复杂度O(m+n)</li>
+</ul>
+</li>
+<li>lintcode-120-单词接龙</li>
+<li>矩阵中的宽度优先搜索<ul>
+<li>lintcode-433-numberOfIslands</li>
+<li>matrix + 连通块 = bfs/dfs</li>
+<li>工程上一般不会修改源数据</li>
+<li>lintcode-611-knightShortestPath</li>
+</ul>
+</li>
+</ul>
+<h1 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h1><ul>
+<li>求任意拓扑排序：lintcode-127<ol>
+<li>统计每个点入度：有向图中指向某点的线段数</li>
+<li>将每个入度为0的点放入队列中作为起始节点</li>
+<li>不断出队，去掉该点的所有连边，其他点相应入度-1</li>
+<li>一旦发现新的入度为0的点，丢回队列中</li>
+</ol>
+</li>
+<li>拓扑排序并不是传统排序算法</li>
+<li>一个图可能存在多个拓扑排序</li>
+<li>求是否有拓扑排序：lintcode-616,图+有依赖关系+有向无环=拓扑排序</li>
+<li>求是否唯一拓扑排序:lintcode-605,判断queue长度是否大于1，若大于1则表示有多个选择</li>
+<li>求字典序最小的拓扑排序：lintcode-892</li>
+</ul>
+<h1 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h1><ul>
+<li>图上BFS<ul>
+<li>判断一个图是否是一棵树 graph-valid-tree</li>
+<li>搜索图中最近值为target的点<br>search-graph-nodes</li>
+<li>无向图连通块 connected-component-in-undirected-graph  </li>
+</ul>
+</li>
+<li>矩阵上的bfs<ul>
+<li>僵尸多少天吃掉所有人 zombie-in-matrix</li>
+<li>邮政局问题 build-post-office-ii</li>
+</ul>
+</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>能用bfs就不用dfs除非面试官要求</li>
+<li>bfs三场景：连通块、层级遍历、拓扑排序</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/23/03lintcode/lintcode-67-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86-%E6%A0%88%E8%BF%AD%E4%BB%A3/" rel="prev" title="lintcode-67-二叉树的中序遍历-栈迭代">
+      <i class="fa fa-chevron-left"></i> lintcode-67-二叉树的中序遍历-栈迭代
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/02/24/03lintcode/lintcode-86-%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8-%E6%A0%88bfs/" rel="next" title="lintcode-86-二叉查找树迭代器-栈bfs">
+      lintcode-86-二叉查找树迭代器-栈bfs <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E9%80%9A%E5%9D%97%E9%97%AE%E9%A2%98"><span class="nav-text">连通块问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%B1%82%E9%81%8D%E5%8E%86"><span class="nav-text">分层遍历</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="nav-text">拓扑排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98"><span class="nav-text">习题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="春春"
+      src="/images/liuguanzhang.jpg">
+  <p class="site-author-name" itemprop="name">春春</p>
+  <div class="site-description" itemprop="description">银鞍照白马，飒沓如流星。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">关关</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>
