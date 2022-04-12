@@ -19,15 +19,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="第1章 绪论 灰度图像 二值图像  第2章 数字图像基础 8bit：0-255 随着灰度级减少图像出现假轮廓 欧式距离 棋盘距离  第3章 HALCON图像处理基础第4涨 HALCON数据结构 区域生长法分割图像  第5章 图像运算 加法 减法 乘法 掩模运算 除法运算 仿射变换">
+  <meta name="description" content="第1章 绪论 灰度图像 二值图像  第2章 数字图像基础 8bit：0-255 随着灰度级减少图像出现假轮廓 欧式距离 棋盘距离  第3章 HALCON图像处理基础第4涨 HALCON数据结构 区域生长法分割图像  第5章 图像运算 加法 减法 乘法 掩模运算 除法运算 仿射变换 灰度插值：最邻近插值 双线性插值  第6章 图像增强">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读书-HALCON数字图像处理">
 <meta property="og:url" content="http://example.com/2022/04/06/01%E8%AF%BB%E4%B9%A6/%E8%AF%BB%E4%B9%A6-HALCON%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/index.html">
 <meta property="og:site_name" content="桃园三结义">
-<meta property="og:description" content="第1章 绪论 灰度图像 二值图像  第2章 数字图像基础 8bit：0-255 随着灰度级减少图像出现假轮廓 欧式距离 棋盘距离  第3章 HALCON图像处理基础第4涨 HALCON数据结构 区域生长法分割图像  第5章 图像运算 加法 减法 乘法 掩模运算 除法运算 仿射变换">
+<meta property="og:description" content="第1章 绪论 灰度图像 二值图像  第2章 数字图像基础 8bit：0-255 随着灰度级减少图像出现假轮廓 欧式距离 棋盘距离  第3章 HALCON图像处理基础第4涨 HALCON数据结构 区域生长法分割图像  第5章 图像运算 加法 减法 乘法 掩模运算 除法运算 仿射变换 灰度插值：最邻近插值 双线性插值  第6章 图像增强">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-06T12:54:07.000Z">
-<meta property="article:modified_time" content="2022-04-06T16:16:26.261Z">
+<meta property="article:modified_time" content="2022-04-07T13:34:25.046Z">
 <meta property="article:author" content="春春">
 <meta name="twitter:card" content="summary">
 
@@ -223,7 +223,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-07 00:16:26" itemprop="dateModified" datetime="2022-04-07T00:16:26+08:00">2022-04-07</time>
+                <time title="修改时间：2022-04-07 21:34:25" itemprop="dateModified" datetime="2022-04-07T21:34:25+08:00">2022-04-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -260,6 +260,11 @@
 <h1 id="第5章-图像运算"><a href="#第5章-图像运算" class="headerlink" title="第5章 图像运算"></a>第5章 图像运算</h1><ul>
 <li>加法 减法 乘法 掩模运算 除法运算</li>
 <li>仿射变换</li>
+<li>灰度插值：最邻近插值 双线性插值</li>
+</ul>
+<h1 id="第6章-图像增强"><a href="#第6章-图像增强" class="headerlink" title="第6章 图像增强"></a>第6章 图像增强</h1><ul>
+<li>线性灰度变换 分段线性灰度变换（直方图均衡化）</li>
+<li>对数变换 指数变换 压缩一部分扩张一部分</li>
 </ul>
 
     </div>
@@ -279,7 +284,10 @@
     <a href="/2022/04/06/02%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-yoloV1/" rel="prev" title="目标检测-yoloV1">
       <i class="fa fa-chevron-left"></i> 目标检测-yoloV1
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/08/01%E8%AF%BB%E4%B9%A6/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-03-adaboost/" rel="next" title="机器学习-03-adaboost">
+      机器学习-03-adaboost <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -338,7 +346,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E7%BB%AA%E8%AE%BA"><span class="nav-text">第1章 绪论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%9F%BA%E7%A1%80"><span class="nav-text">第2章 数字图像基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC3%E7%AB%A0-HALCON%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80"><span class="nav-text">第3章 HALCON图像处理基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC4%E6%B6%A8-HALCON%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-text">第4涨 HALCON数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC5%E7%AB%A0-%E5%9B%BE%E5%83%8F%E8%BF%90%E7%AE%97"><span class="nav-text">第5章 图像运算</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E7%BB%AA%E8%AE%BA"><span class="nav-text">第1章 绪论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%9F%BA%E7%A1%80"><span class="nav-text">第2章 数字图像基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC3%E7%AB%A0-HALCON%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80"><span class="nav-text">第3章 HALCON图像处理基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC4%E6%B6%A8-HALCON%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-text">第4涨 HALCON数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC5%E7%AB%A0-%E5%9B%BE%E5%83%8F%E8%BF%90%E7%AE%97"><span class="nav-text">第5章 图像运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC6%E7%AB%A0-%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA"><span class="nav-text">第6章 图像增强</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -354,7 +362,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
