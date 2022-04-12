@@ -190,6 +190,161 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/12/03lintcode/lintcode-175-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%80%92%E5%BD%92dfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liuguanzhang.jpg">
+      <meta itemprop="name" content="春春">
+      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃园三结义">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/12/03lintcode/lintcode-175-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%80%92%E5%BD%92dfs/" class="post-title-link" itemprop="url">lintcode-175-翻转二叉树-递归dfs</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-12 17:21:01 / 修改时间：17:23:08" itemprop="dateCreated datePublished" datetime="2022-04-12T17:21:01+08:00">2022-04-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lintcode/" itemprop="url" rel="index"><span itemprop="name">lintcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="递归DFS"><a href="#递归DFS" class="headerlink" title="递归DFS"></a>递归DFS</h1><ul>
+<li>先判断空节点</li>
+<li>非空节点交换左右</li>
+<li>进行子树递归
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/12/03lintcode/lintcode-175-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%80%92%E5%BD%92dfs/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/12/03lintcode/lintcode-175-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%9D%9E%E9%80%92%E5%BD%92BFS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/liuguanzhang.jpg">
+      <meta itemprop="name" content="春春">
+      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="桃园三结义">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/12/03lintcode/lintcode-175-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%9D%9E%E9%80%92%E5%BD%92BFS/" class="post-title-link" itemprop="url">lintcode-175-翻转二叉树-非递归BFS</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-12 17:21:01 / 修改时间：17:33:19" itemprop="dateCreated datePublished" datetime="2022-04-12T17:21:01+08:00">2022-04-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lintcode/" itemprop="url" rel="index"><span itemprop="name">lintcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h1><ul>
+<li>利用queue进行层次遍历</li>
+<li>对每次遍历到的节点进行左右交换
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/12/03lintcode/lintcode-175-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%9D%9E%E9%80%92%E5%BD%92BFS/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/12/03lintcode/lintcode-597-%E5%85%B7%E6%9C%89%E6%9C%80%E5%A4%A7%E5%B9%B3%E5%9D%87%E6%95%B0%E7%9A%84%E5%AD%90%E6%A0%91-%E6%97%A0%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8Fdfs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -862,166 +1017,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/04/01%E8%AF%BB%E4%B9%A6/%E5%85%B6%E4%BB%96-dxomark%E5%B1%8F%E5%B9%95%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liuguanzhang.jpg">
-      <meta itemprop="name" content="春春">
-      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="桃园三结义">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/04/01%E8%AF%BB%E4%B9%A6/%E5%85%B6%E4%BB%96-dxomark%E5%B1%8F%E5%B9%95%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">其他-dxomark屏幕质量测试</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-04 18:54:36 / 修改时间：19:41:44" itemprop="dateCreated datePublished" datetime="2022-04-04T18:54:36+08:00">2022-04-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="在线屏幕质量检测"><a href="#在线屏幕质量检测" class="headerlink" title="在线屏幕质量检测"></a>在线屏幕质量检测</h1><p><a target="_blank" rel="noopener" href="https://screen.bmcx.com/#welcome">https://screen.bmcx.com/#welcome</a><br>纯红色 绿 蓝 黄 青 洋红 白 黑<br>水平线、垂直线、正斜线、点阵：测试模拟信号的干扰水平<br>微型图案：测试crt显示器及投影仪的对焦水平<br>方形网络、彩色网格：测试屏幕边缘是否有显示畸变<br>暗对比度、亮对比度：用于测试屏幕的对比度，一般的非专业显示器无法区分最后一行的色块边缘。<br>白色渐变：用于测试显示器的色彩平滑程度，颜色过渡平滑的显示设备更佳。</p>
-<h1 id="我们如何测试屏幕质量"><a href="#我们如何测试屏幕质量" class="headerlink" title="我们如何测试屏幕质量"></a>我们如何测试屏幕质量</h1><p><a target="_blank" rel="noopener" href="http://www.dxomark.cn/?p=57306">http://www.dxomark.cn/?p=57306</a></p>
-<h1 id="深入探究dxomark屏幕测试"><a href="#深入探究dxomark屏幕测试" class="headerlink" title="深入探究dxomark屏幕测试"></a>深入探究dxomark屏幕测试</h1><p><a target="_blank" rel="noopener" href="https://www.dxomark.cn/a-closer-look-at-dxomark-display-testing/">https://www.dxomark.cn/a-closer-look-at-dxomark-display-testing/</a></p>
-
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/04/01%E8%AF%BB%E4%B9%A6/%E5%85%B6%E4%BB%96-dxomark%E5%B1%8F%E5%B9%95%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/03/01%E8%AF%BB%E4%B9%A6/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-02-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-%E4%BA%BA%E8%84%B8%E5%88%86%E7%B1%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/liuguanzhang.jpg">
-      <meta itemprop="name" content="春春">
-      <meta itemprop="description" content="银鞍照白马，飒沓如流星。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="桃园三结义">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/03/01%E8%AF%BB%E4%B9%A6/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-02-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-%E4%BA%BA%E8%84%B8%E5%88%86%E7%B1%BB/" class="post-title-link" itemprop="url">机器学习-02-支持向量机-人脸分类</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-03 20:13:07" itemprop="dateCreated datePublished" datetime="2022-04-03T20:13:07+08:00">2022-04-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-07 23:55:59" itemprop="dateModified" datetime="2022-04-07T23:55:59+08:00">2022-04-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="支持向量机-人脸分类"><a href="#支持向量机-人脸分类" class="headerlink" title="支持向量机-人脸分类"></a>支持向量机-人脸分类</h1><p>视频讲解：清华大学-袁博<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Vt411v7bg?p">https://www.bilibili.com/video/BV1Vt411v7bg?p</a><br>最大化margin，也就是支持向量到超平面的距离<br>wx + b = 1, 0(超平面), -1<br>条件y(wx + b) - 1 &gt;= 0，求w模的最小值<br>对偶问题 g(x)=∑αyx + b 求其中的非零α<br>soft margin 线性不可分<br>条件y(wx + b) - 1 + ξ &gt;= 0，求w模的最小值<br>目标函数 0.5w’w + C∑ξ 后项为惩罚量 C为惩罚系数 系数越大越不容忍误差<br>线性不可分 升维 转换映射 增加平方项 交叉项<br>核函数绕过高维空间运算 poly gauss</p>
-<p>使用支持向量机实现人脸的分类识别，主要流程是对输入的人脸数据，使用主成分分析（PCA）方法进行降维处理，然后利用降维后的数据作为人脸特征，输入到SVM中，进行人脸的分类识别。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/03/01%E8%AF%BB%E4%B9%A6/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-02-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-%E4%BA%BA%E8%84%B8%E5%88%86%E7%B1%BB/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1093,7 +1088,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

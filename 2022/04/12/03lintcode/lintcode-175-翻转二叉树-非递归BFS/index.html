@@ -19,19 +19,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="https:&#x2F;&#x2F;www.lintcode.com&#x2F;problem&#x2F;69&#x2F;solution 二叉树的层次遍历 起始queue &#x3D; [root, None] while循环不断取队列中的节点 如果为正常节点，则取值加入临时值队列，取节点子节点入队 如果为None节点，则说明此层遍历结束，临时队列入结果队列，临时队列清空。并且，若queue为空则说明遍历结束，若queue不为空则None入队，继续下一层">
+  <meta name="description" content="BFS 利用queue进行层次遍历 对每次遍历到的节点进行左右交换">
 <meta property="og:type" content="article">
-<meta property="og:title" content="lintcode-69-二叉树的层次遍历-dummyNode法">
-<meta property="og:url" content="http://example.com/2022/02/18/03lintcode/lintcode-69-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86-dummyNode%E6%B3%95/index.html">
+<meta property="og:title" content="lintcode-175-翻转二叉树-非递归BFS">
+<meta property="og:url" content="http://example.com/2022/04/12/03lintcode/lintcode-175-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%9D%9E%E9%80%92%E5%BD%92BFS/index.html">
 <meta property="og:site_name" content="桃园三结义">
-<meta property="og:description" content="https:&#x2F;&#x2F;www.lintcode.com&#x2F;problem&#x2F;69&#x2F;solution 二叉树的层次遍历 起始queue &#x3D; [root, None] while循环不断取队列中的节点 如果为正常节点，则取值加入临时值队列，取节点子节点入队 如果为None节点，则说明此层遍历结束，临时队列入结果队列，临时队列清空。并且，若queue为空则说明遍历结束，若queue不为空则None入队，继续下一层">
+<meta property="og:description" content="BFS 利用queue进行层次遍历 对每次遍历到的节点进行左右交换">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-17T17:09:34.000Z">
-<meta property="article:modified_time" content="2022-02-17T17:14:21.556Z">
+<meta property="article:published_time" content="2022-04-12T09:21:01.000Z">
+<meta property="article:modified_time" content="2022-04-12T09:33:19.282Z">
 <meta property="article:author" content="春春">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/02/18/03lintcode/lintcode-69-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86-dummyNode%E6%B3%95/">
+<link rel="canonical" href="http://example.com/2022/04/12/03lintcode/lintcode-175-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%9D%9E%E9%80%92%E5%BD%92BFS/">
 
 
 <script id="page-configurations">
@@ -44,7 +44,7 @@
   };
 </script>
 
-  <title>lintcode-69-二叉树的层次遍历-dummyNode法 | 桃园三结义</title>
+  <title>lintcode-175-翻转二叉树-非递归BFS | 桃园三结义</title>
   
 
 
@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/18/03lintcode/lintcode-69-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86-dummyNode%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/12/03lintcode/lintcode-175-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%9D%9E%E9%80%92%E5%BD%92BFS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/liuguanzhang.jpg">
@@ -206,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          lintcode-69-二叉树的层次遍历-dummyNode法
+          lintcode-175-翻转二叉树-非递归BFS
         </h1>
 
         <div class="post-meta">
@@ -217,7 +217,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-02-18 01:09:34 / 修改时间：01:14:21" itemprop="dateCreated datePublished" datetime="2022-02-18T01:09:34+08:00">2022-02-18</time>
+              <time title="创建时间：2022-04-12 17:21:01 / 修改时间：17:33:19" itemprop="dateCreated datePublished" datetime="2022-04-12T17:21:01+08:00">2022-04-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,36 +240,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://www.lintcode.com/problem/69/solution">https://www.lintcode.com/problem/69/solution</a></p>
-<h1 id="二叉树的层次遍历"><a href="#二叉树的层次遍历" class="headerlink" title="二叉树的层次遍历"></a>二叉树的层次遍历</h1><ul>
-<li>起始queue = [root, None]</li>
-<li>while循环不断取队列中的节点</li>
-<li>如果为正常节点，则取值加入临时值队列，取节点子节点入队</li>
-<li>如果为None节点，则说明此层遍历结束，临时队列入结果队列，临时队列清空。并且，若queue为空则说明遍历结束，若queue不为空则None入队，继续下一层遍历。<span id="more"></span>
-```python<br>“””<br>Definition of TreeNode:<br>class TreeNode:<br>  def <strong>init</strong>(self, val):<pre><code>  self.val = val
-  self.left, self.right = None, None
-</code></pre>
-“””</li>
+        <h1 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h1><ul>
+<li>利用queue进行层次遍历</li>
+<li>对每次遍历到的节点进行左右交换<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lintcode <span class="keyword">import</span> (</span><br><span class="line">    TreeNode,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Definition of TreeNode:</span></span><br><span class="line"><span class="string">class TreeNode:</span></span><br><span class="line"><span class="string">    def __init__(self, val):</span></span><br><span class="line"><span class="string">        self.val = val</span></span><br><span class="line"><span class="string">        self.left, self.right = None, None</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    @param root: a TreeNode, the root of the binary tree</span></span><br><span class="line"><span class="string">    @return: nothing</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">invert_binary_tree</span>(<span class="params">self, root: TreeNode</span>):</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        queue = collections.deque([root])</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            cur = queue.popleft()</span><br><span class="line">            cur.left, cur.right = cur.right, cur.left</span><br><span class="line">            <span class="keyword">if</span> cur.left:</span><br><span class="line">                queue.append(cur.left)</span><br><span class="line">            <span class="keyword">if</span> cur.right:</span><br><span class="line">                queue.append(cur.right)</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>class Solution:<br>    “””<br>    @param root: A Tree<br>    @return: Level order a list of lists of integer<br>    “””<br>    def levelOrder(self, root):<br>        # write your code here<br>        if not root:<br>            return []</p>
-<pre><code>    queue = [root, None]
-    res = []
-    tempVal = []
-    while queue:           
-        node = queue.pop(0)
-        if node:
-            tempVal.append(node.val)
-            if node.left:
-                queue.append(node.left)
-            if node.right:
-                queue.append(node.right)
-        elif node == None:
-            res.append(tempVal)
-            tempVal = []
-            if queue:
-                queue.append(None)
-    return res
-</code></pre>
 
     </div>
 
@@ -285,12 +260,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/02/18/03lintcode/lintcode-69-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86-%E5%8F%8C%E9%98%9F%E5%88%97/" rel="prev" title="lintcode-69-二叉树的层次遍历-双队列">
-      <i class="fa fa-chevron-left"></i> lintcode-69-二叉树的层次遍历-双队列
+    <a href="/2022/04/12/03lintcode/lintcode-597-%E5%85%B7%E6%9C%89%E6%9C%80%E5%A4%A7%E5%B9%B3%E5%9D%87%E6%95%B0%E7%9A%84%E5%AD%90%E6%A0%91-%E6%97%A0%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8Fdfs/" rel="prev" title="lintcode-597-具有最大平均数的子树-无全局变量dfs">
+      <i class="fa fa-chevron-left"></i> lintcode-597-具有最大平均数的子树-无全局变量dfs
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/02/21/04%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95-12-%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" rel="next" title="九章算法-12-深度优先搜索">
-      九章算法-12-深度优先搜索 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/04/12/03lintcode/lintcode-175-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%80%92%E5%BD%92dfs/" rel="next" title="lintcode-175-翻转二叉树-递归dfs">
+      lintcode-175-翻转二叉树-递归dfs <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -350,7 +325,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86"><span class="nav-text">二叉树的层次遍历</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BFS"><span class="nav-text">BFS</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
